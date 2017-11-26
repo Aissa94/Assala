@@ -22,6 +22,10 @@ body {
     color: #fff
 }
 
+th {
+    text-align: right;
+}
+
 .daterangepicker .input-mini {
     background-color: #eee;
     border: 1px solid #ccc;
@@ -791,11 +795,6 @@ table.no-margin .progress {
 .searchPanel {
     text-align: right;
     min-width: 300px;
-    width: 100%;
-}
-
-.searchPanel:parent:parent {
-    float: left !important;
 }
 
 .row {
@@ -4660,6 +4659,7 @@ fieldset {
     list-style: none;
     position: relative;
     width: 100%;
+    direction: rtl;
     margin: 0 0 20px
 }
 
@@ -4719,13 +4719,17 @@ fieldset {
 }
 
 .wizard_horizontal ul.wizard_steps li:first-child a:before {
-    left: 50%
-}
-
-.wizard_horizontal ul.wizard_steps li:last-child a:before {
     right: 50%;
     width: 50%;
     left: auto
+}
+
+.wizard_horizontal ul.wizard_steps li:last-child a:before {
+    left: 50%
+}
+
+.stepContainer {
+    height: 300px !important;
 }
 
 .wizard_verticle .stepContainer {
@@ -4755,7 +4759,7 @@ fieldset {
 }
 
 .marginelo {
-    margin-left: 15%;
+    margin-left: 10%;
 }
 
 .form-horizontal input {

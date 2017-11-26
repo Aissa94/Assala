@@ -204,7 +204,7 @@
                         <p style="text-align:center;font-size:18px;margin-bottom:10px;">
                             هل أنت متأكد أنك تريد إنشاء حساب بالبيانات المسبق إدراجها ؟</p>
                         <button style="margin-left:150px;" type="button" onclick="document.getElementById('form1').submit();" data-dismiss="modal" class="btn btn-primary btn-lg" id="message-text"> إرسال </button>
-                        <button type="button" style="margin-left:100px;" onclick='wizard.steps("previous");wizard.steps("previous");wizard.steps("previous");' class="btn btn-primary btn-lg" data-dismiss="modal" id="recipient-name"> تأكد من جديد </button>
+                        <button type="button" style="margin-left:100px;" onclick='$("#wizard").smartWizard("goToStep",1);' class="btn btn-primary btn-lg" data-dismiss="modal" id="recipient-name"> تأكد من جديد </button>
                     </div>
                 </div>
             </div>
@@ -214,11 +214,11 @@
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <script>
         $(document).ready(function() {
-             $("#wizard").smartWizard({
-            onFinish: function () {
-                $('#exampleModal').modal('show');
-            }
-        });
+            $("#wizard").smartWizard({
+                onFinish: function () {
+                    $('#exampleModal').modal('show');
+                }
+            });
         });
     </script>
     <!-- Pour faire l'appel à la page "footer.php" -->      

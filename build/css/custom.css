@@ -620,7 +620,8 @@ body .container.body .right_col {
 }
 
 body {
-    color: #73879C;
+    color: black;
+    /*#73879C*/
     background: #2a3f54;
     font-family: "Majalla", Roboto, Arial, "Droid Sans", sans-serif;
     font-size: 24px;
@@ -1465,6 +1466,15 @@ legend {
     color: #768399;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px
+}
+
+.pagination {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+#addition {
+    margin-top: 20px
 }
 
 table.tile h3,
@@ -2466,10 +2476,12 @@ a.star {
 
 .modal-title {
     float: right;
+    font-size: 28px;
 }
 
 .close {
     float: left;
+    font-size: 28px;
 }
 
 .button-mail {
@@ -4782,6 +4794,10 @@ fieldset {
     font-size: 20px !important;
 }
 
+.input {
+    direction: rtl;
+}
+
 .wizard_verticle .wizard_content {
     width: 80%;
     float: left;
@@ -4966,6 +4982,32 @@ ul.verticle_bars li {
     color: #E9EDEF;
     background-color: rgba(52, 152, 219, 0.88);
     border-color: rgba(52, 152, 219, 0.88)
+}
+
+.modal-header h4 {
+    float: right;
+}
+
+.modal-header button {
+    float: left;
+}
+
+.modal-content {
+    margin-top: 70px;
+}
+
+.modal-body p {
+    text-align: center;
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.modal-body button {
+    margin-left: 150px;
+}
+
+.modal-body button:last-child {
+    margin-left: 100px;
 }
 
 .alert-warning {

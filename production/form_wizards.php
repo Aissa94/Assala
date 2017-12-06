@@ -78,44 +78,37 @@
                                         </ul>
                                         <div id="step-1">
                                             <form class="form-horizontal form-label-left">
-
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="firstname" name="firstname" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> <span class="required">*</span>الاسم </label>
-                                                    
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم </label> 
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="lastname" name="lastname" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name"> <span class="required">*</span>اللقب
-                            </label>
-                    
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname"> <span class="required">*</span>اللقب</label>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" id="middle-name" class="form-control col-md-7 col-xs-12" type="date" name="middle-name">
+                                                        <input id="birthday" name="birthday" class="form-control col-md-7 col-xs-12" type="date" name="middle-name">
                                                     </div>
-                                                    <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">تاريخ الميلاد</label>
-
+                                                    <label for="birthday" class="control-label col-md-3 col-sm-3 col-xs-12">تاريخ الميلاد</label>
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <div id="gender" class="btn-group" data-toggle="buttons">
                                                             <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="male"> &nbsp; ذكر &nbsp;
-                                </label>
+                                                                <input type="radio" name="gender" value="male"> &nbsp; ذكر &nbsp;
+                                                            </label>
                                                             <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                  <input type="radio" name="gender" value="female"> أنثى
-                                </label>
+                                                                <input type="radio" name="gender" value="female"> أنثى
+                                                            </label>
                                                         </div>
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">الجنس</label>
                                                 </div>
-                                            
-
                                             </form>
 
                                         </div>
@@ -123,17 +116,22 @@
                                             <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="phone" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> <span class="required">*</span>الهاتف </label>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone"> <span class="required">*</span>الهاتف </label>
                                                     
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="email" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> <span class="required">*</span>البريد الالكتروني </label>
-                                                    
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"> <span class="required">*</span>البريد الالكتروني </label>   
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                        <input type="text" id="adress" name="adress" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress"> <span class="required">*</span>العنوان البريدي </label>   
                                                 </div>
                                             </form>
                                         </div>
@@ -141,24 +139,27 @@
                                             <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="phone" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="idcard" name="idcard" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> <span class="required">*</span>رقم بطاقة التعريف </label>
-                                                    
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="idcard"> <span class="required">*</span>رقم بطاقة التعريف </label>     
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="date" id="email" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="level" name="level" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">تاريخ بداية العمل </label>
-                                                    
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="level"> <span class="required">*</span>المستوى الدراسي </label>   
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="email" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="date" id="job" name="job" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">المبلغ المتفق عليه </label>
-                                                    
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="job">تاريخ بداية العمل </label>                                                    
+                                                </div>
+                                                <div class="form-group">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                        <input type="text" id="salary" name="salary" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salary">الراتب المتفق عليه </label>                                                   
                                                 </div>
                                             </form>
                                         </div>
@@ -166,16 +167,16 @@
                                             <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="phone" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="username" name="username" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> <span class="required">*</span>اسم المستخدم </label>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username"> <span class="required">*</span>اسم المستخدم </label>
                                                     
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input dir="rtl" type="text" id="email" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="password" name="password" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
-                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name"> <span class="required">*</span>كلمة المرور </label>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password"> <span class="required">*</span>كلمة المرور </label>
                                                     
                                                 </div>
                                             </form>
@@ -191,24 +192,23 @@
             </div>
             <!-- /page content -->
     <!-- jQuery Smart Wizard -->
-     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content" style="margin-top:70px;">
-                    <div class="modal-header">
-                        <h4 class="modal-title" id="exampleModalLabel" style="float:right">تأكيد بيانات الموظف</h4>
-                        <button style="float:left" type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                    </div>
-                    <div class="modal-body">
-                        <p style="text-align:center;font-size:18px;margin-bottom:10px;">
-                            هل أنت متأكد أنك تريد إنشاء حساب بالبيانات المسبق إدراجها ؟</p>
-                        <button style="margin-left:150px;" type="button" onclick="document.getElementById('form1').submit();" data-dismiss="modal" class="btn btn-primary btn-lg" id="message-text"> إرسال </button>
-                        <button type="button" style="margin-left:100px;" onclick='$("#wizard").smartWizard("goToStep",1);' class="btn btn-primary btn-lg" data-dismiss="modal" id="recipient-name"> تأكد من جديد </button>
-                    </div>
+     <div class="modal fade" id="confirmStaff" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="exampleModalLabel">تأكيد بيانات الموظف</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>هل أنت متأكد أنك تريد إنشاء حساب بالبيانات المسبق إدراجها ؟</p>
+                    <button type="button" onclick="document.getElementById('form1').submit();" data-dismiss="modal" class="btn btn-primary btn-lg" id="message-text"> إرسال </button>
+                    <button type="button" onclick='$("#wizard").smartWizard("goToStep",1);' class="btn btn-primary btn-lg" data-dismiss="modal" id="recipient-name"> تأكد من جديد </button>
                 </div>
             </div>
         </div>
+    </div>
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
@@ -216,7 +216,7 @@
         $(document).ready(function() {
             $("#wizard").smartWizard({
                 onFinish: function () {
-                    $('#exampleModal').modal('show');
+                    $('#confirmStaff').modal('show');
                 }
             });
         });

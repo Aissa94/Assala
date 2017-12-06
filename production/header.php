@@ -41,7 +41,9 @@
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.css" rel="stylesheet">
 </head>
-
+<?php 
+    require "server/bdd_connect.php";
+?>  
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
@@ -74,7 +76,7 @@
                             <ul class="nav side-menu">
                                 <li><a>إدارة الموظفين<i class="fa fa-home"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="tables_dynamic.php">تسيير الموظفين</a></li>
+                                        <li><a href="staff_management.php">تسيير الموظفين</a></li>
                                         <li><a href="form_wizards.php">إضافة موظف</a></li>
                                         <!--li><a href="index3.html">إزالة مستخدم</a></li-->
                                     </ul>
@@ -110,11 +112,8 @@
                                 </li>
                                 <li><a>تسيير المخزن<i class="fa fa-bar-chart-o"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="chartjs.html">Chart JS</a></li>
-                                        <li><a href="chartjs2.html">Chart JS2</a></li>
-                                        <li><a href="morisjs.html">Moris JS</a></li>
-                                        <li><a href="echarts.html">ECharts</a></li>
-                                        <li><a href="other_charts.html">Other Charts</a></li>
+                                        <li><a href="books_store.php">تسيير الكتب</a></li>
+                                        <li><a href="libraries_store.php">تسيير المكتبات</a></li>
                                     </ul>
                                 </li>
                                 <li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-clone"></i><span class="fa fa-chevron-down"></span></a>

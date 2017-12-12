@@ -76,11 +76,11 @@
                                                 </a>
                                             </li>
                                         </ul>
+                                        <form class="form-horizontal form-label-left" method="post" action="server/add_employee.php" id="employeeForm">
                                         <div id="step-1">
-                                            <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input type="text" id="firstname" name="firstname" required="required" class="form-control col-md-7 col-xs-12">
+                                                        <input type="text" id="firstname" name="firstname" required="required" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" data-parsley-group="block1">
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم </label> 
                                                 </div>
@@ -100,20 +100,17 @@
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <div id="gender" class="btn-group" data-toggle="buttons">
                                                             <label class="btn btn-default" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="gender" value="male"> &nbsp; ذكر &nbsp;
+                                                                <input type="radio" name="gender" value="ذكر"> &nbsp; ذكر &nbsp;
                                                             </label>
                                                             <label class="btn btn-primary" data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                                                                <input type="radio" name="gender" value="female"> أنثى
+                                                                <input type="radio" name="gender" value="أنثى"> أنثى
                                                             </label>
                                                         </div>
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12">الجنس</label>
                                                 </div>
-                                            </form>
-
                                         </div>
                                         <div id="step-2">
-                                            <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <input type="text" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
@@ -133,10 +130,8 @@
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress"> <span class="required">*</span>العنوان البريدي </label>   
                                                 </div>
-                                            </form>
                                         </div>
                                         <div id="step-3">
-                                            <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <input type="text" id="idcard" name="idcard" required="required" class="form-control col-md-7 col-xs-12">
@@ -161,10 +156,8 @@
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salary">الراتب المتفق عليه </label>                                                   
                                                 </div>
-                                            </form>
                                         </div>
                                         <div id="step-4">
-                                            <form class="form-horizontal form-label-left">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <input type="text" id="username" name="username" required="required" class="form-control col-md-7 col-xs-12">
@@ -179,9 +172,9 @@
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password"> <span class="required">*</span>كلمة المرور </label>
                                                     
                                                 </div>
-                                            </form>
+                                           
                                         </div>
-
+                                    </form>
                                     </div>
                                     <!-- End SmartWizard Content -->
                                 </div>
@@ -196,15 +189,15 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4 class="modal-title" id="exampleModalLabel">تأكيد بيانات الموظف</h4>
+                    <h3 class="modal-title" id="exampleModalLabel">تأكيد بيانات الموظف</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <p>هل أنت متأكد أنك تريد إنشاء حساب بالبيانات المسبق إدراجها ؟</p>
-                    <button type="button" onclick="document.getElementById('form1').submit();" data-dismiss="modal" class="btn btn-primary btn-lg" id="message-text"> إرسال </button>
-                    <button type="button" onclick='$("#wizard").smartWizard("goToStep",1);' class="btn btn-primary btn-lg" data-dismiss="modal" id="recipient-name"> تأكد من جديد </button>
+                    <button type="button" onclick="document.getElementById('employeeForm').submit();" data-dismiss="modal" class="btn btn-primary btn-lg" id="message-text"> إرسال </button>
+                    <button type="button" onclick="$('#wizard').smartWizard('goToStep',1);" class="btn btn-primary btn-lg" data-dismiss="modal" id="recipient-name"> تأكد من جديد </button>
                 </div>
             </div>
         </div>
@@ -212,11 +205,23 @@
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <!-- validator -->
+    <script src="../vendors/validator/validator.js"></script>
     <script>
         $(document).ready(function() {
             $("#wizard").smartWizard({
                 onFinish: function () {
                     $('#confirmStaff').modal('show');
+                },
+                onLeaveStep: function () {
+                    var currentStep = $("#wizard").smartWizard('currentStep'),
+                        ok = validator.checkAll($("#step-" + currentStep));
+                    if (ok) { 
+                        $("#wizard").smartWizard('hideError', currentStep);
+                        return true;
+                    } else {
+                        $("#wizard").smartWizard('showError', currentStep);
+                    }
                 }
             });
         });

@@ -13,39 +13,46 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>قائمة منشورات المؤسسة</h2>
+                                    <h2>قائمة موظفي المؤسسة</h2>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                      <p class="text-muted font-13 m-b-30">                                
-                                        هذه قائمة بجميع كتب ومنشورات مؤسسة الأصالة
+                                        هذه قائمة بجميع موظفي مؤسسة الأصالة
                                     </p>
                                     <table id="datatable-fixed-header" class="table table-striped table-bordered nowrap bulk_action" dir="rtl">
                                         <thead>
                                             <tr>
-                                                <th>العنوان</th>
-                                                <th>المؤلف</th>
-                                                <th>سنة النشر</th>
-                                                <th>ISBN</th>
-                                                <th>الصفحات</th>
-                                                <th>الكمية</th>
-                                                <th>التخصص</th>
-                                                <th>السعر</th>
+                                                <th>الاسم</th>
+                                                <th>اللقب</th>
+                                                <th>تاريخ الميلاد</th>
+                                                <th>الجنس</th>
+                                                <th>رقم الهاتف</th>
+                                                <th>البريد</th>
+                                                <th>العمل</th>
+                                                <th>الراتب</th>
                                             </tr>
                                         </thead>
-
-
                                         <tbody>
+                                            <?php  
+                                                $employee = $connect->query("SELECT * FROM members");
+                                                while ($row = $employee->fetch()) {
+                                            ?>
                                             <tr>
-                                                <td>مذكرات خيرالدين بربروس</td>
-                                                <td>د . محمد دراج</td>
-                                                <td>2013</td>
-                                                <td>978-9931-413-03-5</td>
-                                                <td>196</td>
-                                                <td>1560</td>
-                                                <td>تاريخ</td>
-                                                <td>400</td>
+                                                <td><?php echo $row["firstname"]; ?></td>
+                                                <td><?php echo $row["lastname"]; ?></td>
+                                                <td><?php echo $row["birthday"]; ?></td>
+                                                <td><?php echo $row["gender"]; ?></td>
+                                                <td><?php echo $row["phone"]; ?></td>
+                                                <td><?php echo $row["email"]; ?></td>
+                                                <td><?php echo $row["job"]; ?></td>
+                                                <td><?php echo $row["salary"]; ?></td>
                                             </tr>
+                                            <?php 
+                                                }
+                                                $employee->closeCursor();
+                                                unset($connect);
+                                            ?> 
                                         </tbody>
                                     </table>
                                 </div>

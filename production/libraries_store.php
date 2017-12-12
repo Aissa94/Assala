@@ -31,16 +31,23 @@
                                                 <th>الهاتف</th>
                                             </tr>
                                         </thead>
-
-
                                         <tbody>
+                                            <?php  
+                                                $librarystore = $connect->query("SELECT * FROM librarystore");
+                                                while ($row = $librarystore->fetch()) {
+                                            ?>
                                             <tr>
-                                                <td>مكتبة عيسى</td>
-                                                <td>الجزائر العاصمة</td>
-                                                <td>45 شارع القبة</td>
-                                                <td>da_belkaid@esi.dz</td>
-                                                <td>0555-75-03-95</td>
+                                                <td><?php echo $row["name"]; ?></td>
+                                                <td><?php echo $row["state"]; ?></td>
+                                                <td><?php echo $row["adress"]; ?></td>
+                                                <td><?php echo $row["email"]; ?></td>
+                                                <td><?php echo $row["phone"]; ?></td>
                                             </tr>
+                                            <?php 
+                                                }
+                                                $librarystore->closeCursor();
+                                                unset($connect);
+                                            ?> 
                                         </tbody>
                                     </table>
                                 </div>
@@ -64,33 +71,33 @@
                             <form class="form-horizontal form-label-left" id="add_library" method="post" action="server/add_library.php">
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="title">الاسم</label>     
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">الاسم</label>     
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="text" id="author" name="author" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="state" name="state" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="author">الولاية</label>   
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="state">الولاية</label>   
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="number" min="2000" id="publicationYear" name="publicationYear" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="adress" name="adress" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="publicationYear">العنوان</label>                                                    
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress">العنوان</label>                                                    
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="text" id="isbn" name="isbn" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="isbn">البريد</label>                                                   
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">البريد</label>                                                   
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="number" min="10" id="pages" name="pages" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="pages">الهاتف</label>                                                   
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">الهاتف</label>                                                   
                                 </div>
                             </form>
                             <button style="margin-left:40%" type="submit" class="btn btn-primary btn-lg" form="add_library" id="submit"> إضافة </button>

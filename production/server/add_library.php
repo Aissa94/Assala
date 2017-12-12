@@ -1,7 +1,7 @@
 <?php
       require "bdd_connect.php";
-      $library = $connect->prepare('INSERT INTO `librarystore`(`title`, `author`, `publicationYear`, `isbn`, `pages`, `quantity`, `speciality`, `price`) VALUES (?,?,?,?,?,?,?,?)');
-      $library->execute(array($_POST['title'], $_POST['author'], $_POST['publicationYear'], $_POST['isbn'], $_POST['pages'], $_POST['quantity'], $_POST['speciality'], $_POST['price']));
+      $library = $connect->prepare('INSERT INTO `librarystore`(`name`, `state`, `adress`, `email`, `phone`) VALUES (?,?,?,?,?)');
+      $library->execute(array($_POST['name'], $_POST['state'], $_POST['adress'], $_POST['email'], $_POST['phone']));
       unset($connect);
       session_start();
       $_SESSION['logged'] = true;

@@ -31,6 +31,7 @@
                                                 <th>البريد</th>
                                                 <th>العمل</th>
                                                 <th>الراتب</th>
+                                                <th>الملف الشخصي</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -47,6 +48,11 @@
                                                 <td><?php echo $row["email"]; ?></td>
                                                 <td><?php echo $row["job"]; ?></td>
                                                 <td><?php echo $row["salary"]; ?></td>
+                                                <td class="dataTables_empty">
+                                                    <button type="button" class="btn btn-default" aria-label="User">
+                                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                                    </button>
+                                                </td>
                                             </tr>
                                             <?php 
                                                 }

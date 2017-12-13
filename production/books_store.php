@@ -45,7 +45,7 @@
                                                 <td><?php echo $row["publicationYear"]; ?></td>
                                                 <td><?php echo $row["isbn"]; ?></td>
                                                 <td><?php echo $row["pages"]; ?></td>
-                                                <td><?php echo $row["quantity"]; ?></td>
+                                                <td <?php if ($row["quantity"] < 20) echo "class='alert'"?>><?php echo $row["quantity"]; ?></td>
                                                 <td><?php echo $row["speciality"]; ?></td>
                                                 <td><?php echo $row["price"]; ?></td>
                                             </tr>

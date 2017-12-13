@@ -74,14 +74,14 @@
                         <div class="menu_section">
                             <h3>القائمة الرئيسة</h3>
                             <ul class="nav side-menu">
-                                <li><a>إدارة الموظفين<i class="fa fa-home"></i><span class="fa fa-chevron-down"></span></a>
+                                <li><a>إدارة الموظفين<i class="fa fa-users"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="staff_management.php">تسيير الموظفين</a></li>
                                         <li><a href="form_wizards.php">إضافة موظف</a></li>
                                         <!--li><a href="index3.html">إزالة مستخدم</a></li-->
                                     </ul>
                                 </li>
-                                <li><a>المصاريف<i class="fa fa-edit"></i><span class="fa fa-chevron-down"></span></a>
+                                <li><a>المصاريف<i class="fa fa-usd"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="form.html">General Form</a></li>
                                         <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -104,25 +104,25 @@
                                         <li><a href="calendar.html">Calendar</a></li>
                                     </ul>
                                 </li>
-                                <li><a>تسيير الدورات<i class="fa fa-table"></i><span class="fa fa-chevron-down"></span></a>
+                                <li><a>تسيير الدورات<i class="fa fa-newspaper-o"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="tables.html">Tables</a></li>
                                         <li><a href="tables_dynamic.html">Table Dynamic</a></li>
                                     </ul>
                                 </li>
-                                <li><a>تسيير المخزن<i class="fa fa-bar-chart-o"></i><span class="fa fa-chevron-down"></span></a>
+                                <li><a>تسيير المخزن<i class="fa fa-book"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="books_store.php">تسيير الكتب</a></li>
                                         <li><a href="libraries_store.php">تسيير المكتبات</a></li>
                                     </ul>
                                 </li>
-                                <li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-clone"></i><span class="fa fa-chevron-down"></span></a>
+                                <li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-database"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>
                                     </ul>
                                 </li>
-                                <li><a>البريد<i class="fa fa-desktop"></i><span class="fa fa-chevron-down"></span></a>
+                                <li><a>البريد<i class="fa fa-envelope"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>

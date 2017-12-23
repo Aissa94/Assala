@@ -7,14 +7,15 @@
       ));
       $row = $user->fetch(PDO::FETCH_ASSOC);
       if(!empty($row['memberId'])){
-          session_start();
-          $_SESSION['logged'] = true;
           $presence = $connect->prepare('INSERT INTO `presence`(`idEmployee`, `date`, `timeIn`) VALUES (?,?,?)');
           $presence->execute(array($row['memberId'], date("d-m-Y"), date("H:i",time() + 3600)));
+          session_start();
+          $_SESSION['id'] = $connect->lastInsertId();
+          $_SESSION['lastname'] = $row["lastname"];
+          $_SESSION['firstname'] = $row["firstname"];
           /*if ($row['idChercheur'] == 1) $_SESSION['admin'] = true;*/
           header('Location: ../index.php');
-      }
-      else {
+      } else {
           header('Location: ../login.html');
       }
       unset($connect);

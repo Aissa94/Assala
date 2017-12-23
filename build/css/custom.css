@@ -182,6 +182,7 @@ th {
     min-height: 100%;
     width: 70px;
     padding: 0;
+    right: 0;
     z-index: 9999;
     position: absolute
 }
@@ -202,12 +203,12 @@ th {
 
 .nav-sm .container.body .right_col {
     padding: 10px 20px;
-    margin-left: 70px;
+    margin-right: 70px;
     z-index: 2
 }
 
 .nav-sm .navbar.nav_title {
-    width: 70px
+    width: 0
 }
 
 .nav-sm .navbar.nav_title a span {
@@ -216,7 +217,7 @@ th {
 
 .nav-sm .navbar.nav_title a i {
     font-size: 27px;
-    margin: 13px 0 0 3px
+    margin: 13px 3px 0 0
 }
 
 .site_title i {
@@ -236,7 +237,7 @@ th {
 
 .nav-sm .main_container .top_nav {
     display: block;
-    margin-left: 70px;
+    margin-right: 70px;
     z-index: 2
 }
 
@@ -249,7 +250,7 @@ th {
 
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-    border-right: 5px solid #1ABB9C
+    border-left: 5px solid #1ABB9C
 }
 
 .nav-sm ul.nav.child_menu ul,
@@ -275,12 +276,12 @@ th {
 }
 
 .nav-sm ul.nav.child_menu {
-    left: 100%;
+    right: 100%;
     position: absolute;
     top: 0;
     width: 210px;
     z-index: 4000;
-    background: #3E5367;
+    background: #cf4e2d;
     display: none
 }
 
@@ -289,7 +290,7 @@ th {
 }
 
 .nav-sm ul.nav.child_menu li a {
-    text-align: left !important
+    text-align: right !important
 }
 
 .nav-sm .profile {
@@ -409,12 +410,18 @@ th {
 }
 
 .nav_menu {
-    float: left;
+    float: right;
     background: #EDEDED;
     border-bottom: 1px solid #D9DEE4;
     margin-bottom: 10px;
+    margin-right: 320px;
     width: 100%;
     position: relative
+}
+
+.nav-sm .nav_menu {
+    margin-right: 20px;
+    width: 116%;
 }
 
 @media (min-width: 480px) {
@@ -799,6 +806,9 @@ table.no-margin .progress {
 .searchPanel {
     text-align: right;
     min-width: 300px;
+    font-size: 24px;
+    border: 2px solid black;
+    height: 50px
 }
 
 .row {
@@ -1169,7 +1179,7 @@ footer {
 }
 
 .nav-sm footer {
-    margin-left: 70px
+    margin-right: 70px
 }
 
 .footer_fixed footer {
@@ -1187,7 +1197,7 @@ footer {
 
 @media (min-width: 768px) {
     .footer_fixed .nav-sm footer {
-        margin-left: 0
+        margin-right: 0
     }
 }
 
@@ -1368,7 +1378,7 @@ h2 {
 
 .x_title h2 {
     margin: 5px 0 6px;
-    float: left;
+    float: right;
     display: block;
     text-overflow: ellipsis;
     overflow: hidden;
@@ -1463,8 +1473,14 @@ legend {
     font-weight: 300
 }
 
-.profile_details .profile_left {
+.profile_details .profile_right {
     background: white
+}
+
+.profile_right {
+    right: 0;
+    float: right;
+    text-align: right;
 }
 
 .pagination.pagination-split li {
@@ -1566,6 +1582,31 @@ td span {
     overflow: hidden
 }
 
+.text-center {
+    color: white;
+    margin-top: 15%;
+}
+
+td.present {
+    background: rgba(26, 187, 156, 0.5);
+    border-color: rgba(26, 187, 156, 0.5);
+    color: #fff
+}
+
+td.absent {
+    background: rgba(187, 26, 42, 0.5);
+    border-color: rgba(187, 26, 42, 0.5);
+    color: #fff
+}
+
+#reportrange {
+    margin-top: 5px;
+    background: #fff;
+    cursor: pointer;
+    padding: 5px 10px;
+    border: 1px solid #E6E9ED
+}
+
 .error-number {
     font-size: 90px;
     line-height: 90px;
@@ -1657,9 +1698,7 @@ table.jambo_table thead {
 }
 
 table.jambo_table tbody tr:hover td {
-    background: rgba(38, 185, 154, 0.07);
-    border-top: 1px solid rgba(38, 185, 154, 0.11);
-    border-bottom: 1px solid rgba(38, 185, 154, 0.11)
+    background: rgba(187, 58, 26, 0.8)
 }
 
 table.jambo_table tbody tr.selected {
@@ -1703,8 +1742,8 @@ table.jambo_table tbody tr.selected td {
 }
 
 .dataTables_filter {
-    width: 50%;
     float: right;
+    /*margin-right: 20%;*/
     text-align: right
 }
 
@@ -1921,8 +1960,8 @@ ul.msg_list li a .message {
 }
 
 .dropdown-menu>li>a {
-    /*color: #5A738E*/
-    color: #f66e3a;
+    color: #5A738E
+    /*color: #f66e3a;*/
 }
 
 .navbar-nav .open .dropdown-menu {
@@ -2042,6 +2081,10 @@ ul.quick-list li i {
 .widget_summary .w_left {
     float: left;
     text-align: left
+}
+
+.avatar-view {
+    margin: auto;
 }
 
 .widget_summary .w_center {
@@ -3640,6 +3683,7 @@ ul.user_data li .progress {
 .profile_title {
     background: #F5F7FA;
     border: 0;
+    text-align: right;
     padding: 7px 0;
     display: -ms-flexbox;
     display: flex
@@ -4125,6 +4169,114 @@ ul.project_files li a i {
     border-radius: 50px
 }
 
+.black {
+    background-color: #191F26 !important;
+    width: 100%;
+    min-height: 300px;
+    color: #fff;
+    padding-top: 33px;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    text-align: right;
+}
+
+.contact-data {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 400;
+    font-size: 17px;
+    padding: 10px 0 3px;
+    white-space: nowrap;
+}
+
+.ico {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: middle;
+    background-image: url(../images/icons.png);
+    background-repeat: no-repeat;
+    background-color: transparent !important
+}
+
+.contact-data .ico {
+    margin-right: 10px;
+}
+
+.contact-data a {
+    color: #fff;
+}
+
+.copy {
+    float: left;
+    width: 100%;
+    color: #727679;
+    padding: 20px 0 0;
+    border-top: 1px solid rgba(255, 255, 255, .07);
+    -webkit-box-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+    -moz-box-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+    box-shadow: 0 -1px 0 rgba(0, 0, 0, .5);
+}
+
+.copy p {
+    float: left;
+    max-width: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.copy a {
+    color: #727679;
+}
+
+.copy a:hover,
+.copy a:focus {
+    color: #fff;
+}
+
+.phone {
+    width: 29px;
+    height: 24px;
+    margin-top: -1px;
+    background-image: url(../images/icons-orange.png) !important;
+    background-position: 0 0;
+}
+
+.email {
+    width: 29px;
+    height: 19px;
+    background-image: url(../images/icons-orange.png) !important;
+    background-position: -31px -4px;
+}
+
+.one-half {
+    float: left;
+    width: 75%;
+    padding: 0 80px 30px;
+    max-width: 100%;
+    margin-bottom: 30px;
+    border-bottom: 1px solid rgba(0, 0, 0, .5);
+    -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .07);
+    -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, .07);
+    box-shadow: 0 1px 0 rgba(255, 255, 255, .07);
+}
+
+.one-fourth {
+    float: left;
+    width: 25%;
+    padding: 0 15px 30px;
+    max-width: 100%;
+}
+
+.containerup {
+    height: 100px;
+    display: table;
+    color: #fff;
+    background-color: #bb3a1a;
+    text-align: center;
+    width: 100%;
+    padding: 27px;
+}
+
 .product_gallery a {
     width: 100px;
     height: 100px;
@@ -4159,7 +4311,8 @@ ul.project_files li a i {
 }
 
 .login {
-    background: url('../images/logo/Assala_facebook.png') no-repeat center #bcc93b;
+    /*background: url('../images/logo/Assala_facebook.png') no-repeat center #bcc93b;*/
+    background-color: #ededdc;
 }
 
 .login .fa-paw {
@@ -4174,7 +4327,6 @@ a.hiddenanchor {
     right: 0px;
     margin: 0px auto;
     margin-top: 5%;
-    max-width: 350px;
     position: relative
 }
 
@@ -4256,13 +4408,17 @@ form:after {
 .login_content {
     margin: 0 auto;
     position: relative;
-    text-align: center;
-    color: white;
-    background-color: rgba(255, 45, 0, 0.3);
-    border: 5px solid #ff4500;
-    box-shadow: 10px 10px 20px #ff4500;
-    padding: 20px 50px;
-    min-width: 400px
+    text-align: right;
+    color: black;
+    background-color: white;
+    border: 2px solid #1ABB9C;
+    padding: 20px 20px;
+    width: 40%;
+}
+
+.full-width {
+    width: 100%;
+    min-width: 100%;
 }
 
 .login_content a,
@@ -4348,6 +4504,9 @@ td .btn-default:hover {
     border: 1px solid #c8c8c8;
     color: #777;
     margin: 0 0 20px;
+    direction: rtl;
+    height: 50px;
+    font-size: 28px;
     width: 100%
 }
 
@@ -4401,12 +4560,6 @@ td .btn-default:hover {
     border-radius: 0 0 5px 5px;
     border-top: 1px solid #CFD5D9;
     padding: 15px 0
-}
-
-.login_content form input[type="submit"],
-#content form .submit {
-    float: left;
-    margin-left: 38px
 }
 
 .button a {
@@ -4771,8 +4924,8 @@ fieldset {
 }
 
 td.alert {
-    background: #d1212e;
-    border-color: #d1212e;
+    background: #bb1a2a;
+    border-color: #bb1a2a;
     color: #fff
 }
 
@@ -5023,6 +5176,11 @@ ul.verticle_bars li {
 
 .modal-header h4 {
     float: right;
+}
+
+.modalup {
+    float: none;
+    margin: 0 auto;
 }
 
 .modal-header button {

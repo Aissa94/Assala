@@ -1,3 +1,4 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="ar">
 
@@ -42,14 +43,14 @@
     <link href="../build/css/custom.css" rel="stylesheet">
 </head>
 <?php 
-    require "server/bdd_connect.php";
+    require "server/bdd_connect.php"; 
 ?>  
 <body class="nav-md">
     <div class="container body">
         <div class="main_container">
             <div class="col-md-3 left_col">
                 <div class="left_col scroll-view">
-                    <div class="navbar nav_title" style="border: 0;">
+                    <div class="navbar nav_title">
                         <a href="index.php" class="site_title"><h1>مؤسسة الأصالة</h1></a>
                     </div>
 
@@ -59,7 +60,7 @@
                     <div class="profile clearfix">
                         <div class="profile_info">
                             <span>،مرحبا</span>
-                            <h2>صيد عبد الباسط</h2>
+                            <h2><?php echo $_SESSION['lastname']." ".$_SESSION['firstname']; ?></h2>
                         </div>
                         <div class="profile_pic">
                             <img src="images/img.jpg" alt="..." class="img-circle profile_img">
@@ -77,7 +78,7 @@
                                 <li><a>إدارة الموظفين<i class="fa fa-users"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="staff_management.php">تسيير الموظفين</a></li>
-                                        <li><a href="form_wizards.php">إضافة موظف</a></li>
+                                        <li><a href="staff_create.php">إضافة موظف</a></li>
                                         <!--li><a href="index3.html">إزالة مستخدم</a></li-->
                                     </ul>
                                 </li>
@@ -178,16 +179,16 @@
 
                     <!-- /menu footer buttons -->
                     <div class="sidebar-footer hidden-small">
-                        <a data-toggle="tooltip" data-placement="top" title="Settings">
+                        <a data-toggle="tooltip" data-placement="top" title="إعدادات">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                        <a data-toggle="tooltip" data-placement="top" title="شاشة كاملة">
                             <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Lock">
+                        <a data-toggle="tooltip" data-placement="top" title="قفل">
                             <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                        <a data-toggle="tooltip" data-placement="top" title="تسجيل الخروج" onclick="logout()">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
                         </a>
                     </div>

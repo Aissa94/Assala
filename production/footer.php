@@ -4,14 +4,18 @@
     <footer>
         <div class="clearfix"></div>
         <div class="pull-right">
-            مؤسسة الأصالة للنشر والتدريب والدراسات</a>
+            مؤسسة الأصالة للنشر والتدريب والدراسات
         </div>
         <div class="clearfix"></div>
     </footer>
     <!-- /footer content -->
     </div>
     </div>
-
+    <script>
+        function logout() {
+            window.location ="server/logout.php";
+        }
+    </script>
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
@@ -49,6 +53,7 @@
     <!-- bootstrap-daterangepicker -->
     <script src="../vendors/moment/min/moment.min.js"></script>
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- jquery-smartWizard -->
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <!-- Datatables -->
     <script src="../vendors/datatables.net/js/jquery.dataTables.min.js"></script>
@@ -66,6 +71,9 @@
     <script src="../vendors/jszip/dist/jszip.min.js"></script>
     <script src="../vendors/pdfmake/build/pdfmake.min.js"></script>
     <script src="../vendors/pdfmake/build/vfs_fonts.js"></script>
+    <!-- morris.js -->
+    <script src="../vendors/raphael/raphael.min.js"></script>
+    <script src="../vendors/morris.js/morris.min.js"></script>
     <!-- FullCalendar -->
     <script src="../vendors/moment/min/moment.min.js"></script>
     <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
@@ -73,5 +81,4 @@
     <script src="../build/js/custom.min.js"></script>
 
     </body>
-
-    </html>
+</html>

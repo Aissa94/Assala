@@ -62,7 +62,7 @@
                                                     <span class="step_no">3</span>
                                                     <span class="step_descr">
                                               المرحلة 3<br />
-                                              <small>معلومات إضافية</small>
+                                              <small>بيانات العمل</small>
                                           </span>
                                                 </a>
                                             </li>
@@ -130,13 +130,19 @@
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress"> <span class="required">*</span>العنوان البريدي </label>   
                                                 </div>
-                                        </div>
-                                        <div id="step-3">
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <input type="text" id="idcard" name="idcard" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="idcard"> <span class="required">*</span>رقم بطاقة التعريف </label>     
+                                                </div>
+                                        </div>
+                                        <div id="step-3">
+                                                <div class="form-group">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                        <input type="text" id="position" name="position" required="required" class="form-control col-md-7 col-xs-12">
+                                                    </div>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="position"> <span class="required">*</span>المنصب المشغول </label>   
                                                 </div>
                                                 <div class="form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">

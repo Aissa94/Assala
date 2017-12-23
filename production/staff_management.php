@@ -1,5 +1,5 @@
 
-  <!-- Pour faire l'appel à la page "header.php" -->
+<!-- Pour faire l'appel à la page "header.php" -->
 
 <?php
     require "header.php";
@@ -45,13 +45,15 @@
                                                 <td><?php echo $row["birthday"]; ?></td>
                                                 <td><?php echo $row["gender"]; ?></td>
                                                 <td><?php echo $row["phone"]; ?></td>
-                                                <td><?php echo $row["email"]; ?></td>
+                                                <td><a href='mailto:<?php echo $row["email"]; ?>'><?php echo $row["email"]; ?></a></td>
                                                 <td><?php echo $row["job"]; ?></td>
                                                 <td><?php echo $row["salary"]; ?></td>
                                                 <td class="dataTables_empty">
-                                                    <button type="button" class="btn btn-default" aria-label="User">
-                                                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                                                    </button>
+                                                    <a href='profile.php?id=<?php echo $row["memberId"]; ?>'>
+                                                        <button type="button" class="btn btn-default" aria-label="User">
+                                                            <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                                                        </button>
+                                                    </a>
                                                 </td>
                                             </tr>
                                             <?php 
@@ -68,6 +70,6 @@
                 </div>
             </div>
             <!-- /page content -->
-            <?php
-                require "footer.php";
-            ?>
+<?php
+    require "footer.php";
+?>

@@ -1583,8 +1583,8 @@ function init_daterangepicker() {
     var optionSet1 = {
         startDate: moment().subtract(29, 'days'),
         endDate: moment(),
-        minDate: '01/01/2012',
-        maxDate: '12/31/2015',
+        minDate: '01/01/2010',
+        maxDate: '12/31/2030',
         dateLimit: {
             days: 60
         },

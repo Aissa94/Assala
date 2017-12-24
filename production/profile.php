@@ -12,6 +12,7 @@
                         $employee = $connect->query("SELECT * FROM members WHERE memberId =".$_GET['id']);
                         while ($row = $employee->fetch()) {
                     ?>
+                    <span id="idEmployee" style="display:none"><?php echo $_GET['id']; ?></span>
                     <div class="row">
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
@@ -26,7 +27,7 @@
                                             <div class="col-md-6">
                                                 <div id="reportrange" class="pull-left">
                                                     <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                                    <span onchange="alert('aissa');"></span> <b class="caret"></b>
+                                                    <span id="changeDate"></span> <b class="caret"></b>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
@@ -43,51 +44,10 @@
                                                 <th>الدخول</th>
                                                 <th>الخروج</th>
                                                 <th>ساعات العمل</th>
+                                                <th>مجموع الساعات</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <?php
-                                                $month = date('m');
-                                                $year = date('Y');
-                                                $start_date = "01-".$month."-".$year;
-                                                $start_time = strtotime($start_date);
-                                                $end_time = strtotime("+1 month", $start_time);
-                                                $dates =  [];
-                                                $timeIns =  [];
-                                                $timeOuts = [];
-                                                for($i=$start_time; $i<$end_time; $i+=86400)
-                                                {
-                                                $list[] = date('d-m-Y', $i);
-                                                }  
-                                                $presenceTable = $connect->query("SELECT * FROM presence WHERE idEmployee =".$_GET['id']);
-                                                while ($row = $presenceTable->fetch()) {
-                                                   $dates[] = $row["date"]; 
-                                                   $timeIns[] = $row["timeIn"];
-                                                   $timeOuts[] = $row["timeOut"];
-                                                }
-                                                $presenceTable->closeCursor();
-                                                unset($connect);
-                                                $j = 0;
-                                                $TotalHours = 0;
-                                                for ($i=0; $i<count($list); $i++) {
-                                            ?>
-                                            <tr>
-                                                <?php if (in_array($list[$i], $dates)) { ?>
-                                                <td class="present"><?php echo $list[$i]; ?></td>
-                                                <td class="present"><?php echo $timeIns[$j]; ?></td>
-                                                <td class="present"><?php echo $timeOuts[$j]; ?></td>
-                                                <td class="present"><?php echo date("H:i", strtotime($timeOuts[$j]) - strtotime($timeIns[$j])); $TotalHours += date("H:i", strtotime($timeOuts[$j]) - strtotime($timeIns[$j])); $j++; ?></td>
-                                                <?php } else { ?>
-                                                    <td class="absent"><?php echo $list[$i]; ?></td>
-                                                    <td class="absent"><?php echo ""; ?></td>
-                                                    <td class="absent"><?php echo ""; ?></td>
-                                                    <td class="absent"><?php echo ""; ?></td>
-                                                <?php } ?>
-                                            </tr>
-                                            <?php 
-                                                }
-                                            ?> 
-                                        </tbody>
+                                        <tbody id="requestContent"></tbody>
                                     </table>
                                     </div>
                                         <!-- end of user-activity-graph -->
@@ -186,7 +146,7 @@
                                                                 <th>Client Company</th>
                                                                 <th class="hidden-phone">Hours Spent</th>
                                                                 <th>Contribution</th>
-                                                            </tr>
+                                                            </tr>                   
                                                         </thead>
                                                         <tbody>
                                                             <tr>
@@ -229,7 +189,7 @@
                                                                 <td class="hidden-phone">28</td>
                                                                 <td class="vertical-align-mid">
                                                                     <div class="progress">
-                                                                        <div class="progress-bar progress-bar-success" data-transitiongoal="75"></div>
+                                                                        <div class="progress-bar progress-bar-success" data-transitiongoal="75.654548"></div>
                                                                     </div>
                                                                 </td>
                                                             </tr>
@@ -277,14 +237,14 @@
                                         <ul class="list-unstyled user_data">
                                             <li>
                                                 <p>نسبة الحضور</p>
-                                                <div class="progress progress_sm">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="70"></div>
+                                                <div class="progress">
+                                                    <div class="progress-bar bg-green" id="presenceRate" role="progressbar"></div>
                                                 </div>
                                             </li>
                                             <li>
                                                 <p>نسبة الغياب</p>
-                                                <div class="progress progress_sm">
-                                                    <div class="progress-bar bg-green" role="progressbar" data-transitiongoal="30"></div>
+                                                <div class="progress">
+                                                    <div class="progress-bar progress-bar-danger" id="absenceRate" role="progressbar"></div>
                                                 </div>
                                             </li>
                                         </ul>
@@ -303,7 +263,24 @@
                 </div>
             </div>
             <!-- /page content -->
-
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#changeDate").on('DOMSubtreeModified', function() {
+                $.ajax({
+                    url: "server/presence_query.php",
+                    type: "POST",
+                    data: "date=" + $("#changeDate").text() + '&idEmployee=' + $("#idEmployee").text(),
+                    success: function(data) {
+                        //$(data).appendTo('#requestContent');
+                        console.log(data);
+                        $('#requestContent').html(data);
+                    }
+                });
+            });
+        });
+    </script>
 <?php
     require "footer.php";
 ?>

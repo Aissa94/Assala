@@ -1701,6 +1701,36 @@ table.jambo_table tbody tr:hover td {
     background: rgba(187, 58, 26, 0.8)
 }
 
+td#rowspan {
+    vertical-align: middle !important;
+    text-align: center;
+    font-size: 40px;
+    font-weight: bold;
+}
+
+#requestContent {
+    border-collapse: collapse;
+    empty-cells: show;
+}
+
+#requestContent td {
+    position: relative;
+}
+
+td.strikeout:before {
+    content: " ";
+    position: absolute;
+    top: 50%;
+    left: 0;
+    border-bottom: 1px solid #111;
+    width: 100%;
+}
+
+td.strikeout:after {
+    content: "\00B7";
+    font-size: 1px;
+}
+
 table.jambo_table tbody tr.selected {
     background: rgba(38, 185, 154, 0.16)
 }

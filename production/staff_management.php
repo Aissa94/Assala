@@ -70,6 +70,20 @@
                 </div>
             </div>
             <!-- /page content -->
-<?php
-    require "footer.php";
-?>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- PNotify -->
+    <script src="../vendors/pnotify/dist/pnotify.js"></script>
+    <?php if (isset($_GET['success'])) { ?>
+    <script>
+        new PNotify({
+            title: 'تنويه',
+            text: 'تمت إضافة الموظف الجديد بنجاح',
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+    </script>
+    <?php
+        };
+        require "footer.php";
+    ?>

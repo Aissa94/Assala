@@ -19,6 +19,8 @@
     <link href="../vendors/nprogress/nprogress.css" rel="stylesheet">
     <!-- Animate.css -->
     <link href="../vendors/animate.css/animate.min.css" rel="stylesheet">
+    <!-- PNotify -->
+    <link href="../vendors/pnotify/dist/pnotify.css" rel="stylesheet">
 
     <!-- Custom Theme Style -->
     <link href="../build/css/custom.css" rel="stylesheet">
@@ -88,7 +90,31 @@
         </div>
     </div>
     <!-- //Footer -->
-
+    
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <!-- PNotify -->
+    <script src="../vendors/pnotify/dist/pnotify.js"></script>
+    <?php if (isset($_GET['error'])) { ?>
+    <script>
+        new PNotify({
+            title: 'تنويه',
+            text: 'يرجى التحقق من اسم المستخدم أو كلمة المرور',
+            type: 'error',
+            styling: 'bootstrap3'
+        });
+    </script>
+    <?php }; 
+    if (isset($_GET['info'])) { ?>
+    <script>
+        new PNotify({
+            title: 'تنويه',
+            text: 'تم تسجيل الخروج بنجاح',
+            type: 'info',
+            styling: 'bootstrap3'
+        });
+    </script>
+    <?php }; ?>
 </body>
 
 </html>

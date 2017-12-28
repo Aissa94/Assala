@@ -1,5 +1,5 @@
 #Alternate default index page
-DirectoryIndex login.html
+DirectoryIndex login.php
 ErrorDocument 404 /production/page_404.php
 ErrorDocument 403 /production/page_403.html
 ErrorDocument 500 /production/page_500.html

@@ -53,6 +53,10 @@
     <!-- bootstrap-daterangepicker -->
     <script src="../vendors/moment/min/moment.min.js"></script>
     <script src="../vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-datetimepicker -->
+    <script src="../vendors/bootstrap-datetimepicker/build/js/bootstrap-datetimepicker.min.js"></script>
+    <!-- jquery.inputmask -->
+    <script src="../vendors/jquery.inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
     <!-- jquery-smartWizard -->
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
     <!-- Datatables -->
@@ -79,6 +83,13 @@
     <script src="../vendors/fullcalendar/dist/fullcalendar.min.js"></script>
     <!-- Custom Theme Scripts -->
     <script src="../build/js/custom.min.js"></script>
-
+    <script>
+        $('#myDatepicker').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+         $('#myDatepicker2').datetimepicker({
+            format: 'YYYY-MM-DD'
+        });
+    </script>
     </body>
 </html>

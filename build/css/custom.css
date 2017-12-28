@@ -799,8 +799,8 @@ table.no-margin .progress {
     position: relative;
     min-height: 1px;
     float: left;
-    padding-right: 10px;
-    padding-left: 10px
+    padding-right: 2px;
+    padding-left: 0px
 }
 
 .searchPanel {
@@ -1481,6 +1481,7 @@ legend {
     right: 0;
     float: right;
     text-align: right;
+    padding-left: 20px
 }
 
 .pagination.pagination-split li {
@@ -1706,6 +1707,10 @@ td#rowspan {
     text-align: center;
     font-size: 40px;
     font-weight: bold;
+}
+
+td#rowspan:hover {
+    background: #F5F5F5
 }
 
 #requestContent {
@@ -2889,10 +2894,15 @@ select.parsley-error {
     max-width: 170px;
     white-space: pre;
     position: relative;
-    left: -15px;
+    right: -15px;
     opacity: 0;
     z-index: 1;
+    font-size: 18px;
     transition: 0.15s ease-out
+}
+
+.required {
+    color: red;
 }
 
 .item .alert::after {
@@ -2973,6 +2983,37 @@ a.btn-primary,
 a.btn-warning,
 a.btn-danger {
     color: #fff
+}
+
+#btn-add-phone {
+    position: relative;
+    left: 5px;
+    top: 0;
+}
+
+.input-group-btn:last-child>.btn {
+    margin-right: 0;
+    padding-bottom: 3px
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #bb3a1a;
+    border-color: #b62d07;
+}
+
+.btn-primary:hover,
+.btn-primary:active,
+.btn-primary:checked,
+.btn-primary:focus,
+.btn-primary:target {
+    background-color: #b92d07;
+    border-color: #bb2d07;
+}
+
+.phone-input,
+#phone {
+    margin-bottom: 8px;
 }
 
 .btn-success {
@@ -3200,15 +3241,17 @@ ul.bar_tabs {
     overflow: visible;
     background: #F5F7FA;
     height: 25px;
-    margin: 21px 0 14px;
-    padding-left: 14px;
+    margin: 21px 0 34px;
+    padding-right: 14px;
     position: relative;
+    right: 0;
     z-index: 1;
     width: 100%;
     border-bottom: 1px solid #E6E9ED
 }
 
 ul.bar_tabs>li {
+    float: right;
     border: 1px solid #E6E9ED;
     color: #333 !important;
     margin-top: -17px;
@@ -3219,7 +3262,7 @@ ul.bar_tabs>li {
 }
 
 ul.bar_tabs>li.active {
-    border-right: 6px solid #D3D6DA;
+    border-left: 6px solid #D3D6DA;
     border-top: 0;
     margin-top: -15px
 }
@@ -3228,7 +3271,7 @@ ul.bar_tabs>li a {
     padding: 10px 17px;
     background: #F5F7FA;
     margin: 0;
-    border-top-right-radius: 0
+    border-top-left-radius: 0
 }
 
 ul.bar_tabs>li a:hover {
@@ -3240,7 +3283,7 @@ ul.bar_tabs>li.active a {
 }
 
 ul.bar_tabs.right {
-    padding-right: 14px
+    padding-left: 14px
 }
 
 ul.bar_tabs.right li {
@@ -4020,8 +4063,16 @@ ul.project_files li a i {
     margin-bottom: -6px;
 }
 
+.form-group input {
+    direction: rtl;
+}
+
 .input-group-btn .btn {
     margin-bottom: 0;
+}
+
+.input-group[class*=col-] {
+    float: left
 }
 
 
@@ -5338,6 +5389,10 @@ ul.notifications {
 
 .form_style {
     min-height: 1000px;
+    text-align: right
+}
+
+.right_text {
     text-align: right
 }
 

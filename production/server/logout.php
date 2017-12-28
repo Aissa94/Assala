@@ -7,5 +7,5 @@
     ));
     session_destroy();
     unset($connect);
-    header('Location: ../login.html');
+    header('Location: ../login.php?info');
 ?>

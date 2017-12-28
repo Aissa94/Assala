@@ -99,9 +99,24 @@
             </div>
             <div id="fc_create" data-toggle="modal" data-target="#CalenderModalNew"></div>
             <div id="fc_edit" data-toggle="modal" data-target="#CalenderModalEdit"></div>
-            <!-- /calendar modal -->
+            <!-- /calendar modal -->    
             
-            <!-- Pour faire l'appel à la page "footer.php" -->    
+            <!-- jQuery -->
+            <script src="../vendors/jquery/dist/jquery.min.js"></script>
+            <!-- PNotify -->
+            <script src="../vendors/pnotify/dist/pnotify.js"></script>
+            <?php if (isset($_GET['success'])) { ?>
+            <script>
+                new PNotify({
+                    title: 'تنويه',
+                    text: 'تم تسجيل الدخول بنجاح',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+            </script>
+
+            <!-- Pour faire l'appel à la page "footer.php" -->
             <?php
-            require "footer.php";
+                };
+                require "footer.php";
             ?>

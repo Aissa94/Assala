@@ -14,9 +14,9 @@
           $_SESSION['lastname'] = $row["lastname"];
           $_SESSION['firstname'] = $row["firstname"];
           /*if ($row['idChercheur'] == 1) $_SESSION['admin'] = true;*/
-          header('Location: ../index.php');
+          header('Location: ../index.php?success');
       } else {
-          header('Location: ../login.html');
+          header('Location: ../login.php?error');
       }
       unset($connect);
 ?>

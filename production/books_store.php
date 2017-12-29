@@ -22,19 +22,19 @@
                                         هذه قائمة بجميع كتب ومنشورات مؤسسة الأصالة
                                     </p>
                                     <div class="table-responsive">
-                                        <table id="datatable-fixed-header" class="table table-striped table-bordered dt-responsive nowrap bulk_action" dir="rtl">
+                                        <table id="datatable-fixed-header" class="table table-bordered bulk_action" dir="rtl">
                                             <thead>
                                                 <tr>
                                                     <th>العنوان</th>
                                                     <th>المؤلف</th>
-                                                    <th>سنة النشر</th>
                                                     <th>ISBN</th>
+                                                    <th>سنة النشر</th>
                                                     <th>الصفحات</th>
                                                     <th>الكمية</th>
+                                                    <th class="price_sale">السعر العمومي</th>
+                                                    <th class="price_librarysale">سعر المكتبة</th>
+                                                    <th class="price_wholesale">سعر الجملة</th>
                                                     <th>التخصص</th>
-                                                    <th>السعر</th>
-                                                    <th>سعر المكتبات</th>
-                                                    <th>سعر الجملة</th>
                                                     <th>تعديل</th>
                                                 </tr>
                                             </thead>
@@ -43,17 +43,17 @@
                                                     $bookstore = $connect->query("SELECT * FROM bookstore");
                                                     while ($row = $bookstore->fetch()) {
                                                 ?>
-                                                <tr>
+                                                <tr class="center_tr">
                                                     <td><?php echo $row["title"]; ?></td>
                                                     <td><?php echo $row["author"]; ?></td>
-                                                    <td><?php echo $row["publicationYear"]; ?></td>
                                                     <td><?php echo $row["isbn"]; ?></td>
+                                                    <td><?php echo $row["publicationYear"]; ?></td>
                                                     <td><?php echo $row["pages"]; ?></td>
                                                     <td <?php if ($row["quantity"] < 20) echo "class='alert'"?>><?php echo $row["quantity"]; ?></td>
+                                                    <td class="price_sale bold"><?php echo $row["price"]; ?></td>
+                                                    <td class="price_librarysale bold"><?php echo number_format($row["price"]/1.3, 2); ?></td>
+                                                    <td class="price_wholesale bold"><?php echo number_format($row["price"]/1.56, 2); ?></td>
                                                     <td><?php echo $row["speciality"]; ?></td>
-                                                    <td><?php echo $row["price"]; ?></td>
-                                                    <td><?php echo number_format($row["price"]/1.3, 2); ?></td>
-                                                    <td><?php echo number_format($row["price"]/1.56, 2); ?></td>
                                                     <td>
                                                         <span class="fa fa-pencil-square-o blue pointer" onclick="editBook(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
                                                         <span class="fa fa-trash-o red pointer" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span>

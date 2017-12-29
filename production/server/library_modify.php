@@ -44,11 +44,11 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                             <div class="phone-list">
                                 <div class="phone-input">
-                                    <input type="text" style="direction:ltr" id="e_phone" name="phone1" value='<?php echo $row["phone"]; ?>' required="required" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" >
+                                    <input type="text" style="direction:ltr" id="e_phone" name="phone1" value='<?php echo $row["phone"]; ?>' required="required" pattern="phone" class="form-control col-md-7 col-xs-12" >
                                 </div>
                                  <?php if (!empty($row["phone2"])) { ?>
                                     <div class="phone-input input-group">
-                                        <input type="text" name="phone2" value='<?php echo $row["phone2"]; ?>' style="direction:ltr" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" required="required"/>
+                                        <input type="text" name="phone2" value='<?php echo $row["phone2"]; ?>' style="direction:ltr" class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
                                         <span class="input-group-btn">
                                             <button class="btn btn-danger btn-remove-phone" type="button">
                                                 <span class="glyphicon glyphicon-remove"></span>
@@ -57,7 +57,7 @@
                                     </div>
                                     <?php } if (!empty($row["phone3"])) { ?>
                                     <div class="phone-input input-group">
-                                        <input type="text" name="phone3" value='<?php echo $row["phone3"]; ?>' style="direction:ltr" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" required="required"/>
+                                        <input type="text" name="phone3" value='<?php echo $row["phone3"]; ?>' style="direction:ltr" class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
                                         <span class="input-group-btn">
                                             <button class="btn btn-danger btn-remove-phone" type="button">
                                                 <span class="glyphicon glyphicon-remove"></span>

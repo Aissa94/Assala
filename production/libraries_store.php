@@ -108,7 +108,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                         <div class="phone-list">
                                             <div class="phone-input">
-                                                <input type="text" style="direction:ltr" id="phone" name="phone1" required="required" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" >
+                                                <input type="text" style="direction:ltr" id="phone" name="phone1" required="required" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" >
                                             </div>    
                                         </div>
                                         <button type="button" id="btn-add-phone" class="btn btn-success btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span> أضف هاتف</button>
@@ -164,6 +164,8 @@
                         },
                         complete: function() {
                              $("#editlibrary").modal('show');
+                             var im = new Inputmask(['099-99-99-99', '09-99-99-99-99']);
+                             im.mask($('input[name^="phone"]'));
                         }
                     });
                 }

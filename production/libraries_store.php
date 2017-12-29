@@ -49,7 +49,8 @@
                                                 <td><?php echo $row["phone3"]; ?></td>
                                                 <td>
                                                     <span class="fa fa-pencil-square-o blue pointer" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
-                                                    <span class="fa fa-trash-o red pointer" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>
+                                                    <span class="fa fa-trash-o red pointer" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
+                                                    <a href='server/html2pdf/examples/exemple07.php?libraryId=<?php echo $row["libraryId"]; ?>'><span class="fa fa-print dark pointer"></span></a>
                                                 </td>
                                             </tr>
                                             <?php 

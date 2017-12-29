@@ -400,7 +400,7 @@ th {
     margin: 0
 }
 
-.nav-sm span.fa,
+.nav-sm span.fa:not(.pointer),
 .nav-sm .menu_section h3 {
     display: none
 }
@@ -2989,6 +2989,7 @@ a.btn-danger {
     position: relative;
     left: 5px;
     top: 0;
+    margin-left: 0
 }
 
 .input-group-btn:last-child>.btn {
@@ -2996,7 +2997,8 @@ a.btn-danger {
     padding-bottom: 3px
 }
 
-.btn-primary {
+
+/*.btn-primary {
     color: #fff;
     background-color: #bb3a1a;
     border-color: #b62d07;
@@ -3009,7 +3011,7 @@ a.btn-danger {
 .btn-primary:target {
     background-color: #b92d07;
     border-color: #bb2d07;
-}
+}*/
 
 .phone-input,
 #phone {
@@ -4710,7 +4712,8 @@ div[data-role="editor-toolbar"] {
     user-select: none
 }
 
-.dropdown-menu a {
+.dropdown-menu a,
+.pointer {
     cursor: pointer
 }
 
@@ -5021,7 +5024,7 @@ td.alert {
 }
 
 .stepContainer {
-    height: 300px !important;
+    height: 20px !important;
 }
 
 .wizard_verticle .stepContainer {
@@ -5283,7 +5286,7 @@ ul.verticle_bars li {
 }
 
 .modal-body button:last-child {
-    margin-left: 100px;
+    margin-left: 0px;
 }
 
 .alert-warning {

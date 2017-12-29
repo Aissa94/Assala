@@ -32,6 +32,7 @@
                                                 <th>الكمية</th>
                                                 <th>التخصص</th>
                                                 <th>السعر</th>
+                                                <th>تعديل</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -48,6 +49,10 @@
                                                 <td <?php if ($row["quantity"] < 20) echo "class='alert'"?>><?php echo $row["quantity"]; ?></td>
                                                 <td><?php echo $row["speciality"]; ?></td>
                                                 <td><?php echo $row["price"]; ?></td>
+                                                <td>
+                                                    <span class="fa fa-pencil-square-o blue pointer" onclick="editBook(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
+                                                    <span class="fa fa-trash-o red pointer" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span>
+                                                </td>
                                             </tr>
                                             <?php 
                                                 }
@@ -63,6 +68,8 @@
                 </div>
             </div>
             <!-- /page content -->
+
+             <!-- - Add Book - -->
             <div class="modal fade" id="addbook" tabindex="-1" role="dialog" aria-labelledby="addbookLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -129,6 +136,86 @@
                     </div>
                 </div>
             </div>
+
+            <!-- - Edit Book - -->
+            <div class="modal fade" id="editbook" tabindex="-1" role="dialog" aria-labelledby="editbookLabel" aria-hidden="true">
+            </div>
+
+            <!-- - Delete Book - -->
+            <div class="modal fade" id="deletebook" tabindex="-1" role="dialog" aria-labelledby="deletebookLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="deletebookLabel">حذف كتاب</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <p>هل أنت متأكد أنك تريد حذف هذا الكتاب من قاعدة البيانات ؟</p>
+                            <form  id="delete_book" method="post" action="server/delete_book.php">   
+                            </form>
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">إلغاء</button>
+                            <button style="margin-left:25%" type="submit" class="btn btn-primary btn-lg" form="delete_book"> حذف </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                function deleteBook(e) {
+                    $("#deletebook").modal('show');
+                    $('#delete_book').html('<input type="hidden" name="bookId" value="' + e + '"/>');
+                }
+                function editBook(e) {
+                    $.ajax({
+                        url: "server/book_modify.php",
+                        type: "POST",
+                        data: "bookId=" + e,
+                        success: function(data) {
+                            //$(data).appendTo('body');
+                            $('#editbook').html(data);
+                        },
+                        complete: function() {
+                             $("#editbook").modal('show');
+                        }
+                    });
+                }
+            </script>
+            <script src="../vendors/jquery/dist/jquery.min.js"></script>
+            <!-- PNotify -->
+            <script src="../vendors/pnotify/dist/pnotify.js"></script>
+            <?php if (isset($_GET['delete'])) { ?>
+            <script>
+                new PNotify({
+                    title: 'تنويه',
+                    text: 'تم حذف الكتاب بنجاح',
+                    type: 'error',
+                    styling: 'bootstrap3'
+                });
+            </script>
             <?php
+                };
+                if (isset($_GET['add'])) { ?>
+                <script>
+                new PNotify({
+                    title: 'تنويه',
+                    text: 'تم إضافة الكتاب بنجاح',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+            </script>
+            <?php
+                };
+                if (isset($_GET['edit'])) { ?>
+                <script>
+                new PNotify({
+                    title: 'تنويه',
+                    text: 'تم تعديل الكتاب بنجاح',
+                    type: 'info',
+                    styling: 'bootstrap3'
+                });
+            </script>
+            <?php
+                };
                 require "footer.php";
             ?>

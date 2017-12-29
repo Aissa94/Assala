@@ -80,7 +80,7 @@
                                         <div id="step-1">
                                                 <div class="item form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                        <input type="text" id="firstname" name="firstname" required="required" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" data-validate-words="1" data-parsley-group="block1">
+                                                        <input type="text" id="firstname" name="firstname" required="required" class="form-control col-md-7 col-xs-12">
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم </label> 
                                                 </div>

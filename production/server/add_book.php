@@ -5,5 +5,5 @@
       unset($connect);
       /*session_start();
       $_SESSION['logged'] = true;*/
-      header('Location: ../books_store.php');
+      header('Location: ../books_store.php?add');
 ?>

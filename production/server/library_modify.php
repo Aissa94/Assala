@@ -42,33 +42,33 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                            <div class="phone-list">
-                                <div class="phone-input">
-                                    <input type="text" style="direction:ltr" id="e_phone" name="phone1" value='<?php echo $row["phone"]; ?>' required="required" pattern="phone" class="form-control col-md-7 col-xs-12" >
+                            <div class="e_phone-list">
+                                <div class="e_phone-input">
+                                    <input type="text" style="direction:ltr" id="e_phone1" name="phone1" value='<?php echo $row["phone"]; ?>' required="required" pattern="phone" class="form-control col-md-7 col-xs-12" >
                                 </div>
                                  <?php if (!empty($row["phone2"])) { ?>
-                                    <div class="phone-input input-group">
-                                        <input type="text" name="phone2" value='<?php echo $row["phone2"]; ?>' style="direction:ltr" class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
+                                    <div class="e_phone-input input-group">
+                                        <input type="text" style="direction:ltr" id="e_phone2" name="phone2" value='<?php echo $row["phone2"]; ?>' class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
                                         <span class="input-group-btn">
-                                            <button class="btn btn-danger btn-remove-phone" type="button">
+                                            <button class="btn btn-danger e_btn-remove-phone" type="button">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                             </button>
                                         </span>
                                     </div>
                                     <?php } if (!empty($row["phone3"])) { ?>
-                                    <div class="phone-input input-group">
-                                        <input type="text" name="phone3" value='<?php echo $row["phone3"]; ?>' style="direction:ltr" class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
+                                    <div class="e_phone-input input-group">
+                                        <input type="text" style="direction:ltr" id="e_phone3" name="phone3" value='<?php echo $row["phone3"]; ?>' class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
                                         <span class="input-group-btn">
-                                            <button class="btn btn-danger btn-remove-phone" type="button">
+                                            <button class="btn btn-danger e_btn-remove-phone" type="button">
                                                 <span class="glyphicon glyphicon-remove"></span>
                                             </button>
                                         </span>
                                     </div>
-                                <?php } ?>    
+                                    <?php } ?>    
                             </div>
-                            <button type="button" id="btn-edit-phone" class="btn btn-success btn-sm btn-edit-phone"><span class="glyphicon glyphicon-plus"></span> أضف هاتف</button>
+                             <button type="button" class="btn btn-success btn-sm e_btn-add-phone"><span class="glyphicon glyphicon-plus"></span> أضف هاتف</button>
                         </div>
-                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_phone">الهاتف</label>                                                   
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_phone1">الهاتف</label>                                                   
                     </div>
                     <?php 
                         }

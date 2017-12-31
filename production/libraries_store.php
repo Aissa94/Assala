@@ -165,7 +165,27 @@
                         complete: function() {
                              $("#editlibrary").modal('show');
                              var im = new Inputmask(['099-99-99-99', '09-99-99-99-99']);
-                             im.mask($('input[name^="phone"]'));
+                             im.mask($('input[id^="e_phone"]'));
+                             $(function() {
+                                $(document.body).on('click', '.e_btn-remove-phone', function() {
+                                    $(this).closest('.e_phone-input').remove();
+                                });
+                                $('.e_btn-add-phone').click(function() {
+                                    var im = new Inputmask(['099-99-99-99', '09-99-99-99-99']),
+                                        index = $('.e_phone-input').length + 1;
+                                    if (index>3) return false;
+                                    for(var i=1; i<index; i++) if (!validator.checkField.apply($('input[id="e_phone' + i + '"]'))) return false;
+                                    $('.e_phone-list').append('' +
+                                        '<div class="input-group e_phone-input">' +
+                                        '<input type="text" name="phone' + index + '" id="e_phone' + index + '" style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" required="required" />' +
+                                        '<span class="input-group-btn">' +
+                                        '<button class="btn btn-danger e_btn-remove-phone" type="button"><span class="glyphicon glyphicon-remove"></span></button>' +
+                                        '</span>' +
+                                        '</div>'
+                                    );
+                                    im.mask($('input[id="e_phone' + index + '"]'));
+                                });
+                            });
                         }
                     });
                 }
@@ -180,7 +200,7 @@
                         for(var i=1; i<index; i++) if (!validator.checkField.apply($('input[name="phone' + i + '"]'))) return false;
                         $('.phone-list').append('' +
                             '<div class="input-group phone-input">' +
-                            '<input type="text" name="phone' + index + '" style="direction:ltr" class="form-control col-md-7 col-xs-12" required="required" />' +
+                            '<input type="text" name="phone' + index + '" style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" required="required" />' +
                             '<span class="input-group-btn">' +
                             '<button class="btn btn-danger btn-remove-phone" type="button"><span class="glyphicon glyphicon-remove"></span></button>' +
                             '</span>' +

@@ -177,7 +177,7 @@
                                     for(var i=1; i<index; i++) if (!validator.checkField.apply($('input[id="e_phone' + i + '"]'))) return false;
                                     $('.e_phone-list').append('' +
                                         '<div class="input-group e_phone-input">' +
-                                        '<input type="text" name="phone' + index + '" id="e_phone' + index + '" style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" required="required" />' +
+                                        '<input type="text" name="phone' + index + '" id="e_phone' + index + '" style="direction:ltr" class="form-control col-md-7 col-xs-12" required="required" />' +
                                         '<span class="input-group-btn">' +
                                         '<button class="btn btn-danger e_btn-remove-phone" type="button"><span class="glyphicon glyphicon-remove"></span></button>' +
                                         '</span>' +

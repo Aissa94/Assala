@@ -18,25 +18,25 @@
                     ?>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                            <input type="text" id="e_name" name="name" value='<?php echo $row["name"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" id="e_name" name="name" value='<?php echo $row["name"]; ?>'  class="form-control col-md-7 col-xs-12">
                         </div>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_name">الاسم</label>     
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                            <input type="text" id="e_state" name="state" value='<?php echo $row["state"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" id="e_state" name="state" value='<?php echo $row["state"]; ?>'  class="form-control col-md-7 col-xs-12">
                         </div>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_state">الولاية</label>   
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                            <input type="text" id="e_adress" name="adress" value='<?php echo $row["adress"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="text" id="e_adress" name="adress" value='<?php echo $row["adress"]; ?>'  class="form-control col-md-7 col-xs-12">
                         </div>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_adress">العنوان</label>                                                    
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                            <input type="email" style="direction:ltr" id="e_email" name="email" value='<?php echo $row["email"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                            <input type="email" style="direction:ltr" id="e_email" name="email" value='<?php echo $row["email"]; ?>'  class="form-control col-md-7 col-xs-12">
                         </div>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_email">البريد</label>                                                   
                     </div>
@@ -44,11 +44,11 @@
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                             <div class="e_phone-list">
                                 <div class="e_phone-input">
-                                    <input type="text" style="direction:ltr" id="e_phone1" name="phone1" value='<?php echo $row["phone"]; ?>' required="required" pattern="phone" class="form-control col-md-7 col-xs-12" >
+                                    <input type="text" style="direction:ltr" id="e_phone1" name="phone1" value='<?php echo $row["phone"]; ?>' class="form-control col-md-7 col-xs-12" >
                                 </div>
                                  <?php if (!empty($row["phone2"])) { ?>
                                     <div class="e_phone-input input-group">
-                                        <input type="text" style="direction:ltr" id="e_phone2" name="phone2" value='<?php echo $row["phone2"]; ?>' class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
+                                        <input type="text" style="direction:ltr" id="e_phone2" name="phone2" value='<?php echo $row["phone2"]; ?>' class="form-control col-md-7 col-xs-12" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-danger e_btn-remove-phone" type="button">
                                                 <span class="glyphicon glyphicon-remove"></span>
@@ -57,7 +57,7 @@
                                     </div>
                                     <?php } if (!empty($row["phone3"])) { ?>
                                     <div class="e_phone-input input-group">
-                                        <input type="text" style="direction:ltr" id="e_phone3" name="phone3" value='<?php echo $row["phone3"]; ?>' class="form-control col-md-7 col-xs-12" pattern="phone" required="required"/>
+                                        <input type="text" style="direction:ltr" id="e_phone3" name="phone3" value='<?php echo $row["phone3"]; ?>' class="form-control col-md-7 col-xs-12" />
                                         <span class="input-group-btn">
                                             <button class="btn btn-danger e_btn-remove-phone" type="button">
                                                 <span class="glyphicon glyphicon-remove"></span>

@@ -196,7 +196,44 @@
                                                     </div>
                                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password-repeat"> <span class="required">*</span>تأكيد كلمة المرور </label>                
                                                 </div>
-                                           
+                                                <div class="item form-group">
+                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                        <div class="dropdown docs-options">
+                                                            <button type="button"class="btn btn-success btn-block dropdown-toggle" id="toggleOptions" data-toggle="dropdown" aria-expanded="true">
+                                                                 <span class="caret"></span>
+                                                                الصفحات المسموح بالولوج إليها
+                                                            </button>
+                                                            <ul class="dropdown-menu pageAccess" aria-labelledby="toggleOptions" role="menu">
+                                                                <li role="presentation">
+                                                                    <label class="checkbox-inline">
+                                                                        تسيير الموظفين
+                                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" />
+                                                                    </label>
+                                                                </li>
+                                                                <li role="presentation">
+                                                                    <label class="checkbox-inline">
+                                                                        إضافة موظف
+                                                                        <input type="checkbox" name="hobbies[]" id="hobby2" value="run" class="flat" /> 
+                                                                    </label>
+                                                                </li>
+                                                                <li role="presentation">
+                                                                    <label class="checkbox-inline">
+                                                                        تسيير الكتب
+                                                                        <input type="checkbox" name="hobbies[]" id="hobby3" value="eat" class="flat" />
+                                                                    </label>
+                                                                </li>
+                                                                <li role="presentation">
+                                                                    <label class="checkbox-inline">
+                                                                        تسيير المكتبات
+                                                                        <input type="checkbox" name="hobbies[]" id="hobby4" value="sleep" class="flat" />
+                                                                    </label>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <!-- /.dropdown -->
+                                                    </div>
+                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="toggleOptions"> <span class="required">*</span>الصفحات</label>
+                                                </div>
                                         </div>
                                     </form>
                                     </div>
@@ -237,7 +274,14 @@
         $(document).ready(function() {
             $("#wizard").smartWizard({
                 onFinish: function () {
-                    $('#confirmStaff').modal('show');
+                    var currentStep = $("#wizard").smartWizard('currentStep'),
+                        ok = validator.checkAll($("#step-" + currentStep));
+                    if (ok) { 
+                        $("#wizard").smartWizard('hideError', currentStep);
+                        $('#confirmStaff').modal('show');
+                    } else {
+                        $("#wizard").smartWizard('showError', currentStep);
+                    }
                 },
                 onLeaveStep: function () {
                     var currentStep = $("#wizard").smartWizard('currentStep'),

@@ -30,6 +30,8 @@
     <link href="../vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
     <!-- bootstrap-datetimepicker -->
     <link href="../vendors/bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css" rel="stylesheet">
+    <!-- jquery-chosen -->
+    <link href="../vendors/jquery.chosen/chosen.css" rel="stylesheet"/>
     <!-- Datatables -->
     <link href="../vendors/datatables.net-bs/css/dataTables.bootstrap.min.css" rel="stylesheet">
     <link href="../vendors/datatables.net-buttons-bs/css/buttons.bootstrap.min.css" rel="stylesheet">
@@ -116,6 +118,7 @@
                                     <ul class="nav child_menu">
                                         <li><a href="books_store.php">تسيير الكتب</a></li>
                                         <li><a href="libraries_store.php">تسيير المكتبات</a></li>
+                                        <li><a href="receipts_create.php">إنشاء وصل جديد</a></li>
                                     </ul>
                                 </li>
                                 <li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-database"></i><span class="fa fa-chevron-down"></span></a>

@@ -56,8 +56,8 @@
                                                     <td><?php echo $row["speciality"]; ?></td>
                                                     <td>
                                                         <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editBook(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
-                                                        <!--span class="fa fa-plus-square-o green pointer" title="إضافة كمية" onclick="addQuantity(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;-->
-                                                        <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span>
+                                                        <span class="fa fa-plus-square-o green pointer" title="إضافة كمية" onclick="addQuantity(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
+                                                        <!--span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span-->
                                                     </td>
                                                 </tr>
                                                 <?php 

@@ -9,7 +9,7 @@ td    { vertical-align: middle; padding: 10px 0;}
     require "../../bdd_connect.php";
     $num = rand(1, 100);
 ?>
-<page backcolor="#FEFEFE" backimg="./res/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="10mm" backright="10mm" backbottom="20mm">
+<page backcolor="#FEFEFE" backimg="./res/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="10mm" backright="10mm" backbottom="22mm">
     <bookmark title="Lettre" level="0" ></bookmark>
     <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
         <tr>
@@ -22,16 +22,12 @@ td    { vertical-align: middle; padding: 10px 0;}
             </td>
         </tr>
     </table>
-    <br>
-    <br>
     <table cellspacing="0" style="width: 100%; text-align: right;font-size: 15pt">
         <tr>
             <td style="width:50%; ">التاريخ : <?php echo date('Y/m/d'); ?></td>
             <td style="width:50%;">إلى : <?php echo $_POST['receiver']; ?></td>
         </tr>
     </table>
-    <br>
-    <br>
     <br>
     <br>
     <table cellspacing="0" style="width: 100%; text-align: right;font-size: 15pt">
@@ -43,13 +39,13 @@ td    { vertical-align: middle; padding: 10px 0;}
     </table>
     <br>
     <br>
-    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 15pt;">
+    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 12pt;">
         <tr>
             <th style="width: 20%">القيمة</th>
             <th style="width: 10%">الكمية</th>
             <th style="width: 20%">السعر</th>
-            <th style="width: 40%">العنوان</th>
-            <th style="width: 10%">الرقم</th>
+            <th style="width: 45%">العنوان</th>
+            <th style="width: 5%">الرقم</th>
             
         </tr>
     </table>
@@ -82,13 +78,13 @@ td    { vertical-align: middle; padding: 10px 0;}
         $prix = $price* $quantities[$k];
         $total+= $prix;
 ?>
-    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #fff; text-align: center; font-size: 15pt;">
+    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #fff; text-align: center; font-size: 12pt;">
         <tr>
             <td style="width: 20%;"><?php echo number_format($prix, 2, ',', ''); ?> دج</td>
             <td style="width: 10%"><?php echo $quantities[$k] ?></td>
             <td style="width: 20%;"><?php echo number_format($price, 2, ',', ''); ?> دج</td>
-            <td style="width: 40%;text-align: right;"><?php echo $title;?></td>
-            <td style="width: 10%;"><?php echo $k+1; ?></td>       
+            <td style="width: 45%;text-align: right;"><?php echo $title;?></td>
+            <td style="width: 5%;"><?php echo $k+1; ?></td>       
         </tr>
     </table>
 <?php

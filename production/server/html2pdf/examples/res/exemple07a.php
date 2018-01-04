@@ -16,7 +16,7 @@ td    { vertical-align: middle; padding: 10px 0;}
             <td style="width: 25%;">
             </td>
             <td style="width: 50%; color: #444444; font-size:40px;">
-                <img style="width: 100%;" src="./res/assala_logo.png" alt="Logo"><br><br>
+                <img style="width: 100%;" src="./res/assala_logo.jpg" alt="Logo"><br><br>
             </td>
             <td style="width: 25%;">
             </td>

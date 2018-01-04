@@ -13,7 +13,7 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>إنشاء وصل جديد</h2>
-                        <button type="submit" class="btn btn-primary btn-lg" form="print_receipt" id="addition"><b class="fa fa-print"></b> طباعة الوصل</button>
+                        <button type="submit" class="btn btn-primary btn-lg" formtarget="_blank" form="print_receipt" id="addition"><b class="fa fa-print"></b> طباعة الوصل</button>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -36,7 +36,7 @@
                             $bookstore->closeCursor();
                             unset($connect);
                         ?>
-                        <form id="print_receipt" method="post" action="server/print_receipt.php">
+                        <form id="print_receipt" method="post" action="server/html2pdf/examples/exemple07.php">
                             <div class="col-md-8 center-margin">
                                 <div class="form-horizontal form-label-right">
                                     <div class="form-group">
@@ -97,7 +97,7 @@
                                         <td><?php echo $booksPrice[0]; ?></td>
                                         <td><?php echo $booksQuantity[0]; ?></td>
                                         <td>
-                                            <input type="number" min="0" max="1560" name="quantity[]" value="0" required="required" class="quantity form-control col-md-2 col-xs-12">
+                                            <input type="number" min="0" max="1560" name="quantity[]" required="required" class="quantity form-control col-md-2 col-xs-12">
                                         </td>
                                         <td class="cost">0</td>
                                     </tr>
@@ -106,14 +106,28 @@
                         </form>
                         <button type="button" id="add-book" class="btn btn-success" style="font-size:20px"><span class="glyphicon glyphicon-plus"></span> أضف كتاب</button>
                         <br /><br />
-                        <form class="form-horizontal form-label-right">
-                            <div class="form-group col-md-6">
-                                <label class="control-label col-md-3" style="text-align:left" for="first-name">التكلفة الإجمالية</label>
+                        <div class="form-horizontal form-label-right total-prices">
+                            <div class="form-group col-md-7">
+                                <label class="control-label col-md-3" for="first-name">المجموع</label>
                                 <div class="col-md-7">
-                                    <input type="text" id="total-cost" required="required" value="0 دج" readonly class="form-control">
+                                    <input type="text" id="total-cost" value="0 دج" readonly class="form-control">
                                 </div>
                             </div>
-                        </form>
+             
+                            <div class="form-group col-md-7">
+                                <label class="control-label col-md-3" for="first-name">الخصم</label>
+                                <div class="col-md-7">
+                                    <input type="number" id="discount" min="0" required="required" value="0" class="form-control">
+                                </div>
+                            </div>
+                      
+                            <div class="form-group col-md-7">
+                                <label class="control-label col-md-3" for="first-name">التكلفة الإجمالية</label>
+                                <div class="col-md-7">
+                                    <input type="text" id="total-sum" value="0 دج" readonly class="form-control">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -126,6 +140,7 @@
 <script>
     var item = $(".book-item").clone(),
         sum = 0,
+        total = 0,
         booksPrice = <?php echo json_encode($booksPrice); ?>;
     $(document).ready(function(){
         $('#price-type li:last').click(function (e) {
@@ -133,7 +148,7 @@
             $('#t_price').val($('.dropdown-menu input').val()/100);
             booksPrice = <?php echo json_encode($booksPrice); ?>;
             for (var i=0; i<booksPrice.length; i++) {
-                booksPrice[i] = (booksPrice[i] * $('#t_price').val()).toFixed(2);
+                booksPrice[i] = (booksPrice[i] * (1 - $('#t_price').val())).toFixed(2);
             }
         });
         $('#price-type li:not(:last)').click(function(){
@@ -153,6 +168,14 @@
                 }
             }
         });
+         $('#discount').on('change', function() {
+            sum = 0;
+            $('.cost').each(function(){
+                sum += parseFloat($(this).text());
+            });
+            total = sum - parseInt($('#discount').val());
+            $('#total-sum').val(total.toFixed(2) + " دج");
+        });
     });
     $(function() {
         $('#receiver').autocomplete({
@@ -167,19 +190,23 @@
             $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
             $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
-            $(this).parent('td').nextAll().eq(2).find("input").val(0);
+            $(this).parent('td').nextAll().eq(2).find("input").val();
             $(this).parent('td').nextAll().eq(3).html(0);
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
             });
             $('#total-cost').val(sum.toFixed(2) + " دج");
+            total = sum - parseInt($('#discount').val());
+            $('#total-sum').val(total.toFixed(2) + " دج");
         });
     });
     $('.quantity').on('change', function() {
         var cost = $(this).val() * $(this).parent('td').prev().prev().text();
         $(this).parent('td').next().html(cost.toFixed(2));
         $('#total-cost').val(cost.toFixed(2) + " دج");
+        total = cost - parseInt($('#discount').val());
+        $('#total-sum').val(total.toFixed(2) + " دج");
     });
     $('#add-book').on('click', function() {
         $("tbody").append(item.clone());
@@ -191,13 +218,15 @@
             $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
             $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
-            $(this).parent('td').nextAll().eq(2).find("input").val(0);
+            $(this).parent('td').nextAll().eq(2).find("input").val();
             $(this).parent('td').nextAll().eq(3).html(0);
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
             });
             $('#total-cost').val(sum.toFixed(2) + " دج");
+            total = sum - parseInt($('#discount').val());
+            $('#total-sum').val(total.toFixed(2) + " دج");
         });
         $('.quantity').on('change', function() {
             $(this).parent('td').next().html(($(this).val() * $(this).parent('td').prev().prev().text()).toFixed(2));
@@ -206,6 +235,8 @@
                 sum += parseFloat($(this).text());
             });
             $('#total-cost').val(sum.toFixed(2) + " دج");
+            total = sum - parseInt($('#discount').val());
+            $('#total-sum').val(total.toFixed(2) + " دج");
         });
     });
 </script>

@@ -15,12 +15,14 @@
     ob_start();
     include(dirname(__FILE__).'/res/exemple07a.php');
     $content = ob_get_clean();
-
+    //$css = '<style>'.file_get_contents(dirname(__FILE__).'/res/print2pdf.css').'</style>';
     // convert to PDF
     require_once(dirname(__FILE__).'/../html2pdf.class.php');
     try
     {
         $html2pdf = new HTML2PDF('P', 'A4', 'fr', true,  'UTF-8' ,  array(5, 5, 5, 8));
+        $html2pdf->addFont('SakkalMajalla', '', dirname(__FILE__).'/../_tcpdf_5.0.002/fonts/sakkalmajalla.php');
+        //$html2pdf->setDefaultFont("sakkalMajalla");
         $html2pdf->pdf->SetDisplayMode('fullpage');
 //      $html2pdf->pdf->SetProtection(array('print'), 'spipu');
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));

@@ -496,7 +496,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
         <meta http-equiv="Content-Type" content="text/html; charset='.$this->_encoding.'" >
         <link rel="shortcut icon" type="image/x-icon" href="../images/logo01.ico" />
     </head>
-    <body style="padding: 10px; font-size: 10pt;font-family:    Verdana;">
+    <body style="padding: 10px; font-size: 10pt;font-family: SakkalMajalla;">
 '.$content.'
     </body>
 </html>';

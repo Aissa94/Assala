@@ -55,8 +55,9 @@
                                                     <td class="price_wholesale bold"><?php echo number_format($row["price"]/1.56, 2); ?></td>
                                                     <td><?php echo $row["speciality"]; ?></td>
                                                     <td>
-                                                        <span class="fa fa-pencil-square-o blue pointer" onclick="editBook(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
-                                                        <span class="fa fa-trash-o red pointer" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span>
+                                                        <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editBook(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
+                                                        <!--span class="fa fa-plus-square-o green pointer" title="إضافة كمية" onclick="addQuantity(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;-->
+                                                        <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span>
                                                     </td>
                                                 </tr>
                                                 <?php 
@@ -159,7 +160,8 @@
                         </div>
                         <div class="modal-body">
                             <p>هل أنت متأكد أنك تريد حذف هذا الكتاب من قاعدة البيانات ؟</p>
-                            <form  id="delete_book" method="post" action="server/delete_book.php">   
+                            <form  id="delete_book" method="post" action="server/delete_book.php"> 
+                                <input id="bookId_delete" type="hidden" name="bookId" value=""/>  
                             </form>
                             <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">إلغاء</button>
                             <button style="margin-left:25%" type="submit" class="btn btn-primary btn-lg" form="delete_book"> حذف </button>
@@ -167,10 +169,43 @@
                     </div>
                 </div>
             </div>
+
+            <!-- - Add Quantity - -->
+            <div class="modal fade" id="addquantity" tabindex="-1" role="dialog" aria-labelledby="addquantityLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h3 class="modal-title" id="addquantityLabel">إضافة كمية</h3>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="add_quantity" method="post" class="form-horizontal form-label-left" action="server/add_quantity.php">  
+                                <input id="bookId_quantity" type="hidden" name="bookId" value=""/>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12" style="margin-left:110px">
+                                        <input type="number" min="0" name="quantity" required="required" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                    <label class="control-label col-md-2 col-sm-2 col-xs-12">الكمية</label>                                                   
+                                </div>
+                            </form>
+                            <br />
+                            <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">إلغاء</button>
+                            <button style="margin-left:25%" type="submit" class="btn btn-primary btn-lg" form="add_quantity"> إضافة </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             <script>
                 function deleteBook(e) {
                     $("#deletebook").modal('show');
-                    $('#delete_book').html('<input type="hidden" name="bookId" value="' + e + '"/>');
+                    $('#bookId_delete').val(e);
+                }
+                function addQuantity(e) {
+                    $("#addquantity").modal('show');
+                    $('#bookId_quantity').val(e);
                 }
                 function editBook(e) {
                     $.ajax({
@@ -206,6 +241,17 @@
                 new PNotify({
                     title: 'تنويه',
                     text: 'تم إضافة الكتاب بنجاح',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+            </script>
+             <?php
+                };
+                if (isset($_GET['success'])) { ?>
+                <script>
+                new PNotify({
+                    title: 'تنويه',
+                    text: 'تم إضافة الكمية الجديدة بنجاح',
                     type: 'success',
                     styling: 'bootstrap3'
                 });

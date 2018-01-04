@@ -9,7 +9,7 @@ td    { vertical-align: middle; padding: 10px 0;}
     require "../../bdd_connect.php";
     $num = rand(1, 100);
 ?>
-<page backcolor="#FEFEFE" backimg="./res/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="10mm" backright="10mm" backbottom="10mm">
+<page backcolor="#FEFEFE" backimg="./res/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="10mm" backright="10mm" backbottom="20mm">
     <bookmark title="Lettre" level="0" ></bookmark>
     <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
         <tr>

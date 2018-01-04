@@ -26,7 +26,7 @@
                                 $list[] = $row["name"];
                             }
                             $librarystore->closeCursor();
-                            $bookstore = $connect->query("SELECT * FROM bookstore WHERE quantity <= 0");
+                            $bookstore = $connect->query("SELECT * FROM bookstore WHERE quantity >= 0");
                             while ($row = $bookstore->fetch()) {
                                 $booksId[] = $row["bookId"];
                                 $booksTitle[] = $row["title"];

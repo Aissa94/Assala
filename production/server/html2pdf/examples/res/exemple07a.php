@@ -63,6 +63,8 @@ td    { vertical-align: middle; padding: 10px 0;}
             $title = $row["title"];
             $price = $row["price"];
         }
+        $book->closeCursor();
+        $quantity = $connect->query('UPDATE `bookstore` SET `quantity`= `quantity` - '.$quantities[$k].' WHERE `bookId`='.$bookId[$k]);
         switch($_POST['t_price']){
             case "general":
                 $price = $price;
@@ -77,11 +79,10 @@ td    { vertical-align: middle; padding: 10px 0;}
                 $price = $price * (1 -$_POST['t_price']);
                 break;
         }
-        $book->closeCursor();
         $prix = $price* $quantities[$k];
         $total+= $prix;
 ?>
-    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #F7F7F7; text-align: center; font-size: 15pt;">
+    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #fff; text-align: center; font-size: 15pt;">
         <tr>
             <td style="width: 20%;"><?php echo number_format($prix, 2, ',', ''); ?> دج</td>
             <td style="width: 10%"><?php echo $quantities[$k] ?></td>

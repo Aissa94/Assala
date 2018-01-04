@@ -21,8 +21,8 @@
     try
     {
         $html2pdf = new HTML2PDF('P', 'A4', 'fr', true,  'UTF-8' ,  array(5, 5, 5, 8));
-        $html2pdf->addFont('SakkalMajalla', '', dirname(__FILE__).'/../_tcpdf_5.0.002/fonts/sakkalmajalla.php');
-        //$html2pdf->setDefaultFont("sakkalMajalla");
+        //$html2pdf->addFont('lotuslinotype', '', dirname(__FILE__).'/../_tcpdf_5.0.002/fonts/lotuslinotype.php');
+       // $html2pdf->setDefaultFont("lotuslinotype");
         $html2pdf->pdf->SetDisplayMode('fullpage');
 //      $html2pdf->pdf->SetProtection(array('print'), 'spipu');
         $html2pdf->writeHTML($content, isset($_GET['vuehtml']));

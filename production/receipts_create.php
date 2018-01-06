@@ -13,12 +13,12 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>إنشاء وصل جديد</h2>
-                        <button type="submit" class="btn btn-primary btn-lg" formtarget="_blank" form="print_receipt" id="addition"><b class="fa fa-print"></b> طباعة الوصل</button>
+                        <button type="submit" formtarget="_blank" onclick="setTimeout(function(){ location.reload(); }, 1000)" class="btn btn-primary btn-lg" form="print_receipt"><b class="fa fa-print"></b> طباعة الوصل</button>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
                         <p class="text-muted font-13 m-b-30">                                
-                            لتحرير وصل بيع جديد ؛ يرجى ملء البيانات التالية بعناية
+                            لتحرير وصل جديد ؛ يرجى ملء البيانات التالية بعناية
                         </p>
                         <?php  
                             $librarystore = $connect->query("SELECT name FROM librarystore");
@@ -36,14 +36,14 @@
                             $bookstore->closeCursor();
                             unset($connect);
                         ?>
-                        <form id="print_receipt" method="post" action="server/html2pdf/examples/exemple07.php">
+                        <form id="print_receipt" method="post" action="server/html2pdf/printer.php">
                             <div class="col-md-8 center-margin">
                                 <div class="form-horizontal form-label-right">
                                     <div class="form-group">
                                         <label for="receiver">المستلم</label>
                                         <input type="text" name="receiver" required="required" class="form-control" id="receiver" autocomplete="off" placeholder="اسم المستلم" />
                                     </div>
-                                    <input type="hidden" name="t_price" id="t_price" value="general">
+                                    <input type="hidden" name="price" id="t_price" value="general">
                                     <div class="form-group">
                                         <label for="price-type"> نوع السعر </label>                                           
                                         <div class="dropdown" id="price-type" value="general">
@@ -66,10 +66,10 @@
                                         </div>
                                     </div>
                                     <div class="form-group" dir="rtl">
-                                        <label for="paying"> الدفع </label>
-                                        <select id="paying" name="paying" class="form-control" style="font-size:20px;height:42px">
-                                            <option value="payed">مدفوع</option>
-                                            <option value="unpayed">غير مدفوع</option>
+                                        <label for="paying">نوع الوصل</label>
+                                        <select id="paying" name="type" class="form-control">
+                                            <option value="sale">وصل بيع</option>
+                                            <option value="recovery">وصل استرجاع</option>
                                         </select>
                                     </div>
                                 </div>
@@ -88,41 +88,43 @@
                                 <tbody>
                                     <tr class="book-item">
                                         <td>
-                                            <select class="form-control chosen-select" name="title[]">
+                                            <select class="form-control chosen-select" data-placeholder="الرجاء اختيار كتاب من القائمة..." tabindex="-1" name="title[]">
+                                                <option value="0"></option>
                                                 <?php for ($i=0; $i<count($booksTitle); $i++) { ?>
                                                     <option value="<?php echo $booksId[$i]; ?>" class="<?php echo $i; ?>" data="<?php echo $booksQuantity[$i]; ?>"><?php echo $booksTitle[$i]; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </td>
-                                        <td><?php echo $booksPrice[0]; ?></td>
-                                        <td><?php echo $booksQuantity[0]; ?></td>
+                                        <td></td>
+                                        <td></td>
                                         <td>
-                                            <input type="number" min="0" max="1560" name="quantity[]" required="required" class="quantity form-control col-md-2 col-xs-12">
+                                            <input type="number" min="1" max="10" name="quantity[]" required="required" class="quantity form-control col-md-2 col-xs-12">
                                         </td>
                                         <td class="cost">0</td>
                                     </tr>
                                 </tbody>
                             </table>
+                            <input type="hidden" id="discount_hidden" name="discount" value="0">
                         </form>
                         <button type="button" id="add-book" class="btn btn-success" style="font-size:20px"><span class="glyphicon glyphicon-plus"></span> أضف كتاب</button>
                         <br /><br />
                         <div class="form-horizontal form-label-right total-prices">
                             <div class="form-group col-md-7">
-                                <label class="control-label col-md-3" for="first-name">المجموع</label>
+                                <label class="control-label col-md-3" for="total-cost">المجموع</label>
                                 <div class="col-md-7">
                                     <input type="text" id="total-cost" value="0 دج" readonly class="form-control">
                                 </div>
                             </div>
              
                             <div class="form-group col-md-7">
-                                <label class="control-label col-md-3" for="first-name">الخصم</label>
+                                <label class="control-label col-md-3" for="discount">الخصم</label>
                                 <div class="col-md-7">
-                                    <input type="number" id="discount" min="0" required="required" value="0" class="form-control">
+                                    <input type="number" id="discount" min="0" step="0.01" required="required" value="0" class="form-control">
                                 </div>
                             </div>
                       
                             <div class="form-group col-md-7">
-                                <label class="control-label col-md-3" for="first-name">التكلفة الإجمالية</label>
+                                <label class="control-label col-md-3" for="total-sum">التكلفة الإجمالية</label>
                                 <div class="col-md-7">
                                     <input type="text" id="total-sum" value="0 دج" readonly class="form-control">
                                 </div>
@@ -173,8 +175,11 @@
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
             });
-            total = sum - parseInt($('#discount').val());
+            if (($(this).val() > sum) || ($(this).val() < 0) || ($(this).val()=="")) $(this).val(0);
+            if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+            total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
+            $("#discount_hidden").val($(this).val());
         });
     });
     $(function() {
@@ -186,27 +191,35 @@
             no_results_text: "للأسف، لا يوجد كتاب بهذا الاسم",
             rtl: true,
             width: "100%",
+            allow_single_deselect: false,
         }).change(function() {
             $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
             $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
-            $(this).parent('td').nextAll().eq(2).find("input").val();
+            $(this).parent('td').nextAll().eq(2).find("input").val("");
             $(this).parent('td').nextAll().eq(3).html(0);
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
             });
             $('#total-cost').val(sum.toFixed(2) + " دج");
-            total = sum - parseInt($('#discount').val());
+            if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+            total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
+            $("#discount_hidden").val($('#discount').val());
         });
     });
     $('.quantity').on('change', function() {
+        if ($(this).val() > parseInt($(this).attr('max')) || $(this).val() < 1) $(this).val(1);
         var cost = $(this).val() * $(this).parent('td').prev().prev().text();
+        if ($("#paying").val() == "sale") $(this).parent('td').prev().html($(this).parent('td').prevAll().eq(2).find(":selected").attr('data') - $(this).val());
+        else $(this).parent('td').prev().html(parseInt($(this).parent('td').prevAll().eq(2).find(":selected").attr('data')) + parseInt($(this).val()));
         $(this).parent('td').next().html(cost.toFixed(2));
         $('#total-cost').val(cost.toFixed(2) + " دج");
-        total = cost - parseInt($('#discount').val());
+        if ((cost - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+        total = cost - parseFloat($('#discount').val());
         $('#total-sum').val(total.toFixed(2) + " دج");
+        $("#discount_hidden").val($('#discount').val());
     });
     $('#add-book').on('click', function() {
         $("tbody").append(item.clone());
@@ -214,29 +227,37 @@
             no_results_text: "للأسف، لا يوجد كتاب بهذا الاسم",
             rtl: true,
             width: "100%",
+            allow_single_deselect: false,
         }).change(function() {
             $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
             $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
-            $(this).parent('td').nextAll().eq(2).find("input").val();
+            $(this).parent('td').nextAll().eq(2).find("input").val("");
             $(this).parent('td').nextAll().eq(3).html(0);
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
             });
             $('#total-cost').val(sum.toFixed(2) + " دج");
-            total = sum - parseInt($('#discount').val());
+            if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+            total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
+            $("#discount_hidden").val($('#discount').val());
         });
         $('.quantity').on('change', function() {
+            if ($(this).val() > parseInt($(this).attr('max')) || $(this).val() < 1) $(this).val(1);
             $(this).parent('td').next().html(($(this).val() * $(this).parent('td').prev().prev().text()).toFixed(2));
+            if ($("#paying").val() == "sale") $(this).parent('td').prev().html($(this).parent('td').prevAll().eq(2).find(":selected").attr('data') - $(this).val());
+            else $(this).parent('td').prev().html(parseInt($(this).parent('td').prevAll().eq(2).find(":selected").attr('data')) + parseInt($(this).val()));
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
             });
             $('#total-cost').val(sum.toFixed(2) + " دج");
-            total = sum - parseInt($('#discount').val());
+            if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+            total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
+            $("#discount_hidden").val($('#discount').val());
         });
     });
 </script>

@@ -224,7 +224,7 @@
                                                                 </li>
                                                                 <li role="presentation">
                                                                     <label class="checkbox-inline">
-                                                                        تسيير المكتبات
+                                                                        تسيير الزبائن
                                                                         <input type="checkbox" name="hobbies[]" id="hobby4" value="sleep" class="flat" />
                                                                     </label>
                                                                 </li>

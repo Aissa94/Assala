@@ -117,7 +117,7 @@
                                 <li><a>تسيير المخزن<i class="fa fa-book"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
                                         <li><a href="books_store.php">تسيير الكتب</a></li>
-                                        <li><a href="libraries_store.php">تسيير المكتبات</a></li>
+                                        <li><a href="libraries_store.php">تسيير الزبائن</a></li>
                                         <li><a href="receipts_create.php">إنشاء وصل جديد</a></li>
                                     </ul>
                                 </li>
@@ -215,7 +215,7 @@
                                     <span class=" fa fa-angle-down"></span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-usermenu pull-right right_text">
-                                    <li><a href="javascript:;">الملف الشخصي</a></li>
+                                    <!--li><a href="javascript:;">الملف الشخصي</a></li-->
                                     <li><a onclick="logout()"><i class="fa fa-sign-out pull-left"></i>تسجيل الخروج</a></li>
                                 </ul>
                             </li>

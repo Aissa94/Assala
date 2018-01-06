@@ -2407,6 +2407,34 @@ ul.top_profiles li:nth-child(odd) {
     background-color: rgba(187, 139, 26, 0.5);
 }
 
+#paying,
+#toggleOptions {
+    color: black;
+    font-size: 20px;
+    height: 42px
+}
+
+.total_all_prices {
+    text-align: center;
+    direction: rtl;
+}
+
+.total_all_prices i {
+    margin-right: 30px;
+}
+
+.price_sale_c {
+    color: rgba(26, 187, 155, 0.5);
+}
+
+.price_librarysale_c {
+    color: rgba(90, 26, 187, 0.5);
+}
+
+.price_wholesale_c {
+    color: rgba(187, 139, 26, 0.5);
+}
+
 .event .media-body a.title,
 .bold {
     font-weight: bold

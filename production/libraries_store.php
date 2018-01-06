@@ -13,13 +13,13 @@
                         <div class="col-md-12 col-sm-12 col-xs-12">
                             <div class="x_panel">
                                 <div class="x_title">
-                                    <h2>قائمة مكتبات المؤسسة</h2>
-                                    <button type="button" class="btn btn-primary btn-lg" id="addition" data-toggle="modal" data-target="#addlibrary">إضافة مكتبة</button>
+                                    <h2>قائمة زبائن المؤسسة</h2>
+                                    <button type="button" class="btn btn-primary btn-lg" id="addition" data-toggle="modal" data-target="#addlibrary">إضافة زبون</button>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
                                      <p class="text-muted font-13 m-b-30">                                
-                                        هذه قائمة بجميع مكتبات والمتعاملين الرسميين لمؤسسة الأصالة
+                                        هذه قائمة بجميع زبائن والمتعاملين الرسميين لمؤسسة الأصالة
                                     </p>
                                     <table id="datatable-fixed-header" class="table table-striped table-bordered nowrap bulk_action" dir="rtl">
                                         <thead>
@@ -48,9 +48,9 @@
                                                 <td><?php echo $row["phone2"]; ?></td>
                                                 <td><?php echo $row["phone3"]; ?></td>
                                                 <td>
-                                                    <span class="fa fa-pencil-square-o blue pointer" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
-                                                    <span class="fa fa-trash-o red pointer" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
-                                                    <a href='server/html2pdf/examples/exemple07.php?libraryId=<?php echo $row["libraryId"]; ?>'><span class="fa fa-print dark pointer"></span></a>
+                                                    <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
+                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
+                                                    <a href='server/html2pdf/examples/exemple07.php?libraryId=<?php echo $row["libraryId"]; ?>'><span class="fa fa-paypal dark pointer" title="الوصول"></span></a>
                                                 </td>
                                             </tr>
                                             <?php 
@@ -73,7 +73,7 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title" id="addlibraryLabel">إضافة مكتبة</h3>
+                            <h3 class="modal-title" id="addlibraryLabel">إضافة زبون</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
@@ -88,19 +88,68 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="text" id="state" name="state" required="required" class="form-control col-md-7 col-xs-12">
+                                        <select id="state" name="state" class="form-control col-md-7 col-xs-12" dir="rtl">
+                                            <option value="أدرار">أدرار</option>
+                                            <option value="الشلف">الشلف</option>
+                                            <option value="الأغواط">الأغواط</option>
+                                            <option value="أم البواقي">أم البواقي</option>
+                                            <option value="باتنة">باتنة</option>
+                                            <option value="بجاية">بجاية</option>
+                                            <option value="بسكرة">بسكرة</option>
+                                            <option value="بشار">بشار</option>
+                                            <option value="البليدة">البليدة</option>
+                                            <option value="البويرة">البويرة</option>
+                                            <option value="تمنراست">تمنراست</option>
+                                            <option value="تبسة">تبسة</option>
+                                            <option value="تلمسان">تلمسان</option>
+                                            <option value="تيارت">تيارت</option>
+                                            <option value="تيزي وزو">تيزي وزو</option>
+                                            <option value="الجزائر" selected>الجزائر</option>
+                                            <option value="الجلفة">الجلفة</option>
+                                            <option value="جيجل">جيجل</option>
+                                            <option value="سطيف">سطيف</option>
+                                            <option value="سعيدة">سعيدة</option>
+                                            <option value="سكيكدة">سكيكدة</option>
+                                            <option value="سيدي بلعباس">سيدي بلعباس</option>
+                                            <option value="عنابة">عنابة</option>
+                                            <option value="قالمة">قالمة</option>
+                                            <option value="قسنطينة">قسنطينة</option>
+                                            <option value="المدية">المدية</option>
+                                            <option value="مستغانم">مستغانم</option>
+                                            <option value="المسيلة">المسيلة</option>
+                                            <option value="معسكر">معسكر</option>
+                                            <option value="ورقلة">ورقلة</option>
+                                            <option value="وهران">وهران</option>
+                                            <option value="البيض">البيض</option>
+                                            <option value="إليزي">إليزي</option>
+                                            <option value="برج بوعريريج">برج بوعريريج</option>
+                                            <option value="بومرداس">بومرداس</option>
+                                            <option value="الطارف">الطارف</option>
+                                            <option value="تندوف">تندوف</option>
+                                            <option value="تيسمسيلت">تيسمسيلت</option>
+                                            <option value="الوادي">الوادي</option>
+                                            <option value="خنشلة">خنشلة</option>
+                                            <option value="سوق أهراس">سوق أهراس</option>
+                                            <option value="تيبازة">تيبازة</option>
+                                            <option value="ميلة">ميلة</option>
+                                            <option value="عين الدفلى">عين الدفلى</option>
+                                            <option value="النعامة">النعامة</option>
+                                            <option value="عين تموشنت">عين تموشنت</option>
+                                            <option value="غرداية">غرداية</option>
+                                            <option value="غليزان">غليزان</option>
+                                        </select>
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="state">الولاية</label>   
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="text" id="adress" name="adress" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="adress" name="adress" class="form-control col-md-7 col-xs-12">
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress">العنوان</label>                                                    
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                        <input type="email" style="direction:ltr" id="email" name="email" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="email" style="direction:ltr" id="email" name="email" class="form-control col-md-7 col-xs-12">
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email">البريد</label>                                                   
                                 </div>
@@ -108,7 +157,7 @@
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                         <div class="phone-list">
                                             <div class="phone-input">
-                                                <input type="text" style="direction:ltr" id="phone" name="phone1" required="required" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" >
+                                                <input type="text" style="direction:ltr" id="phone" name="phone1" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : ['099-99-99-99', '09-99-99-99-99']" >
                                             </div>    
                                         </div>
                                         <button type="button" id="btn-add-phone" class="btn btn-success btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span> أضف هاتف</button>
@@ -131,13 +180,13 @@
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h3 class="modal-title" id="deletelibraryLabel">حذف مكتبة</h3>
+                            <h3 class="modal-title" id="deletelibraryLabel">حذف زبون</h3>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <p>هل أنت متأكد أنك تريد حذف هذه المكتبة من قاعدة البيانات ؟</p>
+                            <p>هل أنت متأكد أنك تريد حذف هذا الزبون من قاعدة البيانات ؟</p>
                             <form  id="delete_library" method="post" action="server/delete_library.php">   
                             </form>
                             <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">إلغاء</button>
@@ -177,7 +226,7 @@
                                     for(var i=1; i<index; i++) if (!validator.checkField.apply($('input[id="e_phone' + i + '"]'))) return false;
                                     $('.e_phone-list').append('' +
                                         '<div class="input-group e_phone-input">' +
-                                        '<input type="text" name="phone' + index + '" id="e_phone' + index + '" style="direction:ltr" class="form-control col-md-7 col-xs-12" required="required" />' +
+                                        '<input type="text" name="phone' + index + '" id="e_phone' + index + '" style="direction:ltr" class="form-control col-md-7 col-xs-12" required="required"/>' +
                                         '<span class="input-group-btn">' +
                                         '<button class="btn btn-danger e_btn-remove-phone" type="button"><span class="glyphicon glyphicon-remove"></span></button>' +
                                         '</span>' +
@@ -200,7 +249,7 @@
                         for(var i=1; i<index; i++) if (!validator.checkField.apply($('input[name="phone' + i + '"]'))) return false;
                         $('.phone-list').append('' +
                             '<div class="input-group phone-input">' +
-                            '<input type="text" name="phone' + index + '" style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" required="required" />' +
+                            '<input type="text" name="phone' + index + '" style="direction:ltr" class="form-control col-md-7 col-xs-12" required="required"/>' +
                             '<span class="input-group-btn">' +
                             '<button class="btn btn-danger btn-remove-phone" type="button"><span class="glyphicon glyphicon-remove"></span></button>' +
                             '</span>' +
@@ -216,7 +265,7 @@
             <script>
                 new PNotify({
                     title: 'تنويه',
-                    text: 'تم حذف المكتبة بنجاح',
+                    text: 'تم حذف الزبون بنجاح',
                     type: 'error',
                     styling: 'bootstrap3'
                 });
@@ -227,7 +276,7 @@
                 <script>
                 new PNotify({
                     title: 'تنويه',
-                    text: 'تم إضافة المكتبة بنجاح',
+                    text: 'تم إضافة الزبون بنجاح',
                     type: 'success',
                     styling: 'bootstrap3'
                 });
@@ -238,7 +287,7 @@
                 <script>
                 new PNotify({
                     title: 'تنويه',
-                    text: 'تم تعديل المكتبة بنجاح',
+                    text: 'تم تعديل بيانات الزبون بنجاح',
                     type: 'info',
                     styling: 'bootstrap3'
                 });

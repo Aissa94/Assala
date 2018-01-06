@@ -1,36 +1,32 @@
 <style type="text/css">
-* {font-family: DejaVuSans, "sakkalMajalla"}
+* {font-family: almohanad, "sakkalMajalla"}
 table { vertical-align: middle; }
-th    { vertical-align: middle; padding: 10px 0; }
-td    { vertical-align: middle; padding: 10px 0;}
+th    { vertical-align: middle; padding: 8px 0; }
+td    { vertical-align: middle; padding: 8px 0;}
 }
 </style>
 <?php 
     require "../../bdd_connect.php";
     $num = rand(1, 100);
 ?>
-<page backcolor="#FEFEFE" backimg="./res/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="10mm" backright="10mm" backbottom="22mm">
-    <bookmark title="Lettre" level="0" ></bookmark>
-    <table cellspacing="0" style="width: 100%; text-align: center; font-size: 14px">
+<page backcolor="#FFF" backimg="./res/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="8mm" backright="8mm" backbottom="25mm">
+    <table cellspacing="0" style="width: 100%; text-align: center">
         <tr>
-            <td style="width: 25%;">
-            </td>
-            <td style="width: 50%; color: #444444; font-size:40px;">
-                <img style="width: 100%;" src="./res/assala_logo.png" alt="Logo"><br><br>
-            </td>
-            <td style="width: 25%;">
+            <td style="width: 100%;">
+                <img style="width: 50%;" src="./res/assala_logo.jpg">
             </td>
         </tr>
     </table>
-    <table cellspacing="0" style="width: 100%; text-align: right;font-size: 15pt">
+    <br><br>
+    <table cellspacing="0" style="width: 100%; text-align: right;font-size: 18pt">
         <tr>
-            <td style="width:50%; ">التاريخ : <?php echo date('Y/m/d'); ?></td>
+            <td style="width:50%;">التاريخ : <?php echo date('Y/m/d'); ?></td>
             <td style="width:50%;">إلى : <?php echo $_POST['receiver']; ?></td>
         </tr>
     </table>
     <br>
     <br>
-    <table cellspacing="0" style="width: 100%; text-align: right;font-size: 15pt">
+    <table cellspacing="0" style="width: 100%; text-align: right;font-size: 22pt">
         <tr>
             <td style="width:20%;"></td>
             <td style="width:40%;"><b>وصل <?php echo $num.'/'.date('Y'); ?></b></td>
@@ -39,7 +35,7 @@ td    { vertical-align: middle; padding: 10px 0;}
     </table>
     <br>
     <br>
-    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #E7E7E7; text-align: center; font-size: 12pt;">
+    <table cellspacing="0" border="1" style="width: 100%; background: #E7E7E7;  border: solid 1px black; border: solid 1px #000; text-align: center; font-size: 15pt;">
         <tr>
             <th style="width: 20%">القيمة</th>
             <th style="width: 10%">الكمية</th>
@@ -48,7 +44,6 @@ td    { vertical-align: middle; padding: 10px 0;}
             <th style="width: 5%"></th>
             
         </tr>
-    </table>
 <?php
     $total = 0;
     $bookId = $_POST['title'];
@@ -75,39 +70,37 @@ td    { vertical-align: middle; padding: 10px 0;}
                 $price = $price * (1 -$_POST['t_price']);
                 break;
         }
-        $prix = $price* $quantities[$k];
-        $total+= $prix;
+        $prix = $price * $quantities[$k];
+        $total += $prix;
 ?>
-    <table cellspacing="0" border="1" style="width: 100%; border: solid 1px black; background: #fff; text-align: center; font-size: 12pt;">
-        <tr>
+        <tr style="background: #fff;">
             <td style="width: 20%;"><?php echo number_format($prix, 2, ',', ''); ?> دج</td>
             <td style="width: 10%"><?php echo $quantities[$k] ?></td>
             <td style="width: 20%;"><?php echo number_format($price, 2, ',', ''); ?> دج</td>
             <td style="width: 45%;text-align: right;"><?php echo $title;?></td>
             <td style="width: 5%;"><?php echo $k+1; ?></td>       
         </tr>
-    </table>
 <?php
     }
 ?>
-    <table cellspacing="0" border="1" style="width: 50%;  background: #E7E7E7; text-align: right; font-size: 15pt;">
+    </table>
+    <nobreak>
+    <table cellspacing="0" border="1" style="width: 100%;  background: #E7E7E7; text-align: right; font-size: 18pt;">
         <tr>
-            <th style="width: 60%;"><?php echo number_format($total, 2, ',', ''); ?> دج</th>
-            <th style="width: 40%;">المجموع : </th>
+            <th style="width: 30%;"><?php echo number_format($total, 2, ',', ''); ?> دج</th>
+            <th style="width: 20%;">المجموع : </th>
         </tr>
     </table>
     <br>
     <br>
     <br>
     <br>
-    <nobreak>
-        <table cellspacing="0" style="width: 90%; text-align: right;font-size: 12pt">
+        <table cellspacing="0" style="width: 90%; text-align: right;font-size: 18pt">
             <tr>
                 <td style="width:45%; ">المستلم</td>
                 <td style="width:45%;">الإدارة</td>
             </tr>
         </table>
-        
     </nobreak>
 </page>
 <?php 

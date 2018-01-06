@@ -39,7 +39,8 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php  
+                                                <?php
+                                                    $priceSale = 0;
                                                     $bookstore = $connect->query("SELECT * FROM bookstore");
                                                     while ($row = $bookstore->fetch()) {
                                                 ?>
@@ -50,7 +51,7 @@
                                                     <td><?php echo $row["publicationYear"]; ?></td>
                                                     <td><?php echo $row["pages"]; ?></td>
                                                     <td <?php if ($row["quantity"] < 20) echo "class='alert'"?>><?php echo $row["quantity"]; ?></td>
-                                                    <td class="price_sale bold"><?php echo $row["price"]; ?></td>
+                                                    <td class="price_sale bold"><?php echo $row["price"]; $priceSale += $row["quantity"] * $row["price"]; ?></td>
                                                     <td class="price_librarysale bold"><?php echo number_format($row["price"]/1.3, 2); ?></td>
                                                     <td class="price_wholesale bold"><?php echo number_format($row["price"]/1.56, 2); ?></td>
                                                     <td><?php echo $row["speciality"]; ?></td>
@@ -68,6 +69,14 @@
                                             </tbody>
                                         </table>
                                     </div>
+                                    <p class="total_all_prices">
+                                        <i class="fa fa-square price_sale_c"></i>
+                                        السعر العمومي : <?php echo number_format($priceSale); ?> دج
+                                        <i class="fa fa-square price_librarysale_c"></i>
+                                        سعر المكتبة : <?php echo number_format($priceSale/1.3, 2); ?> دج
+                                        <i class="fa fa-square price_wholesale_c"></i>
+                                        سعر الجملة : <?php echo number_format($priceSale/1.56, 2); ?> دج
+                                    </p>
                                 </div>
                             </div>
                         </div>

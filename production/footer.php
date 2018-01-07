@@ -11,13 +11,17 @@
     <!-- /footer content -->
     </div>
     </div>
+    <!-- jQuery -->
+    <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script src="../vendors/jquery/src/jquery-fullscreen.js"></script>
     <script>
         function logout() {
             window.location ="server/logout.php";
         }
+        function fullscreen() {
+            $('html').fullscreen().toggle();
+        }
     </script>
-    <!-- jQuery -->
-    <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap -->
     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- FastClick -->

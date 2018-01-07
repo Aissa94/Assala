@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="../build/images/favicon.ico" />
 
-    <title>Al-Assala</title>
+    <title>مؤسسة الأصالة</title>
 
     <!-- Bootstrap -->
     <link href="../vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -46,7 +46,8 @@
     <link href="../build/css/custom.css" rel="stylesheet">
 </head>
 <?php 
-    require "server/bdd_connect.php"; 
+    //if (empty($_SESSION["access"])) header('Location: page_403.php');
+    require "server/bdd_connect.php";
 ?>  
 <body class="nav-md">
     <div class="container body">
@@ -78,25 +79,27 @@
                         <div class="menu_section">
                             <h3>القائمة الرئيسة</h3>
                             <ul class="nav side-menu">
+                                <?php if ((strpos($_SESSION["access"], "p2") !== FALSE) || (strpos($_SESSION["access"], "p3") !== FALSE)) { ?>
                                 <li><a>إدارة الموظفين<i class="fa fa-users"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="staff_management.php">تسيير الموظفين</a></li>
-                                        <li><a href="staff_create.php">إضافة موظف</a></li>
+                                        <?php if (strpos($_SESSION["access"], "p2") !== FALSE) { ?><li><a href="staff_management.php">تسيير الموظفين</a></li><?php } ?>
+                                        <?php if (strpos($_SESSION["access"], "p3") !== FALSE) { ?><li><a href="staff_create.php">إضافة موظف</a></li><?php } ?>
                                         <!--li><a href="index3.html">إزالة مستخدم</a></li-->
                                     </ul>
                                 </li>
+                                <?php } ?>
                                 <li><a>المصاريف<i class="fa fa-usd"></i><span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                    <!--ul class="nav child_menu">
                                         <li><a href="form.html">General Form</a></li>
                                         <li><a href="form_advanced.html">Advanced Components</a></li>
                                         <li><a href="form_validation.html">Form Validation</a></li>
                                         <li><a href="form_wizards.html">Form Wizard</a></li>
                                         <li><a href="form_upload.html">Form Upload</a></li>
                                         <li><a href="form_buttons.html">Form Buttons</a></li>
-                                    </ul>
+                                    </ul-->
                                 </li>
                                 <li><a>الشهادات<i class="fa fa-desktop"></i><span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                    <!--ul class="nav child_menu">
                                         <li><a href="general_elements.html">General Elements</a></li>
                                         <li><a href="media_gallery.html">Media Gallery</a></li>
                                         <li><a href="typography.html">Typography</a></li>
@@ -106,32 +109,34 @@
                                         <li><a href="invoice.html">Invoice</a></li>
                                         <li><a href="inbox.html">Inbox</a></li>
                                         <li><a href="calendar.html">Calendar</a></li>
-                                    </ul>
+                                    </ul-->
                                 </li>
                                 <li><a>تسيير الدورات<i class="fa fa-newspaper-o"></i><span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                    <!--ul class="nav child_menu">
                                         <li><a href="tables.html">Tables</a></li>
                                         <li><a href="tables_dynamic.html">Table Dynamic</a></li>
-                                    </ul>
+                                    </ul-->
                                 </li>
+                                <?php if ((strpos($_SESSION["access"], "p4") !== FALSE) || (strpos($_SESSION["access"], "p5") !== FALSE) || (strpos($_SESSION["access"], "p6") !== FALSE)) { ?>
                                 <li><a>تسيير المخزن<i class="fa fa-book"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <li><a href="books_store.php">تسيير الكتب</a></li>
-                                        <li><a href="libraries_store.php">تسيير الزبائن</a></li>
-                                        <li><a href="receipts_create.php">إنشاء وصل جديد</a></li>
+                                        <?php if (strpos($_SESSION["access"], "p4") !== FALSE) { ?><li><a href="books_store.php">تسيير الكتب</a></li><?php } ?>
+                                        <?php if (strpos($_SESSION["access"], "p5") !== FALSE) { ?><li><a href="libraries_store.php">تسيير الزبائن</a></li><?php } ?>
+                                        <?php if (strpos($_SESSION["access"], "p6") !== FALSE) { ?><li><a href="receipts_create.php">إنشاء وصل جديد</a></li><?php } ?>
                                     </ul>
                                 </li>
+                                <?php } ?>
                                 <li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-database"></i><span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                    <!--ul class="nav child_menu">
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                                    </ul>
+                                    </ul-->
                                 </li>
                                 <li><a>البريد<i class="fa fa-envelope"></i><span class="fa fa-chevron-down"></span></a>
-                                    <ul class="nav child_menu">
+                                    <!--ul class="nav child_menu">
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>
-                                    </ul>
+                                    </ul-->
                                 </li>
                             </ul>
                         </div>
@@ -186,11 +191,11 @@
                         <a data-toggle="tooltip" data-placement="top" title="إعدادات">
                             <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
                         </a>
-                        <a data-toggle="tooltip" data-placement="top" title="شاشة كاملة">
+                        <a data-toggle="tooltip" data-placement="top" title="شاشة كاملة" onclick="fullscreen()">
                             <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="قفل">
-                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                            <span class="glyphicon glyphicon-eye-close" data-toggle="modal" data-target="#authentification" aria-hidden="true"></span>
                         </a>
                         <a data-toggle="tooltip" data-placement="top" title="تسجيل الخروج" onclick="logout()">
                             <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
@@ -249,3 +254,18 @@
                 </div>
             </div> 
             <!-- /top navigation -->
+<div class="modal fade" id="authentification" tabindex="-1" role="dialog" aria-labelledby="authentificationLabel" aria-hidden="true" data-backdrop="static" data-keyboard="false">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="authentificationLabel">إقفال التطبيق</h4>
+            </div>
+            <div class="modal-body">
+                <p>الرجاء الضغط على الزر أدناه حتى تتمكن من إزالة القفل</p>
+            </div>
+            <div class="modal-footer">
+                <button style="margin-right:40%" data-dismiss="modal" class="btn btn-primary btn-lg">إزالة القفل</button>
+            </div>
+        </div>
+    </div>
+</div>

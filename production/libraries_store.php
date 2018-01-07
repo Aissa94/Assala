@@ -3,6 +3,7 @@
 
 <?php
     require "header.php";
+    if (strpos($_SESSION["access"], "p5") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
 ?>
           <!-- page content -->
             <div class="right_col" role="main">
@@ -50,7 +51,7 @@
                                                 <td>
                                                     <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
                                                     <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
-                                                    <a href='server/html2pdf/examples/exemple07.php?libraryId=<?php echo $row["libraryId"]; ?>'><span class="fa fa-paypal dark pointer" title="الوصول"></span></a>
+                                                    <a href='#'><span class="fa fa-paypal dark pointer" title="الدفع"></span></a>
                                                 </td>
                                             </tr>
                                             <?php 

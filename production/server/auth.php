@@ -13,6 +13,7 @@
           $_SESSION['id'] = $connect->lastInsertId();
           $_SESSION['lastname'] = $row["lastname"];
           $_SESSION['firstname'] = $row["firstname"];
+          $_SESSION['access'] = $row["access"];
           /*if ($row['idChercheur'] == 1) $_SESSION['admin'] = true;*/
           header('Location: ../index.php?success');
       } else {

@@ -2,6 +2,7 @@
 
 <?php
     require "header.php";
+    if (strpos($_SESSION["access"], "p3") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
 ?>
             <!-- page content -->
             <div class="right_col" role="main">
@@ -199,33 +200,45 @@
                                                 <div class="item form-group">
                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                         <div class="dropdown docs-options">
-                                                            <button type="button"class="btn btn-success btn-block dropdown-toggle" id="toggleOptions" data-toggle="dropdown" aria-expanded="true">
+                                                            <button type="button" class="btn btn-success btn-block dropdown-toggle" style="color:white" id="toggleOptions" data-toggle="dropdown" aria-expanded="true">
                                                                  <span class="caret"></span>
                                                                 الصفحات المسموح بالولوج إليها
                                                             </button>
-                                                            <ul class="dropdown-menu pageAccess" aria-labelledby="toggleOptions" role="menu">
+                                                            <ul class="dropdown-menu pageAccess" aria-labelledby="toggleOptions" required="required" role="menu">
+                                                                <!--li role="presentation">
+                                                                    <label class="checkbox-inline">
+                                                                        الصفحة الرئيسة
+                                                                        <input type="checkbox" name="access[]" id="access1" value="p1" class="flat" checked/>
+                                                                    </label>
+                                                                </li-->
                                                                 <li role="presentation">
                                                                     <label class="checkbox-inline">
                                                                         تسيير الموظفين
-                                                                        <input type="checkbox" name="hobbies[]" id="hobby1" value="ski" data-parsley-mincheck="2" required class="flat" />
+                                                                        <input type="checkbox" name="access[]" id="access2" value="p2" class="flat" />
                                                                     </label>
                                                                 </li>
                                                                 <li role="presentation">
                                                                     <label class="checkbox-inline">
                                                                         إضافة موظف
-                                                                        <input type="checkbox" name="hobbies[]" id="hobby2" value="run" class="flat" /> 
+                                                                        <input type="checkbox" name="access[]" id="access3" value="p3" class="flat" /> 
                                                                     </label>
                                                                 </li>
                                                                 <li role="presentation">
                                                                     <label class="checkbox-inline">
                                                                         تسيير الكتب
-                                                                        <input type="checkbox" name="hobbies[]" id="hobby3" value="eat" class="flat" />
+                                                                        <input type="checkbox" name="access[]" id="access4" value="p4" class="flat" />
                                                                     </label>
                                                                 </li>
                                                                 <li role="presentation">
                                                                     <label class="checkbox-inline">
                                                                         تسيير الزبائن
-                                                                        <input type="checkbox" name="hobbies[]" id="hobby4" value="sleep" class="flat" />
+                                                                        <input type="checkbox" name="access[]" id="access5" value="p5" class="flat" />
+                                                                    </label>
+                                                                </li>
+                                                                <li role="presentation">
+                                                                    <label class="checkbox-inline">
+                                                                        إنشاء وصل جديد
+                                                                        <input type="checkbox" name="access[]" id="access6" value="p6" class="flat" />
                                                                     </label>
                                                                 </li>
                                                             </ul>

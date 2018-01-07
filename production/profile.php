@@ -3,6 +3,7 @@
 
 <?php
     require "header.php";
+    if (strpos($_SESSION["access"], "p2") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
 ?>
             <!-- page content -->
             <div class="right_col" role="main">
@@ -18,6 +19,7 @@
                             <div class="x_panel">
                                 <div class="x_title">
                                     <h2><?php echo $row["lastname"]." ".$row["firstname"]; ?> <small>الملف الشخصي</small></h2>
+                                    <a href="staff_management.php"><button style="margin-top:15px" type="button" class="btn btn-primary btn-lg"><i class="fa fa-sign-out m-right-xs"></i> الرجوع إلى القائمة</button></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -92,123 +94,173 @@
                                                             </ul>
                                                             <form class="form-horizontal form-label-left" method="post" action="server/edit_employee.php" id="employeeForm">
                                                             <div id="step-1">
-                                                                    <input type="hidden" id="memberId" name="memberId" value='<?php echo $row["memberId"]; ?>'>
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="text" id="firstname" name="firstname" value='<?php echo $row["firstname"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                                                                <input type="hidden" id="memberId" name="memberId" value='<?php echo $row["memberId"]; ?>'>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="text" id="firstname" name="firstname" value='<?php echo $row["firstname"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                                                                    </div>
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم </label> 
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="text" id="lastname" name="lastname" value='<?php echo $row["lastname"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                                                                    </div>
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname"> <span class="required">*</span>اللقب</label>
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class='input-group date col-md-6 col-sm-6 col-xs-12 marginelo' id='myDatepicker'>
+                                                                        <input id="birthday" name="birthday" value='<?php echo $row["birthday"]; ?>' class="form-control col-md-7 col-xs-12" type="text" required="required"/>
+                                                                        <span class="input-group-addon">
+                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                        </span>                         
+                                                                    </div>
+                                                                    <label for="birthday" class="control-label col-md-3 col-sm-3 col-xs-12">تاريخ الميلاد</label>
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <?php if ($row["gender"] == "ذكر") { ?>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo" dir="rtl">
+                                                                            ذكر: <input type="radio" class="flat" name="gender" id="genderM" value="ذكر" checked="checked" required="required" />
+                                                                            &ensp; &ensp; &ensp; &ensp;
+                                                                            أنثى: <input type="radio" class="flat" name="gender" id="genderF" value="أنثى" />
                                                                         </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم </label> 
-                                                                    </div>
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="text" id="lastname" name="lastname" value='<?php echo $row["lastname"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                                                                    <?php } else { ?>
+                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo" dir="rtl">
+                                                                            ذكر: <input type="radio" class="flat" name="gender" id="genderM" value="ذكر" required="required" />
+                                                                            &ensp; &ensp; &ensp; &ensp;
+                                                                            أنثى: <input type="radio" class="flat" name="gender" id="genderF" checked="checked" value="أنثى" />
                                                                         </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname"> <span class="required">*</span>اللقب</label>
-                                                                    </div>
-                                                                    <div class="item form-group">
-                                                                        <div class='input-group date col-md-6 col-sm-6 col-xs-12 marginelo' id='myDatepicker'>
-                                                                            <input id="birthday" name="birthday" value='<?php echo $row["birthday"]; ?>' class="form-control col-md-7 col-xs-12" type="text" required="required"/>
-                                                                            <span class="input-group-addon">
-                                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                                            </span>                         
-                                                                        </div>
-                                                                        <label for="birthday" class="control-label col-md-3 col-sm-3 col-xs-12">تاريخ الميلاد</label>
-                                                                    </div>
-                                                                    <div class="item form-group">
-                                                                        <?php if ($row["gender"] == "ذكر") { ?>
-                                                                            <div class="col-md-6 col-sm-6 col-xs-12 marginelo" dir="rtl">
-                                                                                ذكر: <input type="radio" class="flat" name="gender" id="genderM" value="ذكر" checked="checked" required="required" />
-                                                                                &ensp; &ensp; &ensp; &ensp;
-                                                                                أنثى: <input type="radio" class="flat" name="gender" id="genderF" value="أنثى" />
-                                                                            </div>
-                                                                        <?php } else { ?>
-                                                                            <div class="col-md-6 col-sm-6 col-xs-12 marginelo" dir="rtl">
-                                                                                ذكر: <input type="radio" class="flat" name="gender" id="genderM" value="ذكر" required="required" />
-                                                                                &ensp; &ensp; &ensp; &ensp;
-                                                                                أنثى: <input type="radio" class="flat" name="gender" id="genderF" checked="checked" value="أنثى" />
-                                                                            </div>
-                                                                        <?php }; ?>
-                                                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">الجنس</label>
-                                                                    </div>
+                                                                    <?php }; ?>
+                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="gender">الجنس</label>
+                                                                </div>
                                                             </div>
                                                             <div id="step-2">
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <div class="phone-list">
-                                                                                <div class="phone-input">
-                                                                                    <input type="text" name="phone1" value='<?php echo $row["phone"]; ?>' style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : '09-99-99-99-99'" id="phone" required="required"/>
-                                                                                </div>
-                                                                                <?php if (!empty($row["phone2"])) { ?>
-                                                                                <div class="phone-input input-group">
-                                                                                    <input type="text" name="phone2" value='<?php echo $row["phone2"]; ?>' style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : '09-99-99-99-99'" required="required"/>
-                                                                                    <span class="input-group-btn">
-                                                                                        <button class="btn btn-danger btn-remove-phone" type="button">
-                                                                                            <span class="glyphicon glyphicon-remove"></span>
-                                                                                        </button>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <?php } if (!empty($row["phone3"])) { ?>
-                                                                                <div class="phone-input input-group">
-                                                                                    <input type="text" name="phone3" value='<?php echo $row["phone3"]; ?>' style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : '09-99-99-99-99'" required="required"/>
-                                                                                    <span class="input-group-btn">
-                                                                                        <button class="btn btn-danger btn-remove-phone" type="button">
-                                                                                            <span class="glyphicon glyphicon-remove"></span>
-                                                                                        </button>
-                                                                                    </span>
-                                                                                </div>
-                                                                                <?php } ?>    
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <div class="phone-list">
+                                                                            <div class="phone-input">
+                                                                                <input type="text" name="phone1" value='<?php echo $row["phone"]; ?>' style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : '09-99-99-99-99'" id="phone" required="required"/>
                                                                             </div>
-                                                                            <button type="button" id="btn-add-phone" class="btn btn-success btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span> أضف هاتف</button>
+                                                                            <?php if (!empty($row["phone2"])) { ?>
+                                                                            <div class="phone-input input-group">
+                                                                                <input type="text" name="phone2" value='<?php echo $row["phone2"]; ?>' style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : '09-99-99-99-99'" required="required"/>
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-danger btn-remove-phone" type="button">
+                                                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <?php } if (!empty($row["phone3"])) { ?>
+                                                                            <div class="phone-input input-group">
+                                                                                <input type="text" name="phone3" value='<?php echo $row["phone3"]; ?>' style="direction:ltr" pattern="phone" class="form-control col-md-7 col-xs-12" data-inputmask="'mask' : '09-99-99-99-99'" required="required"/>
+                                                                                <span class="input-group-btn">
+                                                                                    <button class="btn btn-danger btn-remove-phone" type="button">
+                                                                                        <span class="glyphicon glyphicon-remove"></span>
+                                                                                    </button>
+                                                                                </span>
+                                                                            </div>
+                                                                            <?php } ?>    
                                                                         </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone"> <span class="required">*</span>الهاتف </label><br />
+                                                                        <button type="button" id="btn-add-phone" class="btn btn-success btn-sm btn-add-phone"><span class="glyphicon glyphicon-plus"></span> أضف هاتف</button>
                                                                     </div>
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="email" id="email" value='<?php echo $row["email"]; ?>' name="email" style="direction:ltr" required="required" class="form-control col-md-7 col-xs-12">
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"> <span class="required">*</span>البريد الالكتروني </label>   
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone"> <span class="required">*</span>الهاتف </label><br />
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="email" id="email" value='<?php echo $row["email"]; ?>' name="email" style="direction:ltr" required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="text" id="adress" name="adress" value='<?php echo $row["adress"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress"> <span class="required">*</span>العنوان البريدي </label>   
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email"> <span class="required">*</span>البريد الالكتروني </label>   
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="text" id="adress" name="adress" value='<?php echo $row["adress"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="text" id="idcard" name="idcard" value='<?php echo $row["idcard"]; ?>' pattern="numeric" required="required" class="form-control col-md-7 col-xs-12">
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="idcard"> <span class="required">*</span>رقم بطاقة التعريف </label>     
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress"> <span class="required">*</span>العنوان البريدي </label>   
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="text" id="idcard" name="idcard" value='<?php echo $row["idcard"]; ?>' pattern="numeric" required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="idcard"> <span class="required">*</span>رقم بطاقة التعريف </label>     
+                                                                </div>
                                                             </div>
                                                             <div id="step-3">
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="text" id="position" name="position" value='<?php echo $row["position"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="position"> <span class="required">*</span>المنصب المشغول </label>   
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="text" id="position" name="position" value='<?php echo $row["position"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
-                                                                    <div class="item form-group">
-                                                                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="text" id="level" name="level" value='<?php echo $row["level"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="level"> <span class="required">*</span>المستوى الدراسي </label>   
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="position"> <span class="required">*</span>المنصب المشغول </label>   
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="text" id="level" name="level" value='<?php echo $row["level"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
-                                                                    <div class="item form-group">
-                                                                        <div class='input-group date col-md-6 col-sm-6 col-xs-12 marginelo' id='myDatepicker2'>
-                                                                            <input id="job" name="job" value='<?php echo $row["job"]; ?>' class="form-control col-md-7 col-xs-12" type="text" required="required"/>
-                                                                            <span class="input-group-addon">
-                                                                                <span class="glyphicon glyphicon-calendar"></span>
-                                                                            </span>                         
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="job">تاريخ بداية العمل </label>
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="level"> <span class="required">*</span>المستوى الدراسي </label>   
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class='input-group date col-md-6 col-sm-6 col-xs-12 marginelo' id='myDatepicker2'>
+                                                                        <input id="job" name="job" value='<?php echo $row["job"]; ?>' class="form-control col-md-7 col-xs-12" type="text" required="required"/>
+                                                                        <span class="input-group-addon">
+                                                                            <span class="glyphicon glyphicon-calendar"></span>
+                                                                        </span>                         
                                                                     </div>
-                                                                    <div class="item form-group">
-                                                                        <div class="input-group col-md-6 col-sm-6 col-xs-12 marginelo">
-                                                                            <input type="number" id="salary" name="salary" value='<?php echo $row["salary"]; ?>' min="10000" step="1000" required="required" class="form-control col-md-7 col-xs-12">
-                                                                        </div>
-                                                                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salary">الراتب المتفق عليه </label>                                                   
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="job">تاريخ بداية العمل </label>
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="input-group col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <input type="number" id="salary" name="salary" value='<?php echo $row["salary"]; ?>' min="10000" step="1000" required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="salary">الراتب المتفق عليه </label>                                                   
+                                                                </div>
+                                                                <div class="item form-group">
+                                                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                        <div class="dropdown docs-options">
+                                                                            <button type="button" class="btn btn-success btn-block dropdown-toggle" style="color:white;margin-left:0" id="toggleOptions" data-toggle="dropdown" aria-expanded="true">
+                                                                                <span class="caret"></span>
+                                                                                الصفحات المسموح بالولوج إليها
+                                                                            </button>
+                                                                            <ul class="dropdown-menu pageAccess" aria-labelledby="toggleOptions" required="required" role="menu">
+                                                                                <!--li role="presentation">
+                                                                                    <label class="checkbox-inline">
+                                                                                        الصفحة الرئيسة
+                                                                                        <input type="checkbox" name="access[]" id="access1" value="p1" class="flat" <?php if(strpos($row["access"], "p1") !== FALSE) echo "checked"; ?>/>
+                                                                                    </label>
+                                                                                </li-->
+                                                                                <li role="presentation">
+                                                                                    <label class="checkbox-inline">
+                                                                                        تسيير الموظفين
+                                                                                        <input type="checkbox" name="access[]" id="access2" value="p2" class="flat" <?php if(strpos($row["access"], "p2") !== FALSE) echo "checked"; ?>/>
+                                                                                    </label>
+                                                                                </li>
+                                                                                <li role="presentation">
+                                                                                    <label class="checkbox-inline">
+                                                                                        إضافة موظف
+                                                                                        <input type="checkbox" name="access[]" id="access3" value="p3" class="flat" <?php if(strpos($row["access"], "p3") !== FALSE) echo "checked"; ?>/> 
+                                                                                    </label>
+                                                                                </li>
+                                                                                <li role="presentation">
+                                                                                    <label class="checkbox-inline">
+                                                                                        تسيير الكتب
+                                                                                        <input type="checkbox" name="access[]" id="access4" value="p4" class="flat" <?php if(strpos($row["access"], "p4") !== FALSE) echo "checked"; ?>/>
+                                                                                    </label>
+                                                                                </li>
+                                                                                <li role="presentation">
+                                                                                    <label class="checkbox-inline">
+                                                                                        تسيير الزبائن
+                                                                                        <input type="checkbox" name="access[]" id="access5" value="p5" class="flat" <?php if(strpos($row["access"], "p5") !== FALSE) echo "checked"; ?>/>
+                                                                                    </label>
+                                                                                </li>
+                                                                                <li role="presentation">
+                                                                                    <label class="checkbox-inline">
+                                                                                        إنشاء وصل جديد
+                                                                                        <input type="checkbox" name="access[]" id="access6" value="p6" class="flat" <?php if(strpos($row["access"], "p6") !== FALSE) echo "checked"; ?>/>
+                                                                                    </label>
+                                                                                </li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <!-- /.dropdown -->
+                                                                    </div>
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="toggleOptions"> <span class="required">*</span>الصفحات</label>
+                                                                </div>
                                                             </div>
                                                         </form>
                                                         </div>
@@ -296,6 +348,8 @@
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
+    <!-- PNotify -->
+    <script src="../vendors/pnotify/dist/pnotify.js"></script>
     <!-- validator -->
     <script src="../vendors/validator/validator.js"></script>
     <script>
@@ -348,6 +402,16 @@
             });
         });
     </script>
-<?php
-    require "footer.php";
-?>
+    <?php if (isset($_GET['success'])) { ?>
+    <script>
+        new PNotify({
+            title: 'تنويه',
+            text: 'تم تعديل بيانات الموظف بنجاح',
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+    </script>
+    <?php
+        };
+        require "footer.php";
+    ?>

@@ -3,6 +3,7 @@
 
 <?php
     require "header.php";
+    if (strpos($_SESSION["access"], "p4") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
 ?>
           <!-- page content -->
             <div class="right_col" role="main">

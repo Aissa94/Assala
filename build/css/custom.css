@@ -1713,7 +1713,8 @@ table.jambo_table thead {
 }
 
 table.jambo_table:not(.books) tbody tr:hover td {
-    background: rgba(187, 58, 26, 0.8)
+    background: rgba(187, 58, 26, 0.8);
+    color: #fff
 }
 
 .headings.books th:first-child {

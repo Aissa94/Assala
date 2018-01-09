@@ -28,11 +28,11 @@
                         unset($connect);
                     ?>
                     <div class="form-group">
-                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                        <!--div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                             <input type="text" id="sales" name="sales" value='<?php echo number_format($sales, 2, ',', ''); ?> دج' readonly class="form-control col-md-7 col-xs-12">
                         </div>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="sales">قيمة المبيعات</label>     
-                    </div>
+                    </div-->
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                             <input type="hidden" name="deserved" value='<?php echo number_format($sales - $paid, 2, '.', ''); ?>'>

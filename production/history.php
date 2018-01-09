@@ -43,7 +43,7 @@
                                             <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
                                                 <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">أرشيف الوصول</a>
                                                 </li>
-                                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">أرشيف المبيعات</a>
+                                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">أرشيف الدفع</a>
                                                 </li>
                                             </ul>
                                             <div id="myTabContent" class="tab-content">
@@ -59,6 +59,7 @@
                                                                     <th>التاريخ</th>
                                                                     <th>القيمة</th>
                                                                     <th>نوع السعر</th>
+                                                                    <th>نوع الوصل</th>
                                                                     <th>تعديل</th>
                                                                 </tr>
                                                             </thead>
@@ -73,7 +74,30 @@
                                                                 <td><?php echo $row["client"]; ?></td>
                                                                 <td><?php echo $row["date"]; ?></td>
                                                                 <td><?php echo $row["cost"]; ?></td>
-                                                                <td><?php echo $row["typePrice"]; ?></td>
+                                                                <td>
+                                                                    <?php 
+                                                                        switch($row["typePrice"]) {
+                                                                            case "general":
+                                                                                echo "السعر العمومي";
+                                                                                break;
+                                                                            case "library":
+                                                                                echo "سعر المكتبة";
+                                                                                break;
+                                                                            case "whole":
+                                                                                echo "سعر الجملة";
+                                                                                break;
+                                                                        default:
+                                                                                echo ($row["typePrice"]*100)." %";
+                                                                                break;
+                                                                        }
+                                                                    ?>
+                                                                </td>
+                                                                <td>
+                                                                    <?php 
+                                                                        if ($row["type"]=="sale") echo "بيع"; 
+                                                                        else  echo "استرجاع";
+                                                                    ?>
+                                                                </td>
                                                                 <td>
                                                                     <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
                                                                     <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
@@ -93,6 +117,7 @@
                                                             <thead>
                                                                 <tr class="headings">
                                                                     <th>الزبون</th>
+                                                                    <th>التاريخ</th>
                                                                     <th>الرصيد</th>
                                                                     <th>الدفع</th>
                                                                     <th>المبلغ المتبقي</th>
@@ -116,6 +141,7 @@
                                                                         echo $name;
                                                                     ?>
                                                                 </td>
+                                                                <td><?php echo $row["date"]; ?></td>
                                                                 <td><?php echo $row["deserved"]; ?></td>
                                                                 <td><?php echo $row["paid"]; ?></td>
                                                                 <td><?php echo ($row["deserved"] - $row["paid"]); ?></td>

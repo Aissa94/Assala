@@ -88,7 +88,7 @@
                                     </ul>
                                 </li>
                                 <?php } ?>
-                                <li><a>المصاريف<i class="fa fa-usd"></i><span class="fa fa-chevron-down"></span></a>
+                                <!--li><a>المصاريف<i class="fa fa-usd"></i><span class="fa fa-chevron-down"></span></a-->
                                     <!--ul class="nav child_menu">
                                         <li><a href="form.html">General Form</a></li>
                                         <li><a href="form_advanced.html">Advanced Components</a></li>
@@ -97,8 +97,8 @@
                                         <li><a href="form_upload.html">Form Upload</a></li>
                                         <li><a href="form_buttons.html">Form Buttons</a></li>
                                     </ul-->
-                                </li>
-                                <li><a>الشهادات<i class="fa fa-desktop"></i><span class="fa fa-chevron-down"></span></a>
+                                <!--/li>
+                                <li><a>الشهادات<i class="fa fa-desktop"></i><span class="fa fa-chevron-down"></span></a-->
                                     <!--ul class="nav child_menu">
                                         <li><a href="general_elements.html">General Elements</a></li>
                                         <li><a href="media_gallery.html">Media Gallery</a></li>
@@ -110,8 +110,8 @@
                                         <li><a href="inbox.html">Inbox</a></li>
                                         <li><a href="calendar.html">Calendar</a></li>
                                     </ul-->
-                                </li>
-                                <li><a>تسيير الدورات<i class="fa fa-newspaper-o"></i><span class="fa fa-chevron-down"></span></a>
+                                <!--/li>
+                                <li><a>تسيير الدورات<i class="fa fa-newspaper-o"></i><span class="fa fa-chevron-down"></span></a-->
                                     <!--ul class="nav child_menu">
                                         <li><a href="tables.html">Tables</a></li>
                                         <li><a href="tables_dynamic.html">Table Dynamic</a></li>
@@ -126,18 +126,18 @@
                                     </ul>
                                 </li>
                                 <?php } ?>
-                                <li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-database"></i><span class="fa fa-chevron-down"></span></a>
+                                <!--li><a>قاعدة بيانات زوار المؤسسة<i class="fa fa-database"></i><span class="fa fa-chevron-down"></span></a-->
                                     <!--ul class="nav child_menu">
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>
                                     </ul-->
-                                </li>
-                                <li><a>البريد<i class="fa fa-envelope"></i><span class="fa fa-chevron-down"></span></a>
+                                <!--/li>
+                                <li><a>البريد<i class="fa fa-envelope"></i><span class="fa fa-chevron-down"></span></a-->
                                     <!--ul class="nav child_menu">
                                         <li><a href="fixed_sidebar.html">Fixed Sidebar</a></li>
                                         <li><a href="fixed_footer.html">Fixed Footer</a></li>
                                     </ul-->
-                                </li>
+                                <!--/li-->
                             </ul>
                         </div>
                         <!--div class="menu_section">

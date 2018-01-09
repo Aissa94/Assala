@@ -105,7 +105,7 @@
                                     </tr>
                                 </tbody>
                             </table>
-                            <input type="hidden" id="discount_hidden" name="discount" value="0">
+                            <input type="hidden" id="total_hidden" name="cost" value="0">
                         </form>
                         <button type="button" id="add-book" class="btn btn-success" style="font-size:20px"><span class="glyphicon glyphicon-plus"></span> أضف كتاب</button>
                         <br /><br />
@@ -180,7 +180,7 @@
             if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
             total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
-            $("#discount_hidden").val($(this).val());
+            $("#total_hidden").val(total.toFixed(2));
         });
     });
     $(function() {
@@ -207,7 +207,7 @@
             if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
             total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
-            $("#discount_hidden").val($('#discount').val());
+            $("#total_hidden").val(total.toFixed(2));
         });
     });
     $('.quantity').on('change', function() {
@@ -220,7 +220,7 @@
         if ((cost - parseFloat($('#discount').val())) <0) $('#discount').val(0);
         total = cost - parseFloat($('#discount').val());
         $('#total-sum').val(total.toFixed(2) + " دج");
-        $("#discount_hidden").val($('#discount').val());
+        $("#total_hidden").val(total.toFixed(2));
     });
     $('#add-book').on('click', function() {
         $("tbody").append(item.clone());
@@ -243,7 +243,7 @@
             if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
             total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
-            $("#discount_hidden").val($('#discount').val());
+            $("#total_hidden").val(total.toFixed(2));
         });
         $('.quantity').on('change', function() {
             if ($(this).val() > parseInt($(this).attr('max')) || $(this).val() < 1) $(this).val(1);
@@ -258,7 +258,7 @@
             if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
             total = sum - parseFloat($('#discount').val());
             $('#total-sum').val(total.toFixed(2) + " دج");
-            $("#discount_hidden").val($('#discount').val());
+            $("#total_hidden").val(total.toFixed(2));
         });
     });
 </script>

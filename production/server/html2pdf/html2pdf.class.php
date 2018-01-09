@@ -494,7 +494,7 @@ if (!defined('__CLASS_HTML2PDF__')) {
     <head>
         <title>'.HTML2PDF_locale::get('vue04').' HTML</title>
         <meta http-equiv="Content-Type" content="text/html; charset='.$this->_encoding.'" >
-        <link rel="shortcut icon" type="image/x-icon" href="../images/logo01.ico" />
+        <link rel="shortcut icon" href="../favicon.ico" />
     </head>
     <body style="padding: 10px; font-size: 10pt;font-family: SakkalMajalla;">
 '.$content.'

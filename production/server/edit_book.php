@@ -1,7 +1,7 @@
 <?php
       require "bdd_connect.php";
-        $employee = $connect->prepare('UPDATE `bookstore` SET `title`= :title, `author`= :author, `publicationYear`= :publicationYear, `isbn`= :isbn, `pages`= :pages, `quantity`= :quantity, `speciality`= :speciality, `price`= :price WHERE `bookId` = :bookId');
-        $employee->execute(array(
+        $book = $connect->prepare('UPDATE `bookstore` SET `title`= :title, `author`= :author, `publicationYear`= :publicationYear, `isbn`= :isbn, `pages`= :pages, `quantity`= :quantity, `speciality`= :speciality, `price`= :price WHERE `bookId` = :bookId');
+        $book->execute(array(
             ':title' => $_POST['title'],
             ':author' => $_POST['author'],
             ':publicationYear' => $_POST['publicationYear'],

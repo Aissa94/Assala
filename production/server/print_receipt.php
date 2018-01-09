@@ -7,8 +7,8 @@ td    { vertical-align: middle; padding: 8px 0;}
 </style>
 <?php 
     require "bdd_connect.php";
-    $receipthistory = $connect->prepare('INSERT INTO `receipthistory`(`client`, `date`, `books`, `quantities`, `price`, `discount`, `type`) VALUES (?,?,?,?,?,?,?)');
-    $receipthistory->execute(array($_POST['receiver'], date('Y/m/d'), serialize($_POST['title']), serialize($_POST['quantity']), $_POST['price'], $_POST['discount'], $_POST['type']));
+    $receipthistory = $connect->prepare('INSERT INTO `receipthistory`(`client`, `date`, `books`, `quantities`, `typePrice`, `cost`, `type`) VALUES (?,?,?,?,?,?,?)');
+    $receipthistory->execute(array($_POST['receiver'], date('Y/m/d'), serialize($_POST['title']), serialize($_POST['quantity']), $_POST['price'], $_POST['cost'], $_POST['type']));
 ?>
 <page backcolor="#FFF" backimg="../../images/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="8mm" backright="8mm" backbottom="25mm">
     <table cellspacing="0" style="width: 100%; text-align: center">
@@ -95,13 +95,13 @@ td    { vertical-align: middle; padding: 8px 0;}
             <th style="width: 30%;"><?php echo number_format($total, 2, ',', ''); ?> دج</th>
             <th style="width: 20%;">المجموع : </th>
         </tr>
-        <?php if ($_POST['discount'] > 0) { ?>
+        <?php if ($_POST['cost'] < $total) { ?>
             <tr>
-                <th style="width: 30%;"><?php echo number_format($_POST['discount'], 2, ',', ' '); ?> دج</th>
+                <th style="width: 30%;"><?php echo number_format(($total - $_POST['cost']), 2, ',', ' '); ?> دج</th>
                 <th style="width: 20%;">الخصم : </th>
             </tr>
             <tr>
-                <th style="width: 30%;"><?php echo number_format(($total - $_POST['discount']), 2, ',', ''); ?> دج</th>
+                <th style="width: 30%;"><?php echo number_format($_POST['cost'], 2, ',', ''); ?> دج</th>
                 <th style="width: 20%;">التكلفة : </th>
             </tr>
         <?php } ?>

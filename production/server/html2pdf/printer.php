@@ -17,7 +17,7 @@
     $content = ob_get_clean();
     //$css = '<style>'.file_get_contents(dirname(__FILE__).'/res/print2pdf.css').'</style>';
     // convert to PDF
-    require_once(dirname(__FILE__).'/html2pdf.class.php');
+   require_once(dirname(__FILE__).'/html2pdf.class.php');
     try
     {
         $html2pdf = new HTML2PDF('P', 'A4', 'fr', true,  'UTF-8' ,  array(5, 5, 5, 5));

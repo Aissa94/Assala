@@ -16,6 +16,7 @@
                                 <div class="x_title">
                                     <h2>قائمة زبائن المؤسسة</h2>
                                     <button type="button" class="btn btn-primary btn-lg" id="addition" data-toggle="modal" data-target="#addlibrary">إضافة زبون</button>
+                                    <a href='history.php'><button type="button" class="btn btn-primary btn-lg">أرشيف الوصول</button></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -44,14 +45,15 @@
                                                 <td><?php echo $row["name"]; ?></td>
                                                 <td><?php echo $row["state"]; ?></td>
                                                 <td><?php echo $row["adress"]; ?></td>
-                                                <td><?php echo $row["email"]; ?></td>
+                                                <td><a href='mailto:<?php echo $row["email"]; ?>'><?php echo $row["email"]; ?></a></td>
                                                 <td><?php echo $row["phone"]; ?></td>
                                                 <td><?php echo $row["phone2"]; ?></td>
                                                 <td><?php echo $row["phone3"]; ?></td>
                                                 <td>
                                                     <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
                                                     <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
-                                                    <a href='#'><span class="fa fa-paypal dark pointer" title="الدفع"></span></a>
+                                                    <span class="fa fa-paypal dark pointer" title="الدفع" onclick="paymentLibrary(id)" id='<?php echo $row["libraryId"].">".$row["name"]; ?>'></span></a>
+                                                    <a href='history.php?id=<?php echo $row["libraryId"]; ?>'><span class="fa fa-history green pointer" title="الوصول"></span></a>
                                                 </td>
                                             </tr>
                                             <?php 
@@ -176,6 +178,10 @@
             <div class="modal fade" id="editlibrary" tabindex="-1" role="dialog" aria-labelledby="editlibraryLabel" aria-hidden="true">
             </div>
 
+            <!-- - Payment Library - -->
+            <div class="modal fade" id="paymentlibrary" tabindex="-1" role="dialog" aria-labelledby="paymentlibraryLabel" aria-hidden="true">
+            </div>
+
             <!-- - Delete Library - -->
             <div class="modal fade" id="deletelibrary" tabindex="-1" role="dialog" aria-labelledby="deletelibraryLabel" aria-hidden="true">
                 <div class="modal-dialog">
@@ -239,6 +245,23 @@
                         }
                     });
                 }
+                function paymentLibrary(e) {
+                    var idname = e.split(">");
+                    $.ajax({
+                        url: "server/library_payment.php",
+                        type: "POST",
+                        data: "libraryId=" + idname[0] + "&name=" + idname[1],
+                        success: function(data) {
+                            $('#paymentlibrary').html(data);
+                        },
+                        complete: function() {
+                             $("#paymentlibrary").modal('show');
+                             $('#paid').on('change', function() {
+                                if ($(this).val() > parseFloat($(this).attr('max')) || $(this).val() < 0) $(this).val(0);
+                             });
+                        }
+                    });
+                }
                  $(function() {
                     $(document.body).on('click', '.btn-remove-phone', function() {
                         $(this).closest('.phone-input').remove();
@@ -278,6 +301,17 @@
                 new PNotify({
                     title: 'تنويه',
                     text: 'تم إضافة الزبون بنجاح',
+                    type: 'success',
+                    styling: 'bootstrap3'
+                });
+            </script>
+            <?php
+                };
+                if (isset($_GET['success'])) { ?>
+                <script>
+                new PNotify({
+                    title: 'تنويه',
+                    text: 'تم دفع مستحقات الزبون بنجاح',
                     type: 'success',
                     styling: 'bootstrap3'
                 });

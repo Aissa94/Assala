@@ -1733,12 +1733,19 @@ td#rowspan {
 }
 
 td#rowspan:hover {
-    background: #F5F5F5
+    background: #F5F5F5;
+    color: #000
 }
 
 #requestContent {
     border-collapse: collapse;
     empty-cells: show;
+}
+
+.marginelo>select {
+    font-size: 22px;
+    height: 32px;
+    padding: 0;
 }
 
 #requestContent td {

@@ -29,7 +29,7 @@
             $minutes = ($time % 60);
             return sprintf($format, $hours, $minutes);
         }
-        $presenceTable = $connect->query('SELECT * FROM presence WHERE idEmployee ='.$_POST["idEmployee"].' AND date BETWEEN "'.$start_date_formatted.'" AND "'.$end_date_formatted.'"');
+        $presenceTable = $connect->query('SELECT * FROM presence WHERE idEmployee ='.$_POST["idEmployee"].' AND date BETWEEN "'.$start_date_formatted.'" AND "'.$end_date_formatted.'" ORDER BY date');
         while ($row = $presenceTable->fetch()) {
             $dates[] = date('d-m-Y', strtotime($row["date"]));; 
             $timeIns[] = $row["timeIn"];

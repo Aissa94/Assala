@@ -16,7 +16,7 @@
                                 <div class="x_title">
                                     <h2>قائمة زبائن المؤسسة</h2>
                                     <button type="button" class="btn btn-primary btn-lg" id="addition" data-toggle="modal" data-target="#addlibrary">إضافة زبون</button>
-                                    <a href='history.php'><button style="margin-top:20px" type="button" class="btn btn-primary btn-lg">أرشيف الوصول</button></a>
+                                    <a href='history.php'><button style="margin-top:20px" type="button" class="btn btn-primary btn-lg">أرشيف الزبائن</button></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">

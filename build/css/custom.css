@@ -3851,6 +3851,11 @@ ul.user_data li p {
     margin-bottom: 0
 }
 
+ul.user_data input {
+    font-size: 28px;
+    height: 40px;
+}
+
 ul.user_data li .progress {
     width: 90%
 }

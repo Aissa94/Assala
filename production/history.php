@@ -9,55 +9,147 @@
         <div class="right_col" role="main">
             <div class="">
                 <div class="clearfix"></div>
-                <?php  
-                    $receipt = $connect->query("SELECT * FROM receipthistory");
-                    while ($row = $receipt->fetch()) {
-                ?>
-                <span id="idEmployee" style="display:none"><?php echo $_GET['id']; ?></span>
+                <!--span id="idEmployee" style="display:none"><?php echo $_GET['id']; ?></span-->
                 <div class="row">
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2><?php echo $row["lastname"]." ".$row["firstname"]; ?> <small>الملف الشخصي</small></h2>
-                                <a href="staff_management.php"><button style="margin-top:15px" type="button" class="btn btn-primary btn-lg"><i class="fa fa-sign-out m-right-xs"></i> الرجوع إلى القائمة</button></a>
+                                <h2><?php //echo $row["lastname"]." ".$row["firstname"]; ?>أرشيف الوصول</h2>
+                                <a href="libraries_store.php"><button style="margin-top:15px" type="button" class="btn btn-primary btn-lg"><i class="fa fa-sign-out m-right-xs"></i> الرجوع إلى القائمة</button></a>
                                 <div class="clearfix"></div>
                             </div>
                             <div class="x_content">
                                 <div class="col-md-9 col-sm-9 col-xs-12">
                                     <div class="profile_title">
                                         <div class="col-md-6">
-                                            <div id="reportrange" class="pull-left">
-                                                <i class="glyphicon glyphicon-calendar fa fa-calendar"></i>
-                                                <span id="changeDate"></span> <b class="caret"></b>
+                                            <div class='input-group date col-md-4 col-sm-6 col-xs-12 pull-left' id='reportyear'>
+                                                <span class="input-group-addon" style="cursor:default">
+                                                    <i class="glyphicon glyphicon-calendar"></i>
+                                                </span>  
+                                                <select id="changeDate" name="changeDate" class="col-md-12 col-xs-12">
+                                                    <?php for($i=2018; $i<=date('Y'); $i++) { 
+                                                        echo '<option value="'.$i.'">'.$i.'</option>';
+                                                    } ?>
+                                                </select>                       
                                             </div>
                                         </div>
                                         <div class="col-md-6">
-                                            <h2>تقرير العمل</h2>
+                                            <h2>أرشيف سنة</h2>
                                         </div>
                                     </div>
                                     <br />
                                     <!-- start of user-activity-graph -->
-                                    <div class="table-responsive">
-                                        <table class="table table-striped jambo_table table-bordered nowrap bulk_action" dir="rtl">
-                                            <thead>
-                                                <tr class="headings">
-                                                    <th>الأيام</th>
-                                                    <th>الدخول</th>
-                                                    <th>الخروج</th>
-                                                    <th>ساعات العمل</th>
-                                                    <th>مجموع الساعات</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody id="requestContent"></tbody>
-                                        </table>
-                                    </div>
+                                    <div class="" role="tabpanel" data-example-id="togglable-tabs">
+                                            <ul id="myTab" class="nav nav-tabs bar_tabs" role="tablist">
+                                                <li role="presentation" class="active"><a href="#tab_content1" id="home-tab" role="tab" data-toggle="tab" aria-expanded="true">أرشيف الوصول</a>
+                                                </li>
+                                                <li role="presentation" class=""><a href="#tab_content2" role="tab" id="profile-tab" data-toggle="tab" aria-expanded="false">أرشيف المبيعات</a>
+                                                </li>
+                                            </ul>
+                                            <div id="myTabContent" class="tab-content">
+                                                <div role="tabpanel" class="tab-pane fade active in" id="tab_content1" aria-labelledby="home-tab">
+
+                                                    <!-- start recent activity -->
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped jambo_table table-bordered nowrap bulk_action" dir="rtl">
+                                                            <thead>
+                                                                <tr class="headings">
+                                                                    <th>رقم الوصل</th>
+                                                                    <th>الزبون</th>
+                                                                    <th>التاريخ</th>
+                                                                    <th>القيمة</th>
+                                                                    <th>نوع السعر</th>
+                                                                    <th>تعديل</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="requestContent"></tbody>
+                                                            <?php  
+                                                                $receipt = $connect->query("SELECT * FROM receipthistory");
+                                                                //SELECT * FROM `receipthistory` WHERE YEAR(date) = 2017
+                                                                while ($row = $receipt->fetch()) {
+                                                            ?>
+                                                            <tr>
+                                                                <td><?php echo $row["historyId"].'/'.date('Y', strtotime($row["date"])); ?></td>
+                                                                <td><?php echo $row["client"]; ?></td>
+                                                                <td><?php echo $row["date"]; ?></td>
+                                                                <td><?php echo $row["cost"]; ?></td>
+                                                                <td><?php echo $row["typePrice"]; ?></td>
+                                                                <td>
+                                                                    <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
+                                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
+                                                                </td>
+                                                            </tr>
+                                                            <?php
+                                                                }
+                                                                $receipt->closeCursor();
+                                                            ?>
+                                                        </table>
+                                                    </div>
+                                                    <!-- end recent activity -->
+                                                </div>
+                                                <div role="tabpanel" class="tab-pane fade" id="tab_content2" aria-labelledby="profile-tab">
+                                                    <div class="table-responsive">
+                                                        <table class="table table-striped jambo_table table-bordered nowrap bulk_action" dir="rtl">
+                                                            <thead>
+                                                                <tr class="headings">
+                                                                    <th>الزبون</th>
+                                                                    <th>الرصيد</th>
+                                                                    <th>الدفع</th>
+                                                                    <th>المبلغ المتبقي</th>
+                                                                    <th>نوع الدفع</th>
+                                                                    <th>تعديل</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody id="requestContent"></tbody>
+                                                            <?php  
+                                                                $payment = $connect->query("SELECT * FROM payments");
+                                                                while ($row = $payment->fetch()) {
+                                                            ?>
+                                                            <tr>
+                                                                <td>
+                                                                    <?php 
+                                                                        $library = $connect->query("SELECT name FROM librarystore WHERE libraryId=".$row["libraryId"]);
+                                                                        while ($client = $library->fetch()) {
+                                                                            $name = $client["name"];
+                                                                        }
+                                                                        $library->closeCursor();
+                                                                        echo $name;
+                                                                    ?>
+                                                                </td>
+                                                                <td><?php echo $row["deserved"]; ?></td>
+                                                                <td><?php echo $row["paid"]; ?></td>
+                                                                <td><?php echo ($row["deserved"] - $row["paid"]); ?></td>
+                                                                <td><?php echo $row["typeAmount"]; ?></td>
+                                                                <td>
+                                                                    <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["paymentId"]; ?>'></span>&nbsp;
+                                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["paymentId"]; ?>'></span>&nbsp;
+                                                                </td>
+                                                            </tr>
+                                                            <?php
+                                                                }
+                                                                $payment->closeCursor();
+                                                                $receipt = $connect->query("SELECT ((SELECT sum(cost) FROM receipthistory WHERE type='sale') - (SELECT sum(cost) FROM receipthistory WHERE type='recovery')) AS sales");
+                                                                while ($row = $receipt->fetch()) {
+                                                                    $sales = $row["sales"];
+                                                                }
+                                                                $receipt->closeCursor();
+                                                                $payment = $connect->query("SELECT sum(paid) AS paid FROM payments");
+                                                                while ($row = $payment->fetch()) {
+                                                                    $paid = $row["paid"];
+                                                                }
+                                                                $payment->closeCursor();
+                                                            ?>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <!-- end of user-activity-graph -->
                                 </div>
                                 <div class="col-md-3 col-sm-3 col-xs-12 profile_right">
-                                    <div class="profile_img">
+                                    <!--div class="profile_img">
                                         <div id="crop-avatar">
-                                            <!-- Current avatar -->
-                                            <img class="img-responsive avatar-view" src="images/img.jpg" alt='<?php echo $row["lastname"]." ".$row["firstname"]; ?>' title='<?php echo $row["lastname"]." ".$row["firstname"]; ?>'>
+                                            <img class="img-responsive avatar-view" src="images/img.jpg">
                                         </div>
                                     </div>
                                     <br />
@@ -78,22 +170,24 @@
                                         </li>
                                     </ul>
 
-                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#formTab"><i class="fa fa-edit m-right-xs"></i>تعديل البيانات</button>
+                                    <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#formTab"><i class="fa fa-edit m-right-xs"></i>تعديل البيانات</button-->
                                     <br /><br /><br />
 
                                     <!-- start skills -->
-                                    <h3>نسبة الحضور والغياب</h3>
+                                    <h3>التعاملات والمستحقات</h3>
+                                    <br />
                                     <ul class="list-unstyled user_data">
                                         <li>
-                                            <p>نسبة الحضور</p>
-                                            <div class="progress">
-                                                <div class="progress-bar bg-green" id="presenceRate" role="progressbar"></div>
+                                            <p>قيمة التعاملات الإجمالية</p>
+                                            <div class="form-group">
+                                                <input type="text" id="sales" value='<?php echo number_format($sales, 2, ',', ''); ?> دج' readonly class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </li>
+                                        <br /><br />
                                         <li>
-                                            <p>نسبة الغياب</p>
-                                            <div class="progress">
-                                                <div class="progress-bar progress-bar-danger" id="absenceRate" role="progressbar"></div>
+                                            <p>الرصيد الإجمالي</p>
+                                            <div class="form-group">
+                                                <input type="text" id="deserved" value='<?php echo number_format($sales - $paid, 2, ',', ''); ?> دج' readonly class="form-control col-md-7 col-xs-12">
                                             </div>
                                         </li>
                                     </ul>
@@ -105,8 +199,6 @@
                     </div>
                 </div>
                 <?php 
-                    }
-                    $receipt->closeCursor();
                     unset($connect);
                 ?> 
             </div>
@@ -138,11 +230,11 @@
     <script src="../vendors/validator/validator.js"></script>
     <script>
         $(document).ready(function() {
-            $("#changeDate").on('DOMSubtreeModified', function() {
+            $("#changeDate").on('change', function() {
                 $.ajax({
                     url: "server/presence_query.php",
                     type: "POST",
-                    data: "date=" + $("#changeDate").text() + '&idEmployee=' + $("#idEmployee").text(),
+                    data: "date=" + $("#changeDate").val(),
                     success: function(data) {
                         //$(data).appendTo('#requestContent');
                         $('#requestContent').html(data);

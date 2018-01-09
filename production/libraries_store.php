@@ -16,7 +16,7 @@
                                 <div class="x_title">
                                     <h2>قائمة زبائن المؤسسة</h2>
                                     <button type="button" class="btn btn-primary btn-lg" id="addition" data-toggle="modal" data-target="#addlibrary">إضافة زبون</button>
-                                    <a href='history.php'><button type="button" class="btn btn-primary btn-lg">أرشيف الوصول</button></a>
+                                    <a href='history.php'><button style="margin-top:20px" type="button" class="btn btn-primary btn-lg">أرشيف الوصول</button></a>
                                     <div class="clearfix"></div>
                                 </div>
                                 <div class="x_content">
@@ -53,7 +53,7 @@
                                                     <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
                                                     <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
                                                     <span class="fa fa-paypal dark pointer" title="الدفع" onclick="paymentLibrary(id)" id='<?php echo $row["libraryId"].">".$row["name"]; ?>'></span></a>
-                                                    <a href='history.php?id=<?php echo $row["libraryId"]; ?>'><span class="fa fa-history green pointer" title="الوصول"></span></a>
+                                                    <a href='history.php?id=<?php echo $row["libraryId"]; ?>&name=<?php echo $row["name"]; ?>'><span class="fa fa-history green pointer" title="الوصول"></span></a>
                                                 </td>
                                             </tr>
                                             <?php 

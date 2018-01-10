@@ -1,8 +1,8 @@
 <style type="text/css">
 * {font-family: almohanad, "sakkalMajalla"}
 table { vertical-align: middle; }
-th    { vertical-align: middle; padding: 8px 0; }
-td    { vertical-align: middle; padding: 8px 0;}
+th    { vertical-align: middle; padding: 8px 10px; }
+td    { vertical-align: middle; padding: 8px 2px;}
 }
 </style>
 <?php 

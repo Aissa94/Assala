@@ -14,7 +14,7 @@
                     <div class="col-md-12 col-sm-12 col-xs-12">
                         <div class="x_panel">
                             <div class="x_title">
-                                <h2><?php //echo $row["lastname"]." ".$row["firstname"]; ?>أرشيف الوصول</h2>
+                                <h2><?php //echo $row["lastname"]." ".$row["firstname"]; ?>أرشيف الوصول والدفعات</h2>
                                 <a href="libraries_store.php"><button style="margin-top:15px" type="button" class="btn btn-primary btn-lg"><i class="fa fa-sign-out m-right-xs"></i> الرجوع إلى القائمة</button></a>
                                 <div class="clearfix"></div>
                             </div>

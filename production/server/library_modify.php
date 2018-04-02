@@ -24,6 +24,17 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                            <select id="e_type" name="type" class="form-control col-md-7 col-xs-12" dir="rtl">
+                                <option <?php if ($row["type"]=="دار نشر") echo 'selected'; ?> value="دار نشر">دار نشر</option>
+                                <option <?php if ($row["type"]=="مكتبة") echo 'selected'; ?> value="مكتبة">مكتبة</option>
+                                <option <?php if ($row["type"]=="موزع") echo 'selected'; ?> value="موزع">موزع</option>
+                                <option <?php if ($row["type"]=="زبون") echo 'selected'; ?> value="زبون">زبون</option>
+                            </select>
+                        </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_type">الولاية</label>   
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                             <select id="e_state" name="state" class="form-control col-md-7 col-xs-12" dir="rtl">
                                 <option <?php if ($row["state"]=="أدرار") echo 'selected'; ?> value="أدرار">أدرار</option>
                                 <option <?php if ($row["state"]=="الشلف") echo 'selected'; ?> value="الشلف">الشلف</option>

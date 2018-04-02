@@ -76,7 +76,7 @@
                                 </div>
                             </div>
                             <br />
-                            <table class="table jambo_table table-bordered nowrap books" dir="rtl">
+                            <table class="table jambo_table table-bordered nowrap books bulk_action" dir="rtl">
                                 <thead>
                                     <tr class="headings books">
                                         <th>العنوان</th>
@@ -84,6 +84,7 @@
                                         <th>الكمية المتوفرة</th>
                                         <th>الكمية المطلوبة</th>
                                         <th>التكلفة</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -99,9 +100,12 @@
                                         <td></td>
                                         <td></td>
                                         <td>
-                                            <input type="number" min="1" max="10" name="quantity[]" required="required" class="quantity form-control col-md-2 col-xs-12">
+                                            <input type="number" min="1" disabled="disabled" max="10" name="quantity[]" required="required" class="quantity form-control col-md-2 col-xs-12">
                                         </td>
                                         <td class="cost">0</td>
+                                        <td>
+                                            <span class="fa fa-trash-o red pointer trash" title="حذف"></span>
+                                        </td>
                                     </tr>
                                 </tbody>
                             </table>
@@ -191,12 +195,14 @@
         $(".chosen-select").chosen({
             no_results_text: "للأسف، لا يوجد كتاب بهذا الاسم",
             rtl: true,
+            search_contains:true,
             width: "100%",
             allow_single_deselect: false,
         }).change(function() {
             $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
             $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
+            $(this).parent('td').nextAll().eq(2).find("input").removeAttr('disabled');
             $(this).parent('td').nextAll().eq(2).find("input").val("");
             $(this).parent('td').nextAll().eq(3).html(0);
             sum = 0;
@@ -222,17 +228,31 @@
         $('#total-sum').val(total.toFixed(2) + " دج");
         $("#total_hidden").val(total.toFixed(2));
     });
+    $('.trash').on('click', function() {
+        $(this).parent('td').parent('tr').remove();
+        sum = 0;
+        $('.cost').each(function(){
+            sum += parseFloat($(this).text());
+        });
+        $('#total-cost').val(sum.toFixed(2) + " دج");
+        if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+        total = sum - parseFloat($('#discount').val());
+        $('#total-sum').val(total.toFixed(2) + " دج");
+        $("#total_hidden").val(total.toFixed(2));
+    });
     $('#add-book').on('click', function() {
         $("tbody").append(item.clone());
         $(".chosen-select").chosen({
             no_results_text: "للأسف، لا يوجد كتاب بهذا الاسم",
             rtl: true,
+            search_contains:true,
             width: "100%",
             allow_single_deselect: false,
         }).change(function() {
             $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
             $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
+            $(this).parent('td').nextAll().eq(2).find("input").removeAttr('disabled');
             $(this).parent('td').nextAll().eq(2).find("input").val("");
             $(this).parent('td').nextAll().eq(3).html(0);
             sum = 0;
@@ -250,6 +270,18 @@
             $(this).parent('td').next().html(($(this).val() * $(this).parent('td').prev().prev().text()).toFixed(2));
             if ($("#paying").val() == "sale") $(this).parent('td').prev().html($(this).parent('td').prevAll().eq(2).find(":selected").attr('data') - $(this).val());
             else $(this).parent('td').prev().html(parseInt($(this).parent('td').prevAll().eq(2).find(":selected").attr('data')) + parseInt($(this).val()));
+            sum = 0;
+            $('.cost').each(function(){
+                sum += parseFloat($(this).text());
+            });
+            $('#total-cost').val(sum.toFixed(2) + " دج");
+            if ((sum - parseFloat($('#discount').val())) <0) $('#discount').val(0);
+            total = sum - parseFloat($('#discount').val());
+            $('#total-sum').val(total.toFixed(2) + " دج");
+            $("#total_hidden").val(total.toFixed(2));
+        });
+        $('.trash').on('click', function() {
+            $(this).parent('td').parent('tr').remove();
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());

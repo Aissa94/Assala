@@ -87,7 +87,7 @@
                                                                                 echo "سعر الجملة";
                                                                                 break;
                                                                         default:
-                                                                                echo ($row["typePrice"]*100)." %";
+                                                                                echo "تخصيص (".($row["typePrice"]*100)." %)";
                                                                                 break;
                                                                         }
                                                                     ?>
@@ -154,7 +154,7 @@
                                                             <?php
                                                                 }
                                                                 $payment->closeCursor();
-                                                                $receipt = $connect->query("SELECT ((SELECT sum(cost) FROM receipthistory WHERE type='sale') - (SELECT sum(cost) FROM receipthistory WHERE type='recovery')) AS sales");
+                                                                $receipt = $connect->query("SELECT (IFNULL((SELECT sum(cost) FROM receipthistory WHERE type='sale'), 0) - IFNULL((SELECT sum(cost) FROM receipthistory WHERE type='recovery'), 0)) AS sales");
                                                                 while ($row = $receipt->fetch()) {
                                                                     $sales = $row["sales"];
                                                                 }

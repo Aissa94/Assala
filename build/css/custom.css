@@ -1662,6 +1662,11 @@ h3.degrees {
     width: 16.66666667%
 }
 
+.dropdown-menu>li>a:hover {
+    color: white;
+    background-color: #4286f4
+}
+
 .weather .row {
     margin-bottom: 0
 }

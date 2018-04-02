@@ -27,6 +27,7 @@
                                         <thead>
                                             <tr>
                                                 <th>الاسم</th>
+                                                <th>النوع</th>
                                                 <th>الولاية</th>
                                                 <th>العنوان</th>
                                                 <th>البريد</th>
@@ -43,6 +44,7 @@
                                             ?>
                                             <tr>
                                                 <td><?php echo $row["name"]; ?></td>
+                                                <td><?php echo $row["type"]; ?></td>
                                                 <td><?php echo $row["state"]; ?></td>
                                                 <td><?php echo $row["adress"]; ?></td>
                                                 <td><a href='mailto:<?php echo $row["email"]; ?>'><?php echo $row["email"]; ?></a></td>
@@ -88,6 +90,17 @@
                                         <input type="text" id="name" name="name" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="name">الاسم</label>     
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                        <select id="type" name="type" class="form-control col-md-7 col-xs-12" dir="rtl">
+                                            <option value="دار نشر">دار نشر</option>
+                                            <option value="مكتبة">مكتبة</option>
+                                            <option value="موزع">موزع</option>
+                                            <option value="زبون">زبون</option>
+                                        </select>
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="type">النوع</label>     
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">

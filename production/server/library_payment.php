@@ -1,4 +1,4 @@
-<?php
+﻿<?php
     require "bdd_connect.php";
 ?>
     <div class="modal-dialog">
@@ -15,7 +15,7 @@
                     <?php
                         $sales = 0;
                         $paid = 0;
-                        $receipt = $connect->query("SELECT ((SELECT sum(cost) FROM receipthistory WHERE type='sale' AND client='".$_POST['name']."') - (SELECT sum(cost) FROM receipthistory WHERE type='recovery' AND client='".$_POST['name']."')) AS sales");
+                        $receipt = $connect->query("SELECT (IFNULL((SELECT sum(cost) FROM receipthistory WHERE type='sale' AND client='".$_POST['name']."'), 0) - IFNULL((SELECT sum(cost) FROM receipthistory WHERE type='recovery' AND client='".$_POST['name']."'), 0)) AS sales");
                         while ($row = $receipt->fetch()) {
                             $sales = $row["sales"];
                         }

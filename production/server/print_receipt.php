@@ -6,9 +6,10 @@ td    { vertical-align: middle; padding: 8px 2px;}
 }
 </style>
 <?php 
+    session_start();
     require "bdd_connect.php";
-    $receipthistory = $connect->prepare('INSERT INTO `receipthistory`(`client`, `date`, `books`, `quantities`, `typePrice`, `cost`, `type`) VALUES (?,?,?,?,?,?,?)');
-    $receipthistory->execute(array($_POST['receiver'], date('Y/m/d'), serialize($_POST['title']), serialize($_POST['quantity']), $_POST['price'], $_POST['cost'], $_POST['type']));
+    $receipthistory = $connect->prepare('INSERT INTO `receipthistory`(`client`, `memberId`, `date`, `books`, `quantities`, `typePrice`, `cost`, `type`) VALUES (?,?,?,?,?,?,?,?)');
+    $receipthistory->execute(array($_POST['receiver'], $_SESSION['memberId'], date('Y/m/d'), serialize($_POST['title']), serialize($_POST['quantity']), $_POST['price'], $_POST['cost'], $_POST['type']));
 ?>
 <page backcolor="#FFF" backimg="../../images/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="8mm" backright="8mm" backbottom="25mm">
     <table cellspacing="0" style="width: 100%; text-align: center">
@@ -21,7 +22,7 @@ td    { vertical-align: middle; padding: 8px 2px;}
     <br><br>
     <table cellspacing="0" style="width: 100%; text-align: right;font-size: 18pt">
         <tr>
-            <td style="width:50%;">التاريخ : <?php echo date('Y/m/d'); ?></td>
+            <td style="width:50%;"><b style="font-size: 20pt;"><?php echo date('Y/m/d'); ?></b>التاريخ : </td>
             <td style="width:50%;">إلى : <?php echo $_POST['receiver']; ?></td>
         </tr>
     </table>
@@ -30,7 +31,7 @@ td    { vertical-align: middle; padding: 8px 2px;}
     <table cellspacing="0" style="width: 100%; text-align: right;font-size: 22pt">
         <tr>
             <td style="width:20%;"></td>
-            <td style="width:40%;"><b>وصل <?php echo $connect->lastInsertId().'/'.date('Y'); ?></b></td>
+            <td style="width:40%;"><b><b style="font-size: 24pt;"><?php echo $connect->lastInsertId().'/'.date('Y'); ?></b>وصل </b></td>
             <td style="width:20%;"></td>
         </tr>
     </table>
@@ -79,9 +80,9 @@ td    { vertical-align: middle; padding: 8px 2px;}
         $total += $prix;
 ?>
         <tr style="background: #fff;">
-            <td style="width: 20%;"><?php echo number_format($prix, 2, ',', ''); ?> دج</td>
-            <td style="width: 10%"><?php echo $quantities[$k] ?></td>
-            <td style="width: 20%;"><?php echo number_format($price, 2, ',', ''); ?> دج</td>
+            <td style="width: 20%;font-size: 18pt;"><?php echo number_format($prix, 2, ',', ''); ?> دج</td>
+            <td style="width: 10%;font-size: 18pt;"><?php echo $quantities[$k] ?></td>
+            <td style="width: 20%;font-size: 18pt;"><?php echo number_format($price, 2, ',', ''); ?> دج</td>
             <td style="width: 45%;text-align: right;"><?php echo $title;?></td>
             <td style="width: 5%;"><?php echo $k+1; ?></td>       
         </tr>
@@ -92,16 +93,16 @@ td    { vertical-align: middle; padding: 8px 2px;}
     <nobreak>
     <table cellspacing="0" border="1" style="width: 100%; background: #E7E7E7; text-align: right; font-size: 18pt;">
         <tr>
-            <th style="width: 30%;"><?php echo number_format($total, 2, ',', ''); ?> دج</th>
+            <th style="width: 30%;font-size: 20pt;"><?php echo number_format($total, 2, ',', ''); ?> دج</th>
             <th style="width: 20%;">المجموع : </th>
         </tr>
         <?php if ($_POST['cost'] < $total) { ?>
             <tr>
-                <th style="width: 30%;"><?php echo number_format(($total - $_POST['cost']), 2, ',', ' '); ?> دج</th>
+                <th style="width: 30%;font-size: 20pt;"><?php echo number_format(($total - $_POST['cost']), 2, ',', ' '); ?> دج</th>
                 <th style="width: 20%;">الخصم : </th>
             </tr>
             <tr>
-                <th style="width: 30%;"><?php echo number_format($_POST['cost'], 2, ',', ''); ?> دج</th>
+                <th style="width: 30%;font-size: 20pt;"><?php echo number_format($_POST['cost'], 2, ',', ''); ?> دج</th>
                 <th style="width: 20%;">التكلفة : </th>
             </tr>
         <?php } ?>

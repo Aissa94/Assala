@@ -11,6 +11,7 @@
           $presence->execute(array($row['memberId'], date("Y-m-d"), date("H:i",time() + 3600)));
           session_start();
           $_SESSION['id'] = $connect->lastInsertId();
+          $_SESSION['memberId'] = $row["memberId"];
           $_SESSION['lastname'] = $row["lastname"];
           $_SESSION['firstname'] = $row["firstname"];
           $_SESSION['access'] = $row["access"];

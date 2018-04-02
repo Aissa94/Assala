@@ -26,7 +26,7 @@
         $html2pdf->pdf->SetDisplayMode('fullpage');
 //      $html2pdf->pdf->SetProtection(array('print'), 'spipu');
         $html2pdf->writeHTML($content);
-        $html2pdf->Output(date('Y/m/d').'وصل_'.'.pdf');
+        $html2pdf->Output('Bill_'.date('d-m-Y').'.pdf');
     }
     catch(HTML2PDF_exception $e) {
         echo $e;

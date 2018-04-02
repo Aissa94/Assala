@@ -60,7 +60,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
-                                <input type="number" min="0" step="10" id="e_price" name="price" value='<?php echo $row["price"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                                <input type="number" min="0" step="5" id="e_price" name="price" value='<?php echo $row["price"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
                             </div>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_price">السعر</label>                                                   
                         </div>

@@ -2,6 +2,7 @@
       require "bdd_connect.php";
         $phone2 = (empty($_POST['phone2']))? "": $_POST['phone2'];
         $phone3 = (empty($_POST['phone3']))? "": $_POST['phone3'];
+        $access = (empty($_POST['access']))? array(''): $_POST['access'];
         $employee = $connect->prepare('UPDATE `members` SET `firstname`= :firstname, `lastname`= :lastname, `birthday`= :birthday, `gender`= :gender, `phone`= :phone, `phone2`= :phone2, `phone3`= :phone3, `email`= :email, `adress`= :adress, `idcard`= :idcard, `position`= :position, `level`= :level, `job`= :job, `salary`= :salary, `access`= :access WHERE `memberId` = :memberId');
         $employee->execute(array(
             ':firstname' => $_POST['firstname'],
@@ -18,7 +19,7 @@
             ':level' => $_POST['level'],
             ':job' => $_POST['job'],
             ':salary' => $_POST['salary'],
-            ':access' => implode(',', $_POST['access']),
+            ':access' => implode(',', $access),
             ':memberId' => $_POST['memberId']
         ));
         unset($connect);

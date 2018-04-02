@@ -120,7 +120,15 @@
                                 <?php if ((strpos($_SESSION["access"], "p4") !== FALSE) || (strpos($_SESSION["access"], "p5") !== FALSE) || (strpos($_SESSION["access"], "p6") !== FALSE)) { ?>
                                 <li><a>تسيير المخزن<i class="fa fa-book"></i><span class="fa fa-chevron-down"></span></a>
                                     <ul class="nav child_menu">
-                                        <?php if (strpos($_SESSION["access"], "p4") !== FALSE) { ?><li><a href="books_store.php">تسيير الكتب</a></li><?php } ?>
+                                        <?php if (strpos($_SESSION["access"], "p4") !== FALSE) { ?>
+                                            <li>
+                                            <a>تسيير الكتب<span class="fa fa-chevron-down"></span></a>
+                                                <ul class="nav child_menu">
+                                                    <li><a href="books_store.php">تسيير كتب الأصالة</a></li>
+                                                    <li><a href="books_store_not_in.php">تسيير الكتب الأخرى</a></li> 
+                                                </ul>
+                                            </li>
+                                        <?php } ?>
                                         <?php if (strpos($_SESSION["access"], "p5") !== FALSE) { ?><li><a href="libraries_store.php">تسيير الزبائن</a></li><?php } ?>
                                         <?php if (strpos($_SESSION["access"], "p6") !== FALSE) { ?><li><a href="receipts_create.php">إنشاء وصل جديد</a></li><?php } ?>
                                     </ul>

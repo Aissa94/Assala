@@ -42,7 +42,7 @@
                                             <tbody>
                                                 <?php
                                                     $priceSale = 0;
-                                                    $bookstore = $connect->query("SELECT * FROM bookstore WHERE !isAssala");
+                                                    $bookstore = $connect->query("SELECT * FROM bookstore WHERE !isAssala AND active");
                                                     while ($row = $bookstore->fetch()) {
                                                 ?>
                                                 <tr class="center_tr">

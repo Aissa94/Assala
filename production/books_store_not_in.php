@@ -98,7 +98,7 @@
                         </div>
                         <div class="modal-body">
                             <!--p>هل أنت متأكد أنك تريد إنشاء حساب بالبيانات المسبق إدراجها ؟</p-->
-                            <form class="form-horizontal form-label-left" id="add_book" method="post" action="server/add_book.php">
+                            <form class="form-horizontal form-label-left" id="add_book" method="post" action="server/add_book_not_in.php">
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                         <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12">

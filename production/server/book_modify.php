@@ -64,6 +64,15 @@
                             </div>
                             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_price">السعر</label>                                                   
                         </div>
+                        <div class="form-group">
+                            <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                <select id="e_type" name="type" class="form-control col-md-7 col-xs-12" dir="rtl">
+                                    <option <?php if ($row["isAssala"]) echo 'selected'; ?> value="1">الأصالة</option>
+                                    <option <?php if (!$row["isAssala"]) echo 'selected'; ?> value="0">غير الأصالة</option>
+                                </select>
+                            </div>
+                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_type">النوع</label>                                                   
+                        </div>
                         <?php 
                             }
                             $book->closeCursor();

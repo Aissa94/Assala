@@ -42,7 +42,7 @@
                                             <tbody>
                                                 <?php
                                                     $priceSale = 0;
-                                                    $bookstore = $connect->query("SELECT * FROM bookstore WHERE isAssala");
+                                                    $bookstore = $connect->query("SELECT * FROM bookstore WHERE isAssala AND active");
                                                     while ($row = $bookstore->fetch()) {
                                                 ?>
                                                 <tr class="center_tr">
@@ -59,7 +59,7 @@
                                                     <td>
                                                         <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editBook(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
                                                         <span class="fa fa-plus-square-o green pointer" title="إضافة كمية" onclick="addQuantity(id)" id='<?php echo $row["bookId"]; ?>'></span>&nbsp;
-                                                        <!--span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span-->
+                                                        <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteBook(id)" id='<?php echo $row["bookId"]; ?>'></span>
                                                     </td>
                                                 </tr>
                                                 <?php 
@@ -98,7 +98,7 @@
                         </div>
                         <div class="modal-body">
                             <!--p>هل أنت متأكد أنك تريد إنشاء حساب بالبيانات المسبق إدراجها ؟</p-->
-                            <form class="form-horizontal form-label-left" id="add_book" method="post" action="server/add_book.php">
+                            <form class="form-horizontal form-label-left" id="add_book" method="post" action="server/add_book_in.php">
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                         <input type="text" id="title" name="title" required="required" class="form-control col-md-7 col-xs-12">

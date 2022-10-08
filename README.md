@@ -1,4 +1,4 @@
-# Assala
+# Assala Publishing House
 
 **تسيير كتب الأصالة**
 

@@ -1,6 +1,3 @@
-
-<!-- Pour faire l'appel à la page "header.php" -->
-
 <?php
     require "header.php";
     if (strpos($_SESSION["access"], "p5") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
@@ -65,7 +62,8 @@
                                                             </thead>
                                                             <tbody id="requestContent"></tbody>
                                                             <?php  
-                                                                $receipt = $connect->query("SELECT * FROM receipthistory");
+                                                                if (isset($_GET["name"])) $receipt = $connect->query("SELECT * FROM receipthistory where client='". $_GET['name']. "'");
+                                                                else $receipt = $connect->query("SELECT * FROM receipthistory");
                                                                 //SELECT * FROM `receipthistory` WHERE YEAR(date) = 2017
                                                                 while ($row = $receipt->fetch()) {
                                                             ?>
@@ -99,8 +97,8 @@
                                                                     ?>
                                                                 </td>
                                                                 <td>
-                                                                    <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
-                                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
+                                                                    <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick='window.location.href="receipts_create.php?id=<?php echo $row["historyId"]; ?>"' id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
+                                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteReceipt(id)" id='<?php echo $row["historyId"]; ?>'></span>&nbsp;
                                                                 </td>
                                                             </tr>
                                                             <?php
@@ -122,12 +120,13 @@
                                                                     <th>الدفع</th>
                                                                     <th>المبلغ المتبقي</th>
                                                                     <th>نوع الدفع</th>
-                                                                    <th>تعديل</th>
+                                                                    <th>حذف</th>
                                                                 </tr>
                                                             </thead>
                                                             <tbody id="requestContent"></tbody>
                                                             <?php  
-                                                                $payment = $connect->query("SELECT * FROM payments");
+                                                                if (isset($_GET["id"])) $payment = $connect->query("SELECT * FROM payments where libraryId=" . $_GET['id']);
+                                                                else  $payment = $connect->query("SELECT * FROM payments");
                                                                 while ($row = $payment->fetch()) {
                                                             ?>
                                                             <tr>
@@ -147,8 +146,7 @@
                                                                 <td><?php echo ($row["deserved"] - $row["paid"]); ?></td>
                                                                 <td><?php echo $row["typeAmount"]; ?></td>
                                                                 <td>
-                                                                    <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["paymentId"]; ?>'></span>&nbsp;
-                                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["paymentId"]; ?>'></span>&nbsp;
+                                                                    <span class="fa fa-trash-o red pointer" title="حذف" onclick="deletePayment(id)" id='<?php echo $row["paymentId"]; ?>'></span>&nbsp;
                                                                 </td>
                                                             </tr>
                                                             <?php
@@ -247,6 +245,51 @@
                 </div>
             </div>
         </div>
+
+
+         <!-- - Delete Receipt - -->
+         <div class="modal fade" id="deletereceipt" tabindex="-1" role="dialog" aria-labelledby="deletereceiptLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="deletereceiptLabel">حذف الوصل</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>هل أنت متأكد أنك تريد حذف هذا الوصل من قاعدة البيانات ؟</p>
+                        <form  id="delete_receipt" method="post" action="server/delete_receipt.php"> 
+                            <input id="receiptId_delete" type="hidden" name="receiptId" value=""/>  
+                        </form>
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">إلغاء</button>
+                        <button style="margin-left:25%" type="submit" class="btn btn-primary btn-lg" form="delete_receipt"> حذف </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+         <!-- - Delete Payment - -->
+         <div class="modal fade" id="deletepayment" tabindex="-1" role="dialog" aria-labelledby="deletepaymentLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="modal-title" id="deletepaymentLabel">حذف الدفع</h3>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>هل أنت متأكد أنك تريد حذف هذا الدفع من قاعدة البيانات ؟</p>
+                        <form  id="delete_payment" method="post" action="server/delete_payment.php"> 
+                            <input id="paymentId_delete" type="hidden" name="paymentId" value=""/>  
+                        </form>
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">إلغاء</button>
+                        <button style="margin-left:25%" type="submit" class="btn btn-primary btn-lg" form="delete_payment"> حذف </button>
+                    </div>
+                </div>
+            </div>
+        </div>
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
     <script src="../vendors/jQuery-Smart-Wizard/js/jquery.smartWizard.js"></script>
@@ -255,6 +298,16 @@
     <!-- validator -->
     <script src="../vendors/validator/validator.js"></script>
     <script>
+        function deleteReceipt(e) {
+            $("#deletereceipt").modal('show');
+            $('#receiptId_delete').val(e);
+        }
+
+        function deletePayment(e) {
+            $("#deletepayment").modal('show');
+            $('#paymentId_delete').val(e);
+        }
+
         $(document).ready(function() {
             $("#changeDate").on('change', function() {
                 $.ajax({
@@ -267,6 +320,7 @@
                     }
                 });
             });
+
             $("#wizard").smartWizard({
                 onFinish: function () {
                     $('#confirmStaff').modal('show');
@@ -314,6 +368,28 @@
         });
     </script>
     <?php
+        };
+        if (isset($_GET['delete'])) { ?>
+        <script>
+            new PNotify({
+                title: 'تنويه',
+                text: 'تم حذف الوصل بنجاح',
+                type: 'error',
+                styling: 'bootstrap3'
+            });
+        </script>
+        <?php
+        };
+        if (isset($_GET['deletep'])) { ?>
+        <script>
+            new PNotify({
+                title: 'تنويه',
+                text: 'تم حذف الدفع بنجاح',
+                type: 'error',
+                styling: 'bootstrap3'
+            });
+        </script>
+        <?php
         };
         require "footer.php";
     ?>

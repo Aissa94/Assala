@@ -17,7 +17,7 @@ var validator = (function($) {
     message = {
         invalid: 'مدخل غير صالح',
         checked: 'لابد من فحصها',
-        empty: 'يرجى كتابة شيء هنا',
+        empty: 'يرجى ملء هذه الخانة',
         min: 'المدخلات قصيرة جدا',
         max: 'المدخلات طويلة جدا',
         number_min: 'منخفض جدا',
@@ -25,7 +25,7 @@ var validator = (function($) {
         url: 'URL غير صالح',
         number: 'ليس رقما',
         email: 'عنوان البريد الإلكتروني غير صالح',
-        email_repeat: 'البريد الإلكترونية لا تتطابق',
+        email_repeat: 'البريد الإلكتروني لا يتطابق',
         password_repeat: 'كلمة المرور غير مطابقة',
         repeat: 'لا تطابق',
         complete: 'المدخلات ليست كاملة',

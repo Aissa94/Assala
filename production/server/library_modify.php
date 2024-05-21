@@ -96,6 +96,36 @@
                     </div>
                     <div class="form-group">
                         <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                            <input type="text" id="e_rc" name="rc" value='<?php echo $row["rc"]; ?>'  class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_rc">RC</label>                                                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                            <input type="text" id="e_fisc" name="fisc" value='<?php echo $row["fisc"]; ?>'  class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_fisc">N° FISC</label>                                                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                            <input type="text" id="e_artimp" name="artimp" value='<?php echo $row["artimp"]; ?>'  class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_artimp">Art.IMP</label>                                                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                            <input type="text" id="e_rib" name="rib" value='<?php echo $row["rib"]; ?>'  class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_rib">RIB</label>                                                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                            <input type="text" id="e_nis" name="nis" value='<?php echo $row["nis"]; ?>'  class="form-control col-md-7 col-xs-12">
+                        </div>
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_nis">NIS</label>                                                    
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                             <input type="email" style="direction:ltr" id="e_email" name="email" value='<?php echo $row["email"]; ?>'  class="form-control col-md-7 col-xs-12">
                         </div>
                         <label class="control-label col-md-3 col-sm-3 col-xs-12" for="e_email">البريد</label>                                                   

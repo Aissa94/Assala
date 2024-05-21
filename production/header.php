@@ -1,7 +1,7 @@
 <?php session_start(); ?>
+
 <!DOCTYPE html>
 <html lang="ar">
-
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <!-- Meta, title, CSS, favicons, etc. -->
@@ -131,6 +131,7 @@
                                         <?php } ?>
                                         <?php if (strpos($_SESSION["access"], "p5") !== FALSE) { ?><li><a href="libraries_store.php">تسيير الزبائن</a></li><?php } ?>
                                         <?php if (strpos($_SESSION["access"], "p6") !== FALSE) { ?><li><a href="receipts_create.php">إنشاء وصل جديد</a></li><?php } ?>
+                                        <?php if (strpos($_SESSION["access"], "p6") !== FALSE) { ?><li><a href="bills_create.php">إنشاء فاتورة جديدة</a></li><?php } ?>
                                     </ul>
                                 </li>
                                 <?php } ?>

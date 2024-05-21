@@ -43,17 +43,18 @@
                         <div class="f-row">
                             <div class="full-width">
                                 <label for="username">اسم المستخدم</label>
-                                <input type="text" class="form-control" name="username" autocomplete="false" required="" />
+                                <input id="username" type="text" class="form-control" name="username" autocomplete="false" required="" />
                             </div>
                         </div>
                         <div class="f-row">
                             <div class="full-width">
                                 <label for="password">كلمة المرور</label>
-                                <input type="password" class="form-control" name="password" autocomplete="false" required="" />
+                                <input id="password" type="password" class="form-control" name="password" autocomplete="false" required="" />
                             </div>
                         </div>
                         <div>
-                            <input class="btn btn-success btn-lg full-width" type="submit" value="تسجيل الدخول" />
+                            <input class="btn btn-info btn-lg one-fourty" type="button" data-toggle="modal" data-target="#timeclock" value="تسجيل الدخول" />
+                            <input class="btn btn-success btn-lg one-fourty" type="submit" value="الولوج للتطبيق" />
                         </div>
                     </form>
                 </section>
@@ -91,8 +92,50 @@
     </div>
     <!-- //Footer -->
     
+    <!-- - Timeclock - -->
+    <div class="modal fade" id="timeclock" tabindex="-1" role="dialog" aria-labelledby="timeclockLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title" id="deletebookLabel">تسجيل الدخول</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">  
+                        <form method="post" action="server/auth.php">
+                            <input id="timeclockinput" type="hidden" name="timeclockinput" value=""/>
+                            <input id="hiddenUsername" type="hidden" name="username" value=""/>
+                            <input id="hiddenPassword" type="hidden" name="password" value=""/>
+                            <div>
+                                <input id="logoutButton" class="btn btn-danger btn-lg one-fourty" type="submit" value="خروج" />
+                                <input id="loginButton" class="btn btn-success btn-lg one-fourty" type="submit" value="دخول" />
+                            </div>
+                        </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <!-- jQuery -->
     <script src="../vendors/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#timeclock').on('show.bs.modal', function (event) {
+                var username = $('#username').val();
+                var password = $('#password').val();
+                $('#hiddenUsername').val(username);
+                $('#hiddenPassword').val(password);
+            });
+            $('#loginButton').on('click', function() {
+                $('#timeclockinput').val('login');
+            });
+
+            $('#logoutButton').on('click', function() {
+                $('#timeclockinput').val('logout');
+            });
+        });
+    </script>
     <!-- PNotify -->
     <script src="../vendors/pnotify/dist/pnotify.js"></script>
     <?php if (isset($_GET['error'])) { ?>
@@ -114,7 +157,39 @@
             styling: 'bootstrap3'
         });
     </script>
+    <?php }; 
+    if (isset($_GET['successlogin'])) { ?>
+    <script>
+        new PNotify({
+            title: 'تنويه',
+            text: 'تم تسجيل وقت الدخول بنجاح',
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+    </script>
+    <?php }; 
+    if (isset($_GET['errorlogin'])) { ?>
+        <script>
+            new PNotify({
+                title: 'تنويه',
+                text: 'تم تسجيل وقت الدخول لهذا اليوم مسبقا',
+                type: 'info',
+                styling: 'bootstrap3'
+            });
+        </script>
+    <?php }; 
+    if (isset($_GET['successlogout'])) { ?>
+        <script>
+            new PNotify({
+                title: 'تنويه',
+                text: 'تم تسجيل وقت الخروج بنجاح',
+                type: 'success',
+                styling: 'bootstrap3'
+            });
+        </script>
     <?php }; ?>
+     <!-- Bootstrap -->
+     <script src="../vendors/bootstrap/dist/js/bootstrap.min.js"></script>
 </body>
 
 </html>

@@ -4372,15 +4372,21 @@ ul.project_files li a i {
 }
 
 .black {
+    display: none;
     background-color: #191F26 !important;
     width: 100%;
-    min-height: 300px;
     color: #fff;
     padding-top: 33px;
     position: absolute;
     right: 0;
     bottom: 0;
     text-align: right;
+}
+
+@media (min-width: 768px) and (min-height: 868px) {
+    .black {
+        display: block;
+    }
 }
 
 .contact-data {
@@ -4467,6 +4473,15 @@ ul.project_files li a i {
     width: 25%;
     padding: 0 15px 30px;
     max-width: 100%;
+}
+
+.one-fourty {
+    float: left;
+    width: 40%;
+    padding: 15px 30px;
+    margin: 0 5%;
+    max-width: 100%;
+    font-size: 150%
 }
 
 .containerup {
@@ -5615,6 +5630,16 @@ table thead .checkbox.radio { margin-top:-7px;margin-top:-21px; }
 .input-group.date .input-group-addon {
     border-radius: 0px !important;
     background-color: #fff !important;
+}
+
+#authentification .modal-backdrop {
+    background: #bb3a1a;
+    opacity: 1 !important;
+}
+
+.checkbox {
+    display: inline-block;
+    margin: 0 15px;
 }
 
 

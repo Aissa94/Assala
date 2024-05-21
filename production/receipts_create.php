@@ -1,9 +1,12 @@
-<!-- Pour faire l'appel à la page "header.php" -->
-
 <?php
     require "header.php";
     if (strpos($_SESSION["access"], "p6") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
 ?>
+
+<script src="../vendors/jquery/dist/jquery.min.js"></script>
+<script src="../vendors/pnotify/dist/pnotify.js"></script>
+
+
 <!-- page content -->
 <div class="right_col" role="main">
     <div class=""> 
@@ -14,7 +17,10 @@
                 <div class="x_panel">
                     <div class="x_title">
                         <h2>إنشاء وصل جديد</h2>
-                        <button type="submit" formtarget="_blank" onclick="setTimeout(function(){ location.reload(); }, 1000)" class="btn btn-primary btn-lg" form="print_receipt"><b class="fa fa-print"></b> طباعة الوصل</button>
+                        <!--button type="submit" formtarget="_blank" onclick="setTimeout(function(){ location.reload(); }, 1000)" class="btn btn-primary btn-lg" form="print_receipt"><b class="fa fa-print"></b> طباعة الوصل</button-->
+                        <input class="btn btn-primary btn-lg" type="submit" formtarget="_blank" onclick="setTimeout(function(){ window.location.href = 'receipts_create.php'; }, 1000)" form="print_receipt" name="pdf" title="PDF طباعة الوصل بصيغة" value="PDF طباعة بصيغة"/>
+                        <input class="btn btn-primary btn-lg" type="submit" formtarget="_blank" onclick="setTimeout(function(){ window.location.href = 'receipts_create.php'; }, 1000)" form="print_receipt" name="excel" title="Excel طباعة الوصل بصيغة" value="Excel طباعة بصيغة"/>
+                        <input class="btn btn-primary btn-lg" type="submit" onclick="setTimeout(function(){ window.location.href = 'receipts_create.php'; }, 1000)" form="print_receipt" name="save" title="حفظ الوصل" value="حفظ الوصل"/>
                         <div class="clearfix"></div>
                     </div>
                     <div class="x_content">
@@ -33,9 +39,9 @@
                                 $booksTitle[] = $row["title"];
                                 $booksQuantity[] = $row["quantity"];
                                 $booksPrice[] = $row["price"];
+                                $booksIsbn[] = $row["isbn"];
                             }
                             $bookstore->closeCursor();
-                            unset($connect);
                         ?>
                         <form id="print_receipt" method="post" action="server/html2pdf/printer.php">
                             <div class="col-md-8 center-margin">
@@ -79,11 +85,11 @@
                             <table class="table jambo_table table-bordered nowrap books bulk_action" dir="rtl">
                                 <thead>
                                     <tr class="headings books">
-                                        <th>العنوان</th>
-                                        <th>السعر</th>
+                                        <th>التعيين</th>
+                                        <th>سعر الوحدة</th>
                                         <th>الكمية المتوفرة</th>
                                         <th>الكمية المطلوبة</th>
-                                        <th>التكلفة</th>
+                                        <th>القيمة الإجمالية</th>
                                         <th></th>
                                     </tr>
                                 </thead>
@@ -92,8 +98,9 @@
                                         <td>
                                             <select class="form-control chosen-select" data-placeholder="الرجاء اختيار كتاب من القائمة..." tabindex="-1" name="title[]">
                                                 <option value="0"></option>
-                                                <?php for ($i=0; $i<count($booksTitle); $i++) { ?>
-                                                    <option value="<?php echo $booksId[$i]; ?>" class="<?php echo $i; ?>" data="<?php echo $booksQuantity[$i]; ?>"><?php echo $booksTitle[$i]; ?></option>
+                                                <?php for ($i=0; $i<count($booksTitle); $i++) { 
+                                                ?>
+                                                    <option value="<?php echo $booksId[$i]; ?>" class="isbn <?php echo $i; ?>" data="<?php echo $booksQuantity[$i]; ?>"><?php echo $booksTitle[$i]. ';' . $booksIsbn[$i]; ?></option>
                                                 <?php } ?>
                                             </select>
                                         </td>
@@ -114,8 +121,8 @@
                         <button type="button" id="add-book" class="btn btn-success" style="font-size:20px"><span class="glyphicon glyphicon-plus"></span> أضف كتاب</button>
                         <br /><br />
                         <div class="form-horizontal form-label-right total-prices">
-                            <div class="form-group col-md-7">
-                                <label class="control-label col-md-3" for="total-cost">المجموع</label>
+                            <div class="form-group col-md-7 sum">
+                                <label class="control-label col-md-3" for="total-cost">المبلغ الإجمالي</label>
                                 <div class="col-md-7">
                                     <input type="text" id="total-cost" value="0 دج" readonly class="form-control">
                                 </div>
@@ -128,7 +135,7 @@
                                 </div>
                             </div>
                       
-                            <div class="form-group col-md-7">
+                            <div class="form-group col-md-7 sum">
                                 <label class="control-label col-md-3" for="total-sum">التكلفة الإجمالية</label>
                                 <div class="col-md-7">
                                     <input type="text" id="total-sum" value="0 دج" readonly class="form-control">
@@ -136,20 +143,134 @@
                             </div>
                         </div>
                     </div>
+                    <button type="button" id="display-hide-sum" class="btn btn-warning"> إظهار/إخفاء المجموع</button>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <!-- /page content -->
+<script>
+    var item = $(".book-item").clone();
+    </script>
+<?php
+if (isset($_GET["id"])) {
+    $_SESSION['historyId'] = $_GET["id"];
+    $receipt = $connect->query("SELECT * FROM receipthistory where historyId=". $_GET['id']);
+    while ($print = $receipt->fetch()) {
+        switch($print['typePrice']){
+            case "general":
+                $price = "السعر العمومي";
+                break;
+            case "library":
+                $price = "سعر المكتبة";
+                break;
+            case "whole":
+                $price = "سعر الجملة";
+                break;
+            default:
+                $price = "تخصيص";
+                break;
+        }
+
+        echo "<script>$('#receiver').val('" . $print['client'] . "');</script>";
+        echo "<script>$('#toggleOptions span').remove().prependTo($('.priceType').text('" . $price . "'));</script>";
+        echo "<script>$('#t_price').val('" . $print['typePrice'] . "');</script>";
+        echo "<script>$('#paying option[value=\"" . $print['type'] . "\"').attr('selected','selected');</script>";
+        echo "<script>$('tbody').empty();</script>"; 
+
+        $total = 0;
+        $bookId = $print['books'];
+        $bookId =unserialize($bookId);
+        $quantities = $print['quantities'];
+        $quantities = unserialize($quantities);
+        
+        $booksSet = '';
+                                           
+        for ($i=0; $i<count($booksTitle); $i++) { 
+            
+            if (!in_array($booksId[$i], $bookId)) $booksSet .= "<option value='". $booksId[$i] . "' class='isbn " . $i . "' data='" .  $booksQuantity[$i] . "'>" . $booksTitle[$i] . ";" . $booksIsbn[$i] . "</option>";
+        
+        } 
+
+        for ($k=0; $k<count($bookId); $k++) {
+            $book = $connect->query("SELECT * FROM bookstore WHERE bookId =".$bookId[$k]);
+            while ($row = $book->fetch()) {
+                $booksId = $row["bookId"];
+                $title = $row["title"];
+                $price = $row["price"];
+                $isbn = $row["isbn"];
+                $quantity = $row["quantity"];
+            }
+            $book->closeCursor();
+
+            switch($print['typePrice']){
+                case "general":
+                    $price = $price;
+                    break;
+                case "library":
+                    $price /= 1.3;
+                    break;
+                case "whole":
+                    $price /=1.56;
+                    break;
+                default:
+                    $price = $price * (1 -$print['typePrice']);
+                    break;
+            }
+            $prix = $price * $quantities[$k];
+            $total += $prix;
+            echo "<script>$('tbody').append(\"<tr class='book-item'><td><select class='form-control chosen-select' data-placeholder='الرجاء اختيار كتاب من القائمة...' tabindex='-1' name='title[]'><option value='" . $booksId . "' class='isbn " . $k . "' data='" . $quantity . "'>" . $title . ";" . $isbn . "</option>" . $booksSet . "</select></td><td>" . number_format($price, 2, '.', '') . "</td><td>" . $quantity . "</td><td><input type='number' min='1' max='398' name='quantity[]' required='required' class='quantity form-control col-md-2 col-xs-12' value='" . $quantities[$k] . "'></td><td class='cost'>" . number_format($prix, 2, '.', '') . "</td><td><span class='fa fa-trash-o red pointer trash' title='حذف'></span></td></tr>\");</script>";
+        }
+
+        echo "<script>$('#total-cost').val('" . number_format($total, 2, '.', '') . " دج');</script>";
+        
+        if ($print['cost'] < $total) {
+            echo "<script>$('#discount').val('" . number_format(($total - $print['cost']), 2, '.', '')  . "');</script>";
+        } else {
+            echo "<script>$('#discount').val('0');</script>";
+        }
+        
+        echo "<script>$('#total-sum').val('" . number_format($print['cost'], 2, '.', '') . " دج');</script>";
+        echo "<script>$('#total_hidden').val('" . number_format($print['cost'], 2, '.', '') . "');</script>";
+
+
+    }
+    $receipt->closeCursor();
+    unset($connect);
+}
+
+?>
 <!-- jQuery -->
 <script src="../vendors/jquery/dist/jquery.min.js"></script>
 <script>
-    var item = $(".book-item").clone(),
-        sum = 0,
+    //var item = $(".book-item").clone(),
+    var sum = 0,
         total = 0,
+        spans = document.getElementsByClassName('isbn');
         booksPrice = <?php echo json_encode($booksPrice); ?>;
+
+        for (var i=0; i<booksPrice.length; i++) {
+            switch($('#t_price').val()) {
+                case "general":
+                    booksPrice[i] = booksPrice[i];
+                    break;
+                case "library":
+                    booksPrice[i] = (booksPrice[i] / 1.3).toFixed(2);
+                    break;
+                case "whole":
+                    booksPrice[i] = (booksPrice[i] / 1.56).toFixed(2);
+                default:
+                    booksPrice[i] = (booksPrice[i] * (1 - $('#t_price').val())).toFixed(2);
+            }
+        }
+
     $(document).ready(function(){
+        for (var i = 0; i < spans.length; i++) {
+            var res = spans[i].innerText.split(";");
+            spans[i].innerHTML = res[0] + "<span style='visibility:hidden'>" + res[1] + "</span>";
+        }
+
         $('#price-type li:last').click(function (e) {
             $('#toggleOptions span').remove().prependTo($('.priceType').text("% " + $('.dropdown-menu input').val()));
             $('#t_price').val($('.dropdown-menu input').val()/100);
@@ -199,12 +320,17 @@
             width: "100%",
             allow_single_deselect: false,
         }).change(function() {
-            $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
-            $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
+            for (var i = 0; i < spans.length; i++) {
+                var res = spans[i].innerText.split(";");
+                spans[i].innerHTML = res[0] + "<span style='visibility:hidden'>" + res[1] + "</span>";
+            }
+            var res = $(this).find(":selected").attr('class').split(" ");
+            $(this).parent('td').next().html(booksPrice[res[1]]);
+            $(this).parent('td').nextAll().eq(1).html(parseInt($(this).find(":selected").attr('data')) - 1);
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").removeAttr('disabled');
-            $(this).parent('td').nextAll().eq(2).find("input").val("");
-            $(this).parent('td').nextAll().eq(3).html(0);
+            $(this).parent('td').nextAll().eq(2).find("input").val(1);
+            $(this).parent('td').nextAll().eq(3).html(booksPrice[res[1]]);
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
@@ -222,7 +348,11 @@
         if ($("#paying").val() == "sale") $(this).parent('td').prev().html($(this).parent('td').prevAll().eq(2).find(":selected").attr('data') - $(this).val());
         else $(this).parent('td').prev().html(parseInt($(this).parent('td').prevAll().eq(2).find(":selected").attr('data')) + parseInt($(this).val()));
         $(this).parent('td').next().html(cost.toFixed(2));
-        $('#total-cost').val(cost.toFixed(2) + " دج");
+        sum = 0;
+        $('.cost').each(function(){
+            sum += parseFloat($(this).text());
+        });
+        $('#total-cost').val(sum.toFixed(2) + " دج");
         if ((cost - parseFloat($('#discount').val())) <0) $('#discount').val(0);
         total = cost - parseFloat($('#discount').val());
         $('#total-sum').val(total.toFixed(2) + " دج");
@@ -240,8 +370,15 @@
         $('#total-sum').val(total.toFixed(2) + " دج");
         $("#total_hidden").val(total.toFixed(2));
     });
-    $('#add-book').on('click', function() {
+    $('#display-hide-sum').on('click', function() {
+        $(".sum").toggle('display');
+    });
+    function addBook() {
         $("tbody").append(item.clone());
+        for (var i = 0; i < spans.length; i++) {
+            var res = spans[i].innerText.split(";");
+            spans[i].innerHTML = res[0] + "<span style='visibility:hidden'>" + res[1] + "</span>";
+        }
         $(".chosen-select").chosen({
             no_results_text: "للأسف، لا يوجد كتاب بهذا الاسم",
             rtl: true,
@@ -249,12 +386,13 @@
             width: "100%",
             allow_single_deselect: false,
         }).change(function() {
-            $(this).parent('td').next().html(booksPrice[$(this).find(":selected").attr('class')]);
-            $(this).parent('td').nextAll().eq(1).html($(this).find(":selected").attr('data'));
+            var res = $(this).find(":selected").attr('class').split(" ");
+            $(this).parent('td').next().html(booksPrice[res[1]]);
+            $(this).parent('td').nextAll().eq(1).html(parseInt($(this).find(":selected").attr('data')) - 1);
             $(this).parent('td').nextAll().eq(2).find("input").attr('max', $(this).find(":selected").attr('data'));
             $(this).parent('td').nextAll().eq(2).find("input").removeAttr('disabled');
-            $(this).parent('td').nextAll().eq(2).find("input").val("");
-            $(this).parent('td').nextAll().eq(3).html(0);
+            $(this).parent('td').nextAll().eq(2).find("input").val(1);
+            $(this).parent('td').nextAll().eq(3).html(booksPrice[res[1]]);
             sum = 0;
             $('.cost').each(function(){
                 sum += parseFloat($(this).text());
@@ -280,6 +418,13 @@
             $('#total-sum').val(total.toFixed(2) + " دج");
             $("#total_hidden").val(total.toFixed(2));
         });
+        $('.quantity').keypress(function(e) {
+            if(e.which == 13) {
+                // enter pressed
+                e.preventDefault();
+                addBook();
+            }
+        });
         $('.trash').on('click', function() {
             $(this).parent('td').parent('tr').remove();
             sum = 0;
@@ -292,9 +437,41 @@
             $('#total-sum').val(total.toFixed(2) + " دج");
             $("#total_hidden").val(total.toFixed(2));
         });
+    }
+    $('#add-book').on('click', addBook);
+    $('.quantity').keypress(function(e) {
+        if(e.which == 13) {
+            // enter pressed
+            e.preventDefault();
+            addBook();
+        }
+    });
+    $('button[type="submit"]').on("click", function() { 
+        var has_empty = false;
+        $(this).find('input[type!="hidden"]').each(function () {
+            if (!$(this).val()) {
+                has_empty = true;
+                new PNotify({title: 'تنويه', text: 'يرجى ملء جميع البيانات الضرورية قبل طباعة الوصل', type: 'warning', styling: 'bootstrap3'});
+                return false;
+            }
+        });
+        if (has_empty) return false;
     });
 </script>
+<?php if (isset($_GET['success'])) { ?>
+    <script>
+        new PNotify({
+            title: 'تنويه',
+            text: 'تم حفظ الوصل بنجاح',
+            type: 'success',
+            styling: 'bootstrap3'
+        });
+    </script>
 
+<?php
+    };
+    
+?>
 <?php
     require "footer.php";
 ?>

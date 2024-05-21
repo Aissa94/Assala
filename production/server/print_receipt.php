@@ -3,19 +3,12 @@
 table { vertical-align: middle; }
 th    { vertical-align: middle; padding: 8px 10px; }
 td    { vertical-align: middle; padding: 8px 2px;}
-}
 </style>
-<?php 
-    session_start();
-    require "bdd_connect.php";
-    $receipthistory = $connect->prepare('INSERT INTO `receipthistory`(`client`, `memberId`, `date`, `books`, `quantities`, `typePrice`, `cost`, `type`) VALUES (?,?,?,?,?,?,?,?)');
-    $receipthistory->execute(array($_POST['receiver'], $_SESSION['memberId'], date('Y/m/d'), serialize($_POST['title']), serialize($_POST['quantity']), $_POST['price'], $_POST['cost'], $_POST['type']));
-?>
 <page backcolor="#FFF" backimg="../../images/assala_bas_page.png" backimgx="center" backimgy="bottom" backimgw="100%" style="font-size: 12pt" backtop="10mm" backleft="8mm" backright="8mm" backbottom="25mm">
     <table cellspacing="0" style="width: 100%; text-align: center">
         <tr>
             <td style="width: 100%;">
-                <img style="width: 50%;" src="../../images/assala_logo.png">
+                <img style="width: 50%;" src="../../images/assala_logo.jpg">
             </td>
         </tr>
     </table>
@@ -39,10 +32,10 @@ td    { vertical-align: middle; padding: 8px 2px;}
     <br>
     <table cellspacing="0" border="1" style="width: 100%; background: #E7E7E7;  border: solid 1px black; border: solid 1px #000; text-align: center; font-size: 15pt;">
         <tr>
-            <th style="width: 20%">القيمة</th>
+            <th style="width: 20%">القيمة الإجمالية</th>
             <th style="width: 10%">الكمية</th>
-            <th style="width: 20%">السعر</th>
-            <th style="width: 45%">العنوان</th>
+            <th style="width: 20%">سعر الوحدة</th>
+            <th style="width: 45%">التعيين</th>
             <th style="width: 5%"></th>
             
         </tr>
@@ -94,16 +87,16 @@ td    { vertical-align: middle; padding: 8px 2px;}
     <table cellspacing="0" border="1" style="width: 100%; background: #E7E7E7; text-align: right; font-size: 18pt;">
         <tr>
             <th style="width: 30%;font-size: 20pt;"><?php echo number_format($total, 2, ',', ''); ?> دج</th>
-            <th style="width: 20%;">المجموع : </th>
+            <th style="width: 20%;">المبلغ الإجمالي : </th>
         </tr>
         <?php if ($_POST['cost'] < $total) { ?>
             <tr>
-                <th style="width: 30%;font-size: 20pt;"><?php echo number_format(($total - $_POST['cost']), 2, ',', ' '); ?> دج</th>
+                <th style="width: 30%;font-size: 20pt;"><?php echo number_format(($total - $_POST['cost']), 2, ',', ' '); ?></th>
                 <th style="width: 20%;">الخصم : </th>
             </tr>
             <tr>
                 <th style="width: 30%;font-size: 20pt;"><?php echo number_format($_POST['cost'], 2, ',', ''); ?> دج</th>
-                <th style="width: 20%;">التكلفة : </th>
+                <th style="width: 20%;">القيمة الإجمالية : </th>
             </tr>
         <?php } ?>
     </table>

@@ -1,6 +1,3 @@
-
-  <!-- Pour faire l'appel à la page "header.php" -->
-
 <?php
     require "header.php";
     if (strpos($_SESSION["access"], "p5") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
@@ -21,7 +18,7 @@
                                 </div>
                                 <div class="x_content">
                                      <p class="text-muted font-13 m-b-30">                                
-                                        هذه قائمة بجميع زبائن والمتعاملين الرسميين لمؤسسة الأصالة
+                                        هذه قائمة بجميع الزبائن والمتعاملين الرسميين لمؤسسة الأصالة
                                     </p>
                                     <table id="datatable-fixed-header" class="table table-striped table-bordered nowrap bulk_action" dir="rtl">
                                         <thead>
@@ -34,7 +31,7 @@
                                                 <th>الهاتف</th>
                                                 <th>الهاتف 2</th>
                                                 <th>الهاتف 3</th>
-                                                <th>تعديل</th>
+                                                <th>العمليات</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -55,7 +52,8 @@
                                                     <span class="fa fa-pencil-square-o blue pointer" title="تعديل" onclick="editLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
                                                     <span class="fa fa-trash-o red pointer" title="حذف" onclick="deleteLibrary(id)" id='<?php echo $row["libraryId"]; ?>'></span>&nbsp;
                                                     <span class="fa fa-paypal dark pointer" title="الدفع" onclick="paymentLibrary(id)" id='<?php echo $row["libraryId"].">".$row["name"]; ?>'></span></a>
-                                                    <a href='history.php?id=<?php echo $row["libraryId"]; ?>&name=<?php echo $row["name"]; ?>'><span class="fa fa-history green pointer" title="الوصول"></span></a>
+                                                    <a class="fa fa-file-excel-o green pointer" title="طباعة جميع الوصول" href='server/print2excel.php?name=<?php echo $row["name"]; ?>' target="_blank" id='<?php echo $row["name"]; ?>'></a>
+                                                    <a href='history.php?id=<?php echo $row["libraryId"]; ?>&name=<?php echo $row["name"]; ?>'><span class="fa fa-history orange pointer" title="الوصول"></span></a>
                                                 </td>
                                             </tr>
                                             <?php 
@@ -162,6 +160,36 @@
                                         <input type="text" id="adress" name="adress" class="form-control col-md-7 col-xs-12">
                                     </div>
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="adress">العنوان</label>                                                    
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                        <input type="text" id="rc" name="rc" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rc">RC</label>                                                   
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                        <input type="text" id="fisc" name="fisc" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="fisc">N° FISC</label>                                                   
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                        <input type="text" id="artimp" name="artimp" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="artimp">Art.IMP</label>                                                   
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                        <input type="text" id="rib" name="rib" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="rib">RIB</label>                                                   
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                        <input type="text" id="nis" name="nis" class="form-control col-md-7 col-xs-12">
+                                    </div>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nis">NIS</label>                                                   
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">

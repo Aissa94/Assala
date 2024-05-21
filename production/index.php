@@ -1,5 +1,3 @@
-<!-- Pour faire l'appel à la page "header.php" -->
-
 <?php
     require "header.php";
 ?>

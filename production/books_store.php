@@ -1,6 +1,3 @@
-
-  <!-- Pour faire l'appel à la page "header.php" -->
-
 <?php
     require "header.php";
     if (strpos($_SESSION["access"], "p4") === FALSE) echo("<script>location.href = 'page_403.html';</script>");
@@ -178,7 +175,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> 
 
             <!-- - Add Quantity - -->
             <div class="modal fade" id="addquantity" tabindex="-1" role="dialog" aria-labelledby="addquantityLabel" aria-hidden="true">

@@ -1,0 +1,269 @@
+[27-Jul-2020 05:49:37 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:50:17 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:50:54 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:51:05 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:52:14 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:52:22 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:52:31 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[27-Jul-2020 05:53:26 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php:8) in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 12
+[02-Feb-2021 08:21:56 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2021-02-02" AND "2021-02-02" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[12-Mar-2021 10:31:34 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:32:12 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:33:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:34:13 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:36:02 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:37:22 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:37:56 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:38:04 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:38:07 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:38:27 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:38:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:39:16 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:39:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:41:35 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 10:44:22 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'author' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 11:00:59 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[12-Mar-2021 11:01:08 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[16-Aug-2021 10:29:49 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'adress' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[16-Aug-2021 10:29:59 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'adress' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[16-Aug-2021 10:36:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'adress' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[16-Aug-2021 10:36:22 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'adress' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[24-Aug-2021 10:42:39 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'adress' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[25-Mar-2022 15:34:08 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2022-03-25" AND "2022-03-25" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[25-Mar-2022 15:34:39 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2022-03-25" AND "2022-03-25" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[25-Mar-2022 15:59:41 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2022-03-25" AND "2022-03-25" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[25-Mar-2022 16:19:19 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2022-03-25" AND "2022-03-25" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[25-Mar-2022 16:31:20 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2022-03-25" AND "2022-03-25" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[22-Jun-2022 09:52:46 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php:14
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php(14): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php on line 14
+[22-Jun-2022 09:52:52 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php:14
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php(14): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php on line 14
+[22-Jun-2022 09:52:57 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php:14
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php(14): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php on line 14
+[22-Jun-2022 09:53:37 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php:14
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php(14): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/edit_book.php on line 14
+[05-Jun-2023 08:51:17 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/PHPExcel-1.8/Classes/PHPExcel/Shared/String.php on line 526
+[05-Jun-2023 08:51:20 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/PHPExcel-1.8/Classes/PHPExcel/Shared/String.php on line 526
+[05-Jun-2023 08:51:21 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/PHPExcel-1.8/Classes/PHPExcel/Shared/String.php on line 526
+[05-Jun-2023 09:48:35 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 09:48:42 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 09:56:06 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 09:56:17 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 09:57:11 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 10:00:33 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 10:01:18 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 10:02:44 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'adress' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 10:06:30 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'name' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php:6
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php(6): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_library.php on line 6
+[05-Jun-2023 10:24:19 UTC] PHP Fatal error:  Array and string offset access syntax with curly braces is no longer supported in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/PHPExcel-1.8/Classes/PHPExcel/Shared/String.php on line 526
+[13-Jul-2023 14:57:09 UTC] PHP Warning:  Undefined array key "id" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 6
+[17-Sep-2023 10:25:39 UTC] PHP Warning:  Undefined array key "id" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 6
+[18-Sep-2023 14:20:49 UTC] PHP Warning:  Undefined array key "id" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 6
+[26-Sep-2023 10:46:29 UTC] PHP Warning:  Undefined array key "idEmployee" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[26-Sep-2023 10:46:29 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2023-09-26" AND "2023-09-26" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[26-Sep-2023 10:46:45 UTC] PHP Warning:  Undefined array key "idEmployee" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[26-Sep-2023 10:46:45 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2023-09-26" AND "2023-09-26" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[26-Sep-2023 10:47:03 UTC] PHP Warning:  Undefined array key "idEmployee" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[26-Sep-2023 10:47:03 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'AND date BETWEEN "2023-09-26" AND "2023-09-26" ORDER BY date' at line 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php:32
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php(32): PDO->query('SELECT * FROM p...')
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php on line 32
+[26-Sep-2023 10:47:07 UTC] PHP Warning:  Undefined array key "idEmployee" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/presence_query.php[25-Oct-2023 12:31:23 UTC] PHP Warning:  Undefined array key "id" in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/logout.php on line 6
+[23-Nov-2023 09:53:03 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[23-Nov-2023 09:53:19 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[23-Nov-2023 09:55:19 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[26-Nov-2023 09:06:32 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[04-Mar-2024 09:45:37 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4
+[04-Mar-2024 10:22:21 UTC] PHP Fatal error:  Uncaught PDOException: SQLSTATE[22001]: String data, right truncated: 1406 Data too long for column 'title' at row 1 in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php:4
+Stack trace:
+#0 /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php(4): PDOStatement->execute(Array)
+#1 {main}
+  thrown in /home/assaladz/public_html/gestion_de_stock_pointage/production/server/add_book_in.php on line 4

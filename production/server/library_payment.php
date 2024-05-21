@@ -1,4 +1,4 @@
-﻿<?php
+<?php
     require "bdd_connect.php";
 ?>
     <div class="modal-dialog">

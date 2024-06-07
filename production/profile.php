@@ -96,7 +96,7 @@
                                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
                                                                         <input type="text" id="firstname" name="firstname" value='<?php echo $row["firstname"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
                                                                     </div>
-                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم </label> 
+                                                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="firstname"> <span class="required">*</span>الاسم</label> 
                                                                 </div>
                                                                 <div class="item form-group">
                                                                     <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
@@ -265,6 +265,44 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="modal fade modal" id="credentialsTab" tabindex="-1" role="dialog" aria-labelledby="credentialsTabLabel" aria-hidden="true">
+                                            <div class="modal-dialog" style="width:1000px">
+                                                <div class="modal-content" >
+                                                    <div class="modal-header">
+                                                        <h3 class="modal-title" id="credentialsTabLabel"><?php echo $row["lastname"]." ".$row["firstname"]; ?></h3>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                                <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal form-label-left" method="post" action="server/edit_credentials.php" id="credentialsForm">
+                                                            <input type="hidden" id="employeeId" name="employeeId" value='<?php echo $row["memberId"]; ?>'>
+                                                            <div class="item form-group">
+                                                                <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                    <input type="text" id="username" name="username" value='<?php echo $row["username"]; ?>' required="required" class="form-control col-md-7 col-xs-12">
+                                                                </div>
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="username"> <span class="required">*</span>اسم المستخدم</label>
+                                                            </div>
+                                                            <div class="item form-group">
+                                                                <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                    <input type="password" id="password" name="password" required="required" class="form-control col-md-7 col-xs-12">
+                                                                </div>
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password"> <span class="required">*</span>كلمة المرور </label>                
+                                                            </div>
+                                                            <div class="item form-group">
+                                                                <div class="col-md-6 col-sm-6 col-xs-12 marginelo">
+                                                                    <input type="password" id="password-repeat" name="password-repeat" data-validate-linked="password" required="required" class="form-control col-md-7 col-xs-12">
+                                                                </div>
+                                                                <label class="control-label col-md-3 col-sm-3 col-xs-12" for="password-repeat"> <span class="required">*</span>تأكيد كلمة المرور </label>                
+                                                            </div>
+                                                        </form>                                                        
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button style="margin-right:50%" type="submit" class="btn btn-primary btn-lg" form="credentialsForm"> تعديل </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-md-3 col-sm-3 col-xs-12 profile_right">
                                         <div class="profile_img">
@@ -291,7 +329,8 @@
                                             </li>
                                         </ul>
 
-                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#formTab"><i class="fa fa-edit m-right-xs"></i>تعديل البيانات</button>
+                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#formTab"><i class="fa fa-edit m-right-xs"></i>تعديل البيانات الشخصية</button>
+                                        <button class="btn btn-success btn-lg" data-toggle="modal" data-target="#credentialsTab"><i class="fa fa-edit m-right-xs"></i>تعديل بيانات الحساب</button>
                                         <br /><br /><br />
 
                                         <!-- start skills -->
